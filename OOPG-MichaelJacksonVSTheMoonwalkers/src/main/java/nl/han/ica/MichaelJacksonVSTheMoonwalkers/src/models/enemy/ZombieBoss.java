@@ -7,8 +7,8 @@ public class ZombieBoss extends Zombie {
 
     private int health;
 
-    public ZombieBoss(ScalingSize size, float speed, int damage, int health) {
-        super(size, speed, damage);
+    public ZombieBoss(ScalingSize size, float velocity, int damage, int health) {
+        super(size, velocity, damage);
         this.health = health;
     }
 }

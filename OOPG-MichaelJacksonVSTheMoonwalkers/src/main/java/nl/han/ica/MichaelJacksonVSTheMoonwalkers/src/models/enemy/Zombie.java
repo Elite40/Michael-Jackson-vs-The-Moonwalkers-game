@@ -20,12 +20,12 @@ enum ZombieType {
 public class Zombie {
 
     private ScalingSize size;
-    private float speed;
+    private float velocity;
     private int damage;
 
-    public Zombie(ScalingSize size, float speed, int damage) {
+    public Zombie(ScalingSize size, float velocity, int damage) {
         this.size = size;
-        this.speed = speed;
+        this.velocity = velocity;
         this.damage = damage;
     }
 }
