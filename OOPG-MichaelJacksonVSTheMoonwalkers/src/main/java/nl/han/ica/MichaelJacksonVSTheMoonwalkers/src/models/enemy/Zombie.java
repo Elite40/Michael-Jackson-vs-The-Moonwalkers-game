@@ -1,7 +1,9 @@
 package nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy;
 
 import com.sun.istack.internal.Nullable;
+import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
+import processing.core.PGraphics;
 
 import java.util.List;
 
@@ -11,7 +13,7 @@ import java.util.List;
 
 
 
-public class Zombie {
+public class Zombie extends GameObject {
 
     private ScalingSize size;
     private int xPosition;
@@ -55,5 +57,15 @@ public class Zombie {
 
     private static List<Sprite> bossSprites() {
         return null;
+    }
+
+    @Override
+    public void update() {
+
+    }
+
+    @Override
+    public void draw(PGraphics g) {
+
     }
 }
