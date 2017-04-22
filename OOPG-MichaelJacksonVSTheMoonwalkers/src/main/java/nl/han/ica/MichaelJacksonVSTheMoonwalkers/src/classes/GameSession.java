@@ -1,18 +1,11 @@
 package nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes;
 
-import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers.DocumentReader;
-import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers.SpriteLoader;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy.Zombie;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.player.MJ;
-import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.player.SpriteGroup;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import org.xml.sax.SAXException;
-import sun.security.provider.ConfigFile;
 
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -56,19 +49,10 @@ public final class GameSession {
         return instance;
     }
 
-    public void setupGameSession() throws IOException, SAXException, ParserConfigurationException {
-        List<SpriteGroup> mjSprites = Collections.emptyList();
-
-        File mjDir = new File(String.format("%sMJ/", SpriteLoader.directory));
-        for (File fileDir : mjDir.listFiles()) {
-            List<Sprite> sprites = Collections.emptyList();
-            for (File image : fileDir.listFiles()) {
-                sprites.add(new Sprite(image.getAbsolutePath()));
-            }
-            mjSprites.add(new SpriteGroup(fileDir.getName(), sprites));
-        }
-        mj = new MJ(50, 10, 5, mjSprites, game);
-        game.addGameObject(mj, 0, 0);
+    public void setupGameSession(MichaelJacksonVSTheMoonwalkers game) throws IOException, SAXException, ParserConfigurationException {
+        this.game = game;
+        mj = new MJ(50, 10, 5, MJ.getMJSprite(), game);
+        game.addGameObject(mj, 200, 200);
     }
 
     private void startReadyUpTimer() {
@@ -110,6 +94,6 @@ public final class GameSession {
     }
 
     public void startGame() throws ParserConfigurationException, SAXException, IOException {
-        setupGameSession();
+        setupGameSession(game);
     }
 }

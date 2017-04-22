@@ -28,7 +28,7 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
 
 
             createViewWithoutViewport(worldWidth, worldHeight);
-            GameSession.sharedInstance().setupGameSession();
+            GameSession.sharedInstance().setupGameSession(this);
 
         } catch (Exception e) {
             println(e);
