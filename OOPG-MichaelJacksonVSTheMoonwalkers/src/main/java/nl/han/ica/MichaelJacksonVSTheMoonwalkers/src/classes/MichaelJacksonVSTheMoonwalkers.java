@@ -16,13 +16,16 @@ import processing.core.PApplet;
  */
 public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
 
+    private int worldWidth;
+    private int worldHeight;
+
     public static void main(String[] args) {
         PApplet.main(new String[]{"nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.MichaelJacksonVSTheMoonwalkers"});}
     @Override
     public void setupGame() {
         try {
-            int worldWidth=1000;
-            int worldHeight=518;
+            worldWidth=1000;
+            worldHeight=518;
 
             createDashboard(worldWidth, 100);
 
@@ -38,6 +41,10 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
     @Override
     public void update() {
 
+    }
+
+    public int[] getScreenSize() {
+        return new int[]{ worldWidth, worldHeight };
     }
 
     private void createViewWithoutViewport(int screenWidth, int screenHeight) {

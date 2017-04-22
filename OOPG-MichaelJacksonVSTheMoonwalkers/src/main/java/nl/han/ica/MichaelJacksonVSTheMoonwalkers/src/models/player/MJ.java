@@ -10,6 +10,8 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import sun.rmi.runtime.Log;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Logger;
 
 /**
@@ -69,20 +71,20 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
         setCurrentFrameIndex(0);
     }
 
-    public static Sprite getMJSprite() {
-        return new Sprite("src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/MJ/mj_movement.png");
+    public static String getMJSprite() {
+        return "src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/MJ/mj_movement.png";
     }
 
-    public static Sprite getMJDeathSprite() {
-        return new Sprite("src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/MJ/mj_death.png");
+    public static String getMJDeathSprite() {
+        return "src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/MJ/mj_death.png";
     }
 
-    public static Sprite getMJAttackSprite() {
-        return new Sprite("src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/MJ/mj_attack.png");
+    public static String getMJAttackSprite() {
+        return "src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/MJ/mj_attack.png";
     }
 
-    public static Sprite  getMJJumpSprite() {
-        return new Sprite("src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/MJ/mj_jump.png");
+    public static String  getMJJumpSprite() {
+        return "src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/MJ/mj_jump.png";
     }
 
     public int getHealth() {
@@ -98,14 +100,16 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
     }
 
     public void attack(Direction direction) {
-        setSprite(getMJAttackSprite());
-        if (1==1) {
-            session.setScore(session.getScore() + 5);
+        setSprite(getMJAttackSprite(), 8);
+        if (direction == Direction.Left) {
+            setCurrentFrameIndex(SpriteFrameIndex.AttackLeft.getValue());
+        } else if (direction == Direction.Right) {
+            setCurrentFrameIndex(SpriteFrameIndex.AttackRight.getValue());
         }
     }
 
     public void jump(Direction direction) {
-        setSprite(getMJJumpSprite());
+        setSprite(getMJJumpSprite(), 6);
         if (direction == Direction.Left) {
             setCurrentFrameIndex(SpriteFrameIndex.JumpLeft.getValue());
         } else if (direction == Direction.Right) {
@@ -115,6 +119,37 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
     }
 
 
+    private void startAnimationTimer(int repeats) {
+        Timer timer = new Timer();
+        final int[] timesRepeated = {0};
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                timesRepeated[0]++;
+                if (direction == Direction.Left) {
+                    if (getCurrentFrameIndex() < 5) {
+                        setCurrentFrameIndex(getCurrentFrameIndex() + 1);
+                        setX(getX() + 5);
+                    } else {
+                        setCurrentFrameIndex(0);
+                    }
+                } else {
+                    if (getCurrentFrameIndex() < 11 && getCurrentFrameIndex() > 6) {
+
+                        setCurrentFrameIndex(getCurrentFrameIndex() + 1);
+                        setX(getX()-5);
+                    } else {
+                        setCurrentFrameIndex(6);
+                    }
+                }
+                setCurrentFrameIndex(getCurrentFrameIndex() + 1);
+                if (repeats == timesRepeated[0]) {
+                    timer.cancel();
+                }
+            }
+        }, 0, 100);
+    }
+
 
     /**
      *
@@ -123,17 +158,20 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
 
     public void move(Direction direction) {
         this.direction = direction;
-        setSprite(getMJSprite());
-        if (direction == Direction.Left) {
+        setSprite(getMJSprite(), 12);
+        startAnimationTimer(6);
+        /*if (direction == Direction.Left) {
+            startAnimationTimer(6);
             setCurrentFrameIndex(SpriteFrameIndex.MovementLeft.getValue());
         } else if (direction == Direction.Right) {
             setCurrentFrameIndex(SpriteFrameIndex.MovementRight.getValue());
-        }
+        }*/
         setDirection(direction.getValue());
     }
 
-    private void setSprite(Sprite sprite) {
-        this.sprite = sprite;
+    private void setSprite(String sprite, int frames) {
+        this.sprite.setSprite(sprite);
+        setTotalFrames(frames);
     }
 
 
