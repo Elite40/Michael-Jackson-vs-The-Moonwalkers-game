@@ -34,14 +34,13 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
     private int velocity;
     private int health;
     private int damage;
-    private List<Sprite> spriteList;
+    private List<SpriteGroup> spriteList;
     private final MichaelJacksonVSTheMoonwalkers game;
 
     private GameSession session = GameSession.sharedInstance();
 
-    // Waarom hebben we game ook alweer gedaan, session heeft een MJ
-    public MJ(int health, int damage, int velocity, List<Sprite> spriteList, MichaelJacksonVSTheMoonwalkers game) {
-        super(spriteList.get(0), spriteList.size());
+    public MJ(int health, int damage, int velocity, List<SpriteGroup> spriteList, MichaelJacksonVSTheMoonwalkers game) {
+        super(spriteList.get(0).sprites.get(0), spriteList.size());
         this.health = health;
         this.damage = damage;
         this.velocity = velocity;
@@ -121,6 +120,5 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
 
             }
         }
-
     }
 }

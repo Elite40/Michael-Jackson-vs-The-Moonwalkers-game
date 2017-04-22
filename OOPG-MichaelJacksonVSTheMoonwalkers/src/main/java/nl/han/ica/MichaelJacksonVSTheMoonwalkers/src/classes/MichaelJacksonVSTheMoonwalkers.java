@@ -21,11 +21,10 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
     @Override
     public void setupGame() {
         try {
-            int worldWidth=1204;
-            int worldHeight=903;
+            int worldWidth=1000;
+            int worldHeight=518;
 
             createDashboard(worldWidth, 100);
-            initializeTileMap();
 
 
             createViewWithoutViewport(worldWidth, worldHeight);
@@ -43,7 +42,7 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
 
     private void createViewWithoutViewport(int screenWidth, int screenHeight) {
         View view = new View(screenWidth,screenHeight);
-        view.setBackground(loadImage("src/main/java/nl/han/ica/waterworld/media/background.jpg"));
+        view.setBackground(loadImage("src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/Backgrounds/sprite-bg.png"));
 
         setView(view);
         size(screenWidth, screenHeight);
@@ -54,34 +53,5 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
         TextObject dashboardText=new TextObject("");
         dashboard.addGameObject(dashboardText);
         addDashboard(dashboard);
-    }
-
-    /**
-     * Initialiseert de tilemap
-     */
-    private void initializeTileMap() {
-        /* TILES */
-        Sprite boardsSprite = new Sprite("src/main/java/nl/han/ica/waterworld/media/boards.jpg");
-        TileType<BoardsTile> boardTileType = new TileType<>(BoardsTile.class, boardsSprite);
-
-        TileType[] tileTypes = { boardTileType };
-        int tileSize=50;
-        int tilesMap[][]={
-                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0, 0, 0},
-                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0, 0, 0},
-                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0, 0, 0},
-                {-1, 0, 0,-1,-1,-1,-1,-1,-1,-1, 0, 0, 0, 0},
-                {-1,-1,-1, 0,-1,-1,-1,-1,-1,-1, 0, 0, 0, 0},
-                {-1,-1,-1,-1, 0,-1,-1,-1,-1,-1, 0, 0, 0, 0},
-                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0, 0, 0},
-                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0, 0, 0},
-                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0, 0, 0},
-                {-1,-1,-1, 0, 0, 0, 0,-1,0 , 0, 0, 0, 0, 0},
-                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0, 0, 0},
-                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0, 0, 0},
-                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0, 0, 0},
-                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0, 0, 0}
-        };
-        tileMap = new TileMap(tileSize, tileTypes, tilesMap);
     }
 }

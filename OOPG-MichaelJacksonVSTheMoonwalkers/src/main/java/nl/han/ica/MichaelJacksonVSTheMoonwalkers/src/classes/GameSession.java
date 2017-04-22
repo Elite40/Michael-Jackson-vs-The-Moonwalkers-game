@@ -1,10 +1,13 @@
 package nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes;
 
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers.DocumentReader;
+import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers.SpriteLoader;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy.Zombie;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.player.MJ;
+import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.player.SpriteGroup;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import org.xml.sax.SAXException;
+import sun.security.provider.ConfigFile;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
@@ -54,17 +57,15 @@ public final class GameSession {
     }
 
     public void setupGameSession() throws IOException, SAXException, ParserConfigurationException {
-        List<Sprite> mjSprites = Collections.emptyList();
-        File mjFilePath = new File(DocumentReader.readFromFileWithTag("src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/strings/strings.xml", "mjFolderPath"));
-        for (File file : mjFilePath.listFiles()) {
-            if (file.isDirectory()) {
-                for (File lowerFile : file.listFiles()) {
-                    mjSprites.add(new Sprite(file.getAbsolutePath()));
-                }
-            } else {
-                mjSprites.add(new Sprite(file.getAbsolutePath()));
+        List<SpriteGroup> mjSprites = Collections.emptyList();
+
+        File mjDir = new File(String.format("%sMJ/", SpriteLoader.directory));
+        for (File fileDir : mjDir.listFiles()) {
+            List<Sprite> sprites = Collections.emptyList();
+            for (File image : fileDir.listFiles()) {
+                sprites.add(new Sprite(image.getAbsolutePath()));
             }
-            mjSprites.add(new Sprite(file.getAbsolutePath()));
+            mjSprites.add(new SpriteGroup(fileDir.getName(), sprites));
         }
         mj = new MJ(50, 10, 5, mjSprites, game);
         game.addGameObject(mj, 0, 0);
