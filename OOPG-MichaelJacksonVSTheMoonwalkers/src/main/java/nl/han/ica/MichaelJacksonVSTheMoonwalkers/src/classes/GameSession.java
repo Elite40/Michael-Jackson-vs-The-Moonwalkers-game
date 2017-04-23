@@ -2,6 +2,7 @@ package nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes;
 
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy.Zombie;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.player.MJ;
+import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -51,8 +52,9 @@ public final class GameSession {
 
     public void setupGameSession(MichaelJacksonVSTheMoonwalkers game) throws IOException, SAXException, ParserConfigurationException {
         this.game = game;
-        mj = new MJ(50, 10, 5, MJ.getMJSprite(), game);
-        game.addGameObject(mj, 200, 200);
+        Sprite mjSprite = new Sprite(MJ.getMJSprite());
+        mj = new MJ(50, 10, 5, mjSprite, game);
+        game.addGameObject(mj, game.getScreenSize()[0] / 2, game.getScreenSize()[1] - mjSprite.getHeight() - 60);
     }
 
     private void startReadyUpTimer() {
