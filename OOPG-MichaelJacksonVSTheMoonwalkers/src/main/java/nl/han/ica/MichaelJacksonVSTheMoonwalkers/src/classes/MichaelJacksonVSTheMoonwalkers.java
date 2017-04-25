@@ -11,24 +11,28 @@ import nl.han.ica.waterworld.TextObject;
 import nl.han.ica.waterworld.tiles.BoardsTile;
 import processing.core.PApplet;
 
+import javax.swing.*;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+
 /**
  * Created by tiesbaltissen on 21-04-17.
  */
 public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
 
-    private int worldWidth;
-    private int worldHeight;
+    private final int worldWidth = 1000;
+    private final int worldHeight = 518;
 
     public static void main(String[] args) {
         PApplet.main(new String[]{"nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.MichaelJacksonVSTheMoonwalkers"});}
     @Override
     public void setupGame() {
+
+        loadCustomFont();
+
         try {
-            worldWidth=1000;
-            worldHeight=518;
-
-            createDashboard(worldWidth, 100);
-
+            showMainMenu();
 
             createViewWithoutViewport(worldWidth, worldHeight);
             GameSession.sharedInstance().setupGameSession(this);
@@ -38,10 +42,23 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
         }
     }
 
+    private void loadCustomFont() {
+        try {
+            GraphicsEnvironment ge =
+                    GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/fonts/ARCADECLASSIC.TTF")));
+        } catch (IOException |FontFormatException e) {
+            //Handle exception
+            System.out.println("Error loading custom font...");
+        }
+    }
+
     @Override
     public void update() {
 
     }
+
+
 
     public int[] getScreenSize() {
         return new int[]{ worldWidth, worldHeight };
@@ -56,9 +73,35 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
     }
 
     private void createDashboard(int dashboardWidth,int dashboardHeight) {
-        Dashboard dashboard = new Dashboard(0,0, dashboardWidth, dashboardHeight);
-        TextObject dashboardText=new TextObject("");
-        dashboard.addGameObject(dashboardText);
+//        Dashboard dashboard = new Dashboard(0,0, dashboardWidth, dashboardHeight);
+//        TextObject dashboardText=new TextObject("");
+//        dashboard.addGameObject(dashboardText);
+//        addDashboard(dashboard);
+    }
+
+    private void showMainMenu(){
+        Dashboard dashboard = new Dashboard(0,0, this.worldWidth, this.worldHeight);
+        TextObject mjText = new TextObject("Michael Jackson");
+        mjText.setCustomFont("ArcadeClassic");
+        mjText.setX((this.worldWidth/2) - 170);
+
+        TextObject vsText = new TextObject("VS");
+        vsText.setX((this.worldWidth/2));
+        vsText.setY(50);
+
+        TextObject theMW = new TextObject("the moonwalkers");
+        theMW.setX((this.worldWidth/2) - 170);
+        theMW.setY(100);
+
+        dashboard.addGameObject(mjText);
+        dashboard.addGameObject(vsText);
+        dashboard.addGameObject(theMW);
+
         addDashboard(dashboard);
+    }
+
+    public void placeButtons() {
+
+
     }
 }

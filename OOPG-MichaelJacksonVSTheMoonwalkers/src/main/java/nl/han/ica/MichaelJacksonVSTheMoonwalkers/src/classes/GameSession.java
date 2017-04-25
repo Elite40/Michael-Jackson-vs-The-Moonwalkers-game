@@ -52,9 +52,9 @@ public final class GameSession {
 
     public void setupGameSession(MichaelJacksonVSTheMoonwalkers game) throws IOException, SAXException, ParserConfigurationException {
         this.game = game;
-        Sprite mjSprite = new Sprite(MJ.getMJSprite());
-        mj = new MJ(50, 10, 5, mjSprite, game);
-        game.addGameObject(mj, game.getScreenSize()[0] / 2, game.getScreenSize()[1] - mjSprite.getHeight() - 60);
+        this.gameState = GameState.None;
+
+        this.alterGameState();
     }
 
     private void startReadyUpTimer() {
@@ -70,6 +70,7 @@ public final class GameSession {
     public void alterGameState() {
         switch (gameState) {
             case None:
+
                 break;
             case ReadyUp:
                 gameState = GameState.Playing;
@@ -97,5 +98,9 @@ public final class GameSession {
 
     public void startGame() throws ParserConfigurationException, SAXException, IOException {
         setupGameSession(game);
+
+        Sprite mjSprite = new Sprite(MJ.getMJSprite());
+        mj = new MJ(50, 10, 5, mjSprite, game);
+        game.addGameObject(mj, game.getScreenSize()[0] / 2, game.getScreenSize()[1] - mjSprite.getHeight() - 60);
     }
 }
