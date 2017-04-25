@@ -9,6 +9,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.waterworld.TextObject;
 import nl.han.ica.waterworld.tiles.BoardsTile;
+import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers.ButtonCreator;
 import processing.core.PApplet;
 
 import javax.swing.*;
@@ -23,6 +24,9 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
 
     private final int worldWidth = 1000;
     private final int worldHeight = 518;
+
+    private Dashboard dashboard;
+
 
     public static void main(String[] args) {
         PApplet.main(new String[]{"nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.MichaelJacksonVSTheMoonwalkers"});}
@@ -80,7 +84,7 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
     }
 
     private void showMainMenu(){
-        Dashboard dashboard = new Dashboard(0,0, this.worldWidth, this.worldHeight);
+        this.dashboard = new Dashboard(0,0, this.worldWidth, this.worldHeight);
         TextObject mjText = new TextObject("Michael Jackson");
         mjText.setCustomFont("ArcadeClassic");
         mjText.setX((this.worldWidth/2) - 170);
@@ -93,15 +97,25 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
         theMW.setX((this.worldWidth/2) - 170);
         theMW.setY(100);
 
-        dashboard.addGameObject(mjText);
-        dashboard.addGameObject(vsText);
-        dashboard.addGameObject(theMW);
+        this.dashboard.addGameObject(mjText);
+        this.dashboard.addGameObject(vsText);
+        this.dashboard.addGameObject(theMW);
 
         addDashboard(dashboard);
+
+        placeButtons();
     }
 
-    public void placeButtons() {
+    private void placeButtons() {
+        ButtonCreator playButton = new ButtonCreator("Play", (this.worldWidth/2)-50, 170);
+        playButton.setBackgroundColor(Color.pink);
+        playButton.setButtonTextColor(Color.white);
 
+        ButtonCreator highScoreButton = new ButtonCreator("Highscore", (this.worldWidth/2)-50, 250);
+        highScoreButton.setBackgroundColor(Color.pink);
+        highScoreButton.setButtonTextColor(Color.white);
 
+        this.dashboard.addGameObject(playButton);
+        this.dashboard.addGameObject(highScoreButton);
     }
 }
