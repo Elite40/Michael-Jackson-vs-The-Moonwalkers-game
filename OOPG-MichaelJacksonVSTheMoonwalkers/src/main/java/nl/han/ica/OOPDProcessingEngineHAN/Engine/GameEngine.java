@@ -510,6 +510,10 @@ public abstract class GameEngine extends PApplet {
         gameThread.pauseGame();
     }
 
+    public void sleepFor(int milli) {
+        gameThread.sleepFor(milli);
+    }
+
     /**
      * Resumes the Game.
      */

@@ -143,5 +143,13 @@ public class GameThread implements Runnable {
     public boolean getThreadState() {
         return isGamePaused;
     }
+
+    public void sleepFor(int milliSeconds) {
+        try{
+            this.thread.sleep(milliSeconds);
+        }catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
 

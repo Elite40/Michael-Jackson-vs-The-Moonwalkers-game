@@ -1,5 +1,6 @@
 package nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes;
 
+import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers.CountDownTimer;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy.Zombie;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.player.MJ;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
@@ -36,7 +37,8 @@ public final class GameSession {
 
 
     private int score;
-    private Timer readyUpTimer;
+    private Timer readyUpTimer = new Timer();
+    public String countDownText = "Test";
     private GameState gameState;
     private Difficulty difficulty;
     private MJ mj;
@@ -74,6 +76,7 @@ public final class GameSession {
                 break;
             case ReadyUp:
                 gameState = GameState.Playing;
+                startReadyUpTimer();
                 break;
             case Paused:
                 gameState = GameState.ReadyUp;
@@ -102,5 +105,9 @@ public final class GameSession {
         Sprite mjSprite = new Sprite(MJ.getMJSprite());
         mj = new MJ(50, 10, 5, mjSprite, game);
         game.addGameObject(mj, game.getScreenSize()[0] / 2, game.getScreenSize()[1] - mjSprite.getHeight() - 60);
+    }
+
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
     }
 }

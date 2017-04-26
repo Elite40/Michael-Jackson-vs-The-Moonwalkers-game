@@ -48,6 +48,11 @@ public class ButtonCreator extends GameObject {
      */
     private Color borderColor = Color.white;
 
+    /**
+     * Font size of the text inside the button
+     */
+    private int buttonFontSize;
+
     public ButtonCreator(String buttonText, int xPosition, int yPosition) {
         this.buttonText = buttonText;
         this.xPosition = xPosition;
@@ -55,6 +60,7 @@ public class ButtonCreator extends GameObject {
 
         this.buttonWidth = 150;
         this.buttonHeight = 50;
+        this.buttonFontSize = 40;
     }
 
     public ButtonCreator(String buttonText, int xPosition, int yPosition, int buttonWidth, int buttonHeight) {
@@ -77,7 +83,7 @@ public class ButtonCreator extends GameObject {
         g.rect(this.xPosition, this.yPosition, this.buttonWidth, this.buttonHeight);
 
         g.fill(this.buttonTextColor.getRGB());
-        g.textSize(30);
+        g.textSize(this.buttonFontSize);
 
         centerTextInsideButton(g);
     }
@@ -150,11 +156,7 @@ public class ButtonCreator extends GameObject {
         this.buttonTextColor = buttonTextColor;
     }
 
-    @Override
-    public void mouseClicked(int x, int y, int button) {
-
-        super.mouseClicked(x, y, button);
-
-        System.out.println(x);
+    public void setButtonFontSize(int buttonFontSize) {
+        this.buttonFontSize = buttonFontSize;
     }
 }

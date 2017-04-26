@@ -108,14 +108,68 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
 
     private void placeButtons() {
         ButtonCreator playButton = new ButtonCreator("Play", (this.worldWidth/2)-50, 170);
+        playButton.setButtonFontSize(25);
         playButton.setBackgroundColor(Color.pink);
         playButton.setButtonTextColor(Color.white);
 
         ButtonCreator highScoreButton = new ButtonCreator("Highscore", (this.worldWidth/2)-50, 250);
+        highScoreButton.setButtonFontSize(25);
         highScoreButton.setBackgroundColor(Color.pink);
         highScoreButton.setButtonTextColor(Color.white);
 
         this.dashboard.addGameObject(playButton);
         this.dashboard.addGameObject(highScoreButton);
+    }
+
+    @Override
+    public void mouseClicked() {
+        super.mouseClicked();
+
+        int yPositionOfPlayButton = 170;
+        int yPositionOfHigscoreButton = 250;
+        int xPositionOfButton = (this.worldWidth/2) - 50;
+        int buttonWidth = 150;
+        int buttonHeight = 50;
+
+        if (super.mouseX > xPositionOfButton && super.mouseX < xPositionOfButton + buttonWidth) {
+
+            if (super.mouseY > yPositionOfPlayButton && super.mouseY < yPositionOfPlayButton + buttonHeight) {
+                //Start the game
+                //1. Count down first
+                cleanView();
+
+//                GameSession.sharedInstance().setGameState(GameState.ReadyUp);
+//                GameSession.sharedInstance().alterGameState();
+
+
+
+            }else if (super.mouseY > yPositionOfHigscoreButton && super.mouseY < yPositionOfHigscoreButton + buttonHeight) {
+                System.out.println("Highscore button is clicked");
+            }
+
+        }
+    }
+
+    private void cleanView(){
+        this.dashboard.deleteAllDashboardObjects();
+        countDown();
+    }
+
+    private void countDown() {
+        TextObject countDownText = new TextObject("3");
+        countDownText.setX(this.worldWidth/2);
+        countDownText.setY(this.worldHeight/2);
+
+        this.dashboard.addGameObject(countDownText);
+
+
+        for (int i = 3; i >= 0; i--) {
+            countDownText.setText(String.valueOf(i));
+
+            super.sleepFor(1000);
+
+            System.out.println(i);
+        }
+
     }
 }
