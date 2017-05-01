@@ -18,11 +18,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MichaelJacksonVSTheMoonwalkers.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MichaelJacksonVSTheMoonwalkers.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/classes/MichaelJacksonVSTheMoonwalkers.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="196" column="0" lean-forward="true" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
+            <state relative-caret-position="518">
+              <caret line="209" column="49" lean-forward="false" selection-start-line="209" selection-start-column="49" selection-end-line="209" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#906#918#0" expanded="true" />
@@ -67,20 +67,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TextObject.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TextObject.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/waterworld/TextObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="49" column="40" lean-forward="false" selection-start-line="49" selection-start-column="40" selection-end-line="49" selection-end-column="40" />
+            <state relative-caret-position="289">
+              <caret line="41" column="35" lean-forward="true" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
               <folding>
                 <element signature="e#586#587#0" expanded="true" />
                 <element signature="e#616#617#0" expanded="true" />
                 <element signature="e#656#657#0" expanded="true" />
                 <element signature="e#686#687#0" expanded="true" />
-                <element signature="e#1116#1117#0" expanded="true" />
-                <element signature="e#1156#1157#0" expanded="true" />
-                <element signature="e#1384#1385#0" expanded="true" />
-                <element signature="e#1426#1427#0" expanded="true" />
+                <element signature="e#1121#1122#0" expanded="true" />
+                <element signature="e#1161#1162#0" expanded="true" />
+                <element signature="e#1389#1390#0" expanded="true" />
+                <element signature="e#1431#1432#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -89,8 +89,8 @@
       <file leaf-file-name="ButtonCreator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/ButtonCreator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-337">
-              <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="48" />
+            <state relative-caret-position="189">
+              <caret line="84" column="35" lean-forward="false" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -131,7 +131,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>component</find>
       <find>draw</find>
       <find>image</find>
       <find>colo</find>
@@ -161,6 +160,7 @@
       <find>countDown</find>
       <find>placeButton</find>
       <find>color</find>
+      <find>buttonTextColor</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\osmankaya\Documents\HAN\mj-project\OOPG-MichaelJacksonVSTheMoonwalkers\src\main\java\nl\han\ica\OOPDProcessingEngineHAN</dir>
@@ -184,8 +184,8 @@
         <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/OOPDProcessingEngineHAN/Engine/GameEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/CountDownTimer.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/classes/GameSession.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/waterworld/TextObject.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/classes/MichaelJacksonVSTheMoonwalkers.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/waterworld/TextObject.java" />
       </list>
     </option>
   </component>
@@ -1047,12 +1047,12 @@
       <updated>1493107432397</updated>
       <workItem from="1493109216347" duration="23353000" />
       <workItem from="1493634486479" duration="1958000" />
-      <workItem from="1493646812069" duration="5271000" />
+      <workItem from="1493646812069" duration="5591000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30582000" />
+    <option name="totallyTimeSpent" value="30902000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="0" width="1936" height="1052" extended-state="0" />
@@ -1163,10 +1163,10 @@
             <element signature="e#616#617#0" expanded="true" />
             <element signature="e#656#657#0" expanded="true" />
             <element signature="e#686#687#0" expanded="true" />
-            <element signature="e#1116#1117#0" expanded="true" />
-            <element signature="e#1156#1157#0" expanded="true" />
-            <element signature="e#1384#1385#0" expanded="true" />
-            <element signature="e#1426#1427#0" expanded="true" />
+            <element signature="e#1121#1122#0" expanded="true" />
+            <element signature="e#1161#1162#0" expanded="true" />
+            <element signature="e#1389#1390#0" expanded="true" />
+            <element signature="e#1431#1432#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1255,10 +1255,10 @@
             <element signature="e#616#617#0" expanded="true" />
             <element signature="e#656#657#0" expanded="true" />
             <element signature="e#686#687#0" expanded="true" />
-            <element signature="e#1116#1117#0" expanded="true" />
-            <element signature="e#1156#1157#0" expanded="true" />
-            <element signature="e#1384#1385#0" expanded="true" />
-            <element signature="e#1426#1427#0" expanded="true" />
+            <element signature="e#1121#1122#0" expanded="true" />
+            <element signature="e#1161#1162#0" expanded="true" />
+            <element signature="e#1389#1390#0" expanded="true" />
+            <element signature="e#1431#1432#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1348,13 +1348,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="307">
           <caret line="82" column="13" lean-forward="false" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/processing/core/2.2.1/core-2.2.1.jar!/processing/core/PGraphics.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="180" column="31" lean-forward="false" selection-start-line="180" selection-start-column="31" selection-end-line="180" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -1505,40 +1498,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/ButtonCreator.java">
+    <entry file="jar://$PROJECT_DIR$/lib/processing/core/2.2.1/core-2.2.1.jar!/processing/core/PGraphics.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-337">
-          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="258">
+          <caret line="3094" column="21" lean-forward="false" selection-start-line="3094" selection-start-column="21" selection-end-line="3094" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/waterworld/TextObject.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/ButtonCreator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="49" column="40" lean-forward="false" selection-start-line="49" selection-start-column="40" selection-end-line="49" selection-end-column="40" />
+        <state relative-caret-position="189">
+          <caret line="84" column="35" lean-forward="false" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="35" />
           <folding>
-            <element signature="e#586#587#0" expanded="true" />
-            <element signature="e#616#617#0" expanded="true" />
-            <element signature="e#656#657#0" expanded="true" />
-            <element signature="e#686#687#0" expanded="true" />
-            <element signature="e#1116#1117#0" expanded="true" />
-            <element signature="e#1156#1157#0" expanded="true" />
-            <element signature="e#1384#1385#0" expanded="true" />
-            <element signature="e#1426#1427#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/classes/MichaelJacksonVSTheMoonwalkers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="196" column="0" lean-forward="true" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
+        <state relative-caret-position="518">
+          <caret line="209" column="49" lean-forward="false" selection-start-line="209" selection-start-column="49" selection-end-line="209" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#906#918#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/waterworld/TextObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="41" column="35" lean-forward="true" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
+          <folding>
+            <element signature="e#586#587#0" expanded="true" />
+            <element signature="e#616#617#0" expanded="true" />
+            <element signature="e#656#657#0" expanded="true" />
+            <element signature="e#686#687#0" expanded="true" />
+            <element signature="e#1121#1122#0" expanded="true" />
+            <element signature="e#1161#1162#0" expanded="true" />
+            <element signature="e#1389#1390#0" expanded="true" />
+            <element signature="e#1431#1432#0" expanded="true" />
           </folding>
         </state>
       </provider>

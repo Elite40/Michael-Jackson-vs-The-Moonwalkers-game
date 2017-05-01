@@ -46,8 +46,9 @@ public class TextObject extends GameObject {
             g.textFont(this.tmpFont);
         }
         g.text(text,getX(),getY());
+
         if (this.textColor != null) {
-            g.color(textColor.getRGB());
+            g.fill(this.textColor.getRGB());
         }
     }
 
