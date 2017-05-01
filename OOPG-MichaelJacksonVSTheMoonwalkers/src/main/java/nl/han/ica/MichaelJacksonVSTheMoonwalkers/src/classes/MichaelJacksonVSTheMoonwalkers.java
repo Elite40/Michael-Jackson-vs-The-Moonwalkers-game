@@ -2,20 +2,16 @@ package nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
-import nl.han.ica.OOPDProcessingEngineHAN.Persistence.FilePersistence;
-import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileMap;
-import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.waterworld.TextObject;
-import nl.han.ica.waterworld.tiles.BoardsTile;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers.ButtonCreator;
 import processing.core.PApplet;
 
-import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by tiesbaltissen on 21-04-17.
@@ -138,10 +134,12 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
                 //1. Count down first
                 cleanView();
 
-//                GameSession.sharedInstance().setGameState(GameState.ReadyUp);
-//                GameSession.sharedInstance().alterGameState();
+                TextObject startingText = new TextObject("Starting in");
+                startingText.setX(this.worldWidth/2 - 110);
+                startingText.setY(this.worldHeight/3);
+                this.dashboard.addGameObject(startingText);
 
-
+                countDown();
 
             }else if (super.mouseY > yPositionOfHigscoreButton && super.mouseY < yPositionOfHigscoreButton + buttonHeight) {
                 System.out.println("Highscore button is clicked");
@@ -152,7 +150,6 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
 
     private void cleanView(){
         this.dashboard.deleteAllDashboardObjects();
-        countDown();
     }
 
     private void countDown() {
@@ -162,14 +159,28 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
 
         this.dashboard.addGameObject(countDownText);
 
+        countDown(3, countDownText);
 
-        for (int i = 3; i >= 0; i--) {
-            countDownText.setText(String.valueOf(i));
+    }
 
-            super.sleepFor(1000);
+    public void countDown(int seconds, TextObject countDownText){
+        Timer timer = new Timer();
 
-            System.out.println(i);
-        }
+        timer.scheduleAtFixedRate(new TimerTask() {
+            int i = seconds;
 
+            public void run() {
+                countDownText.setText(String.valueOf(i));
+                System.out.println(i--);
+
+                if (i < 0){
+                    timer.cancel();
+                    cleanView();
+                    GameSession.sharedInstance().setGameState(GameState.ReadyUp);
+                    GameSession.sharedInstance().alterGameState();
+                }
+            }
+
+        }, 0, 1000);
     }
 }

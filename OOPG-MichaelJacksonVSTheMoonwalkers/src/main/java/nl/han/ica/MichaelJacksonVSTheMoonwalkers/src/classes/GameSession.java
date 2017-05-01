@@ -1,6 +1,5 @@
 package nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes;
 
-import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers.CountDownTimer;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy.Zombie;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.player.MJ;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
@@ -72,11 +71,14 @@ public final class GameSession {
     public void alterGameState() {
         switch (gameState) {
             case None:
-
                 break;
             case ReadyUp:
                 gameState = GameState.Playing;
-                startReadyUpTimer();
+                try{
+                    startGame();
+                }catch(Exception e) {
+                    //Handle exception
+                }
                 break;
             case Paused:
                 gameState = GameState.ReadyUp;
