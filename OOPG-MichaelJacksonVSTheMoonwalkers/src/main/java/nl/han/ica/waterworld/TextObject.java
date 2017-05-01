@@ -20,6 +20,11 @@ public class TextObject extends GameObject {
 
     private PFont tmpFont;
 
+    /**
+     * By default the text color is white.
+     */
+    private Color textColor;
+
     public TextObject(String text) {
         this.text=text;
     }
@@ -41,6 +46,9 @@ public class TextObject extends GameObject {
             g.textFont(this.tmpFont);
         }
         g.text(text,getX(),getY());
+        if (this.textColor != null) {
+            g.color(textColor.getRGB());
+        }
     }
 
     public void setFontSize(int fontSize) {
@@ -51,5 +59,9 @@ public class TextObject extends GameObject {
         this.customFont = new Font(font, Font.PLAIN, this.fontSize);
 
         this.tmpFont = new PFont(this.customFont, true);
+    }
+
+    public void setTextColor(Color textColor) {
+        this.textColor = textColor;
     }
 }
