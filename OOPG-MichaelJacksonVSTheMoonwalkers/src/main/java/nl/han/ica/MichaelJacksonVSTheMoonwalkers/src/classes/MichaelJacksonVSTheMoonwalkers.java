@@ -30,7 +30,10 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
     private Sound backgroundMusic;
     private Boolean backButtonIsViewed = false;
 
-    private PImage speakersIcon;
+    private PImage musicPlayingIcon;
+    private PImage musicMutedIcon;
+
+    private Boolean muted = false;
 
     private List<TextObject> howToPlayTexts = new ArrayList<TextObject>();
     private List<TextObject> highScoreTexts = new ArrayList<TextObject>();
@@ -45,7 +48,8 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
         startGameMusic();
 
         //Loading the speaker image
-        speakersIcon = loadImage("src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/others/volume-on.png");
+        musicPlayingIcon = loadImage("src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/others/volume-on.png");
+        musicMutedIcon = loadImage("src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/others/mute.png");
 
         try {
             showMainMenu();
@@ -81,7 +85,11 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
     private void createViewWithoutViewport(int screenWidth, int screenHeight) {
         View view = new View(screenWidth,screenHeight);
         view.setBackground(loadImage("src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/Backgrounds/sprite-bg.png"));
-        view.setIcon(speakersIcon, 5, 5);
+        if (!muted) {
+            view.setIcon(musicPlayingIcon, 5, 5);
+        }else {
+            view.setIcon(musicMutedIcon, 5, 5);
+        }
         setView(view);
         size(screenWidth, screenHeight);
     }
@@ -106,8 +114,17 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
         this.backgroundMusic.play();
     }
 
-    private void muteGameMusic() {
-        this.backgroundMusic.pause();
+    private void toggleMusic() {
+        if (!muted) {
+            muted = true;
+            createViewWithoutViewport(worldWidth, worldHeight);
+            this.backgroundMusic.pause();
+            return;
+        }
+
+        muted = false;
+        createViewWithoutViewport(worldWidth, worldHeight);
+        this.backgroundMusic.play();
     }
 
     private void showGameTitle(){
@@ -207,8 +224,8 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
         }
 
 
-        if ( (super.mouseX > 4 && super.mouseX < 4 + speakersIcon.width) && super.mouseY > 4 && super.mouseY < 4 + speakersIcon.height) {
-            muteGameMusic();
+        if ( (super.mouseX > 4 && super.mouseX < 4 + musicPlayingIcon.width) && super.mouseY > 4 && super.mouseY < 4 + musicPlayingIcon.height) {
+            toggleMusic();
         }
     }
 

@@ -33,13 +33,12 @@
       <file leaf-file-name="MichaelJacksonVSTheMoonwalkers.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/classes/MichaelJacksonVSTheMoonwalkers.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="34" column="63" lean-forward="true" selection-start-line="34" selection-start-column="63" selection-end-line="34" selection-end-column="63" />
+            <state relative-caret-position="149">
+              <caret line="226" column="74" lean-forward="false" selection-start-line="226" selection-start-column="53" selection-end-line="226" selection-end-column="74" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1182#1194#0" expanded="true" />
-                <element signature="e#3721#3722#0" expanded="true" />
-                <element signature="e#3765#3766#0" expanded="true" />
+                <element signature="e#1257#1269#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -123,8 +122,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>exte</find>
-      <find>exten</find>
       <find>extend</find>
       <find>extends PIma</find>
       <find>extends PIm</find>
@@ -153,6 +150,8 @@
       <find>view.icon</find>
       <find>click</find>
       <find>resetVa</find>
+      <find>mute</find>
+      <find>createViewWithoutViewport</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\osmankaya\Documents\HAN\mj-project\OOPG-MichaelJacksonVSTheMoonwalkers\src\main\java\nl\han\ica\waterworld</dir>
@@ -1112,12 +1111,12 @@
       <workItem from="1493634486479" duration="1958000" />
       <workItem from="1493646812069" duration="5591000" />
       <workItem from="1493670671092" duration="2322000" />
-      <workItem from="1493717128058" duration="16469000" />
+      <workItem from="1493717128058" duration="17345000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49693000" />
+    <option name="totallyTimeSpent" value="50569000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1617,13 +1616,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/classes/MichaelJacksonVSTheMoonwalkers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="34" column="63" lean-forward="true" selection-start-line="34" selection-start-column="63" selection-end-line="34" selection-end-column="63" />
+        <state relative-caret-position="149">
+          <caret line="226" column="74" lean-forward="false" selection-start-line="226" selection-start-column="53" selection-end-line="226" selection-end-column="74" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1182#1194#0" expanded="true" />
-            <element signature="e#3721#3722#0" expanded="true" />
-            <element signature="e#3765#3766#0" expanded="true" />
+            <element signature="e#1257#1269#0" expanded="true" />
           </folding>
         </state>
       </provider>
