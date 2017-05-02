@@ -3,10 +3,13 @@ package nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy.Zombie;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.player.MJ;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
+import nl.han.ica.OOPDProcessingEngineHAN.Persistence.FilePersistence;
+import nl.han.ica.OOPDProcessingEngineHAN.Persistence.IPersistence;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -43,6 +46,7 @@ public final class GameSession {
     private MJ mj;
     private List<Zombie> zombies;
     private MichaelJacksonVSTheMoonwalkers game;
+    private File highscoreFile;
 
     public static GameSession sharedInstance() {
         if (instance == null) {
@@ -54,6 +58,12 @@ public final class GameSession {
     public void setupGameSession(MichaelJacksonVSTheMoonwalkers game) throws IOException, SAXException, ParserConfigurationException {
         this.game = game;
         this.gameState = GameState.None;
+
+        try {
+            highscoreFile = new File("src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/mj_score.txt");
+        }catch (NullPointerException e) {
+            System.out.println(e.getMessage());
+        }
 
         this.alterGameState();
     }
@@ -112,4 +122,25 @@ public final class GameSession {
     public void setGameState(GameState gameState) {
         this.gameState = gameState;
     }
+
+    public List getPlayerHighscore() {
+        List<Integer> playerScores = new ArrayList<Integer>();
+        //Read score
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(highscoreFile));
+            String line;
+
+            while( (line = reader.readLine() ) != null) {
+                playerScores.add(Integer.parseInt(line.trim()));
+            }
+
+        }catch(FileNotFoundException e) {
+            System.out.println("File not found!" + e.getMessage());
+        }catch(IOException e ) {
+            System.out.println("Failed to read the file" + e.getMessage());
+        }
+
+        return playerScores;
+    }
+
 }

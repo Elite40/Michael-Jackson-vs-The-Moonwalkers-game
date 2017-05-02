@@ -147,4 +147,8 @@ public class FilePersistence implements IPersistence {
     public boolean fileExists(){
         return new File("src/", filename).exists();
     }
+
+    public String getFilename() {
+        return filename;
+    }
 }
