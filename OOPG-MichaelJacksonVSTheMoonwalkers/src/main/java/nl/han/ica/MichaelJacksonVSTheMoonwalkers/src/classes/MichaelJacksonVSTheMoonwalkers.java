@@ -1,22 +1,20 @@
 package nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes;
 
+import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers.*;
 import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
-import nl.han.ica.OOPDProcessingEngineHAN.Persistence.FilePersistence;
-import nl.han.ica.OOPDProcessingEngineHAN.Persistence.IPersistence;
 import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.waterworld.TextObject;
-import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers.ButtonCreator;
 import processing.core.PApplet;
+import processing.core.PImage;
 
-import javax.xml.soap.Text;
 import java.awt.*;
 import java.util.List;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
+import java.util.Timer;
 
 /**
  * Created by tiesbaltissen on 21-04-17.
@@ -32,6 +30,8 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
     private Sound backgroundMusic;
     private Boolean backButtonIsViewed = false;
 
+    PImage speakersIcon;
+
     List<TextObject> howToPlayTexts = new ArrayList<TextObject>();
     List<TextObject> highScoreTexts = new ArrayList<TextObject>();
 
@@ -43,6 +43,9 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
 
         loadCustomFont();
         startGameMusic();
+
+        //Loading the speaker image
+        speakersIcon = loadImage("src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/others/volume-on.png");
 
         try {
             showMainMenu();
@@ -78,7 +81,7 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
     private void createViewWithoutViewport(int screenWidth, int screenHeight) {
         View view = new View(screenWidth,screenHeight);
         view.setBackground(loadImage("src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/Backgrounds/sprite-bg.png"));
-
+        view.setIcon(speakersIcon, 5, 5);
         setView(view);
         size(screenWidth, screenHeight);
     }
@@ -98,9 +101,13 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
     }
 
     private void startGameMusic(){
-        backgroundMusic = new Sound(this, "src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/music/game.mp3");
-        backgroundMusic.loop(-1);
-        backgroundMusic.play();
+        this.backgroundMusic = new Sound(this, "src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/music/game.mp3");
+        this.backgroundMusic.loop(-1);
+        this.backgroundMusic.play();
+    }
+
+    private void muteGameMusic() {
+        this.backgroundMusic.pause();
     }
 
     private void showGameTitle(){
@@ -198,6 +205,11 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
                 }
             }
         }
+
+
+        if ( (super.mouseX > 4 && super.mouseX < 4 + speakersIcon.width) && super.mouseY > 4 && super.mouseY < 4 + speakersIcon.height) {
+            muteGameMusic();
+        }
     }
 
     public void showHighscoreView() {
@@ -205,7 +217,7 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
         showGameTitle();
 
         List<Integer> playerScores = GameSession.sharedInstance().getPlayerHighscore();
-        int xPositionOfHeadingText = 330;
+        int xPositionText = 350;
 
         highScoreTexts.add(new TextObject("Rank"));
         highScoreTexts.add(new TextObject("Score"));
@@ -213,11 +225,11 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
         for (int x = 0; x < highScoreTexts.size(); x++) {
             int yPositionOfText = 100 + this.spaceBetweenTexts;
 
-            highScoreTexts.get(x).setX(xPositionOfHeadingText);
+            highScoreTexts.get(x).setX(xPositionText);
             highScoreTexts.get(x).setY(yPositionOfText);
             highScoreTexts.get(x).setFontSize(23);
 
-            xPositionOfHeadingText += 250;
+            xPositionText += 250;
             this.dashboard.addGameObject(highScoreTexts.get(x));
         }
 
@@ -234,12 +246,12 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
             for (int y = 0; y < playerScores.size(); y++) {
 
                 TextObject rankText = new TextObject(String.valueOf(y+1));
-                rankText.setX(330);
+                rankText.setX(360);
                 rankText.setY(yPositionOfText);
                 rankText.setFontSize(30);
 
                 TextObject playerScore = new TextObject(String.valueOf(playerScores.get(y)));
-                playerScore.setX(590);
+                playerScore.setX(610);
                 playerScore.setY(yPositionOfText);
                 playerScore.setFontSize(30);
 
@@ -254,6 +266,8 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
 
     private void resetVariables() {
         this.spaceBetweenTexts = 80;
+        this.highScoreTexts.clear();
+        this.howToPlayTexts.clear();
     }
 
     private void showHowToPlayView() {

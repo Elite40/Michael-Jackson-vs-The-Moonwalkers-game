@@ -23,6 +23,19 @@ public class View {
 
     protected PGraphicsCreator pGraphicsCreator = new PGraphicsCreator();
 
+    private PImage icon;
+    private int xPositionIcon = 0;
+    private int yPositionIcon = 0;
+
+    public void setIcon(PImage icon) {
+        this.icon = icon;
+    }
+
+    public void setIcon(PImage icon, int x, int y) {
+        this.icon = icon;
+        this.xPositionIcon = x;
+        this.yPositionIcon = y;
+    }
 
     /**
      * Basic constructor of the View which creates its own viewPort which shows the entire world.
@@ -80,6 +93,10 @@ public class View {
         viewGraphics.beginDraw();
         if (backgroundImage != null) {
             viewGraphics.background(backgroundImage);
+        }
+
+        if (this.icon != null) {
+            viewGraphics.image(this.icon, xPositionIcon, yPositionIcon);
         }
 
         if (tileMap != null) {
