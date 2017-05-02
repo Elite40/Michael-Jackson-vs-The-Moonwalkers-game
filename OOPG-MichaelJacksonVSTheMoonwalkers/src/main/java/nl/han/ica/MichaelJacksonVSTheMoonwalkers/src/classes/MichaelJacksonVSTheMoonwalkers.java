@@ -3,6 +3,7 @@ package nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes;
 import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
+import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.waterworld.TextObject;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers.ButtonCreator;
@@ -24,6 +25,7 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
     private int xPositionOfButton = this.worldWidth/2-50;
 
     private Dashboard dashboard;
+    private Sound backgroundMusic;
 
     List<TextObject> howToPlayTexts = new ArrayList<TextObject>();
 
@@ -34,6 +36,7 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
         this.dashboard = new Dashboard(0,0, this.worldWidth, this.worldHeight);
 
         loadCustomFont();
+        startGameMusic();
 
         try {
             showMainMenu();
@@ -62,8 +65,6 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
 
     }
 
-
-
     public int[] getScreenSize() {
         return new int[]{ worldWidth, worldHeight };
     }
@@ -87,6 +88,12 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
         showGameTitle();
         addDashboard(dashboard);
         placeMenuButtons();
+    }
+
+    private void startGameMusic(){
+        backgroundMusic = new Sound(this, "src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/music/game.mp3");
+        backgroundMusic.loop(-1);
+        backgroundMusic.play();
     }
 
     private void showGameTitle(){
@@ -185,11 +192,11 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
         howToPlayTexts.add(new TextObject("Hit enemy"));
         howToPlayTexts.add(new TextObject("Pause"));
 
-        howToPlayTexts.add(new TextObject("Key \"Left\" "));
-        howToPlayTexts.add(new TextObject("Key 'Right'"));
-        howToPlayTexts.add(new TextObject("Key 'Up' "));
-        howToPlayTexts.add(new TextObject("Key ....."));
-        howToPlayTexts.add(new TextObject("Key 'P' "));
+        howToPlayTexts.add(new TextObject("Key   Left "));
+        howToPlayTexts.add(new TextObject("Key   Right"));
+        howToPlayTexts.add(new TextObject("Key   Up "));
+        howToPlayTexts.add(new TextObject("Key   Space"));
+        howToPlayTexts.add(new TextObject("Key   P "));
 
         for (int i = 0; i < howToPlayTexts.size(); i ++) {
 
@@ -213,6 +220,12 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
 
             spaceBetweenTexts += 30;
         }
+
+        ButtonCreator backButton = new ButtonCreator("Go Back", this.worldWidth/2-50, this.worldHeight-100);
+        backButton.setBackgroundColor(Color.PINK);
+        backButton.setButtonFontSize(24);
+
+        this.dashboard.addGameObject(backButton);
 
     }
 
