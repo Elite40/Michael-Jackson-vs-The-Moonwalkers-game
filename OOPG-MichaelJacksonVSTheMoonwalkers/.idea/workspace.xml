@@ -33,14 +33,13 @@
       <file leaf-file-name="MichaelJacksonVSTheMoonwalkers.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/classes/MichaelJacksonVSTheMoonwalkers.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="247" column="59" lean-forward="false" selection-start-line="247" selection-start-column="58" selection-end-line="247" selection-end-column="59" />
+            <state relative-caret-position="392">
+              <caret line="34" column="63" lean-forward="true" selection-start-line="34" selection-start-column="63" selection-end-line="34" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1091#1103#0" expanded="true" />
-                <element signature="e#1158#1170#0" expanded="true" />
-                <element signature="e#3697#3698#0" expanded="true" />
-                <element signature="e#3741#3742#0" expanded="true" />
+                <element signature="e#1182#1194#0" expanded="true" />
+                <element signature="e#3721#3722#0" expanded="true" />
+                <element signature="e#3765#3766#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1113,12 +1112,12 @@
       <workItem from="1493634486479" duration="1958000" />
       <workItem from="1493646812069" duration="5591000" />
       <workItem from="1493670671092" duration="2322000" />
-      <workItem from="1493717128058" duration="15644000" />
+      <workItem from="1493717128058" duration="16469000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48868000" />
+    <option name="totallyTimeSpent" value="49693000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1618,14 +1617,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/classes/MichaelJacksonVSTheMoonwalkers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="247" column="59" lean-forward="false" selection-start-line="247" selection-start-column="58" selection-end-line="247" selection-end-column="59" />
+        <state relative-caret-position="392">
+          <caret line="34" column="63" lean-forward="true" selection-start-line="34" selection-start-column="63" selection-end-line="34" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1091#1103#0" expanded="true" />
-            <element signature="e#1158#1170#0" expanded="true" />
-            <element signature="e#3697#3698#0" expanded="true" />
-            <element signature="e#3741#3742#0" expanded="true" />
+            <element signature="e#1182#1194#0" expanded="true" />
+            <element signature="e#3721#3722#0" expanded="true" />
+            <element signature="e#3765#3766#0" expanded="true" />
           </folding>
         </state>
       </provider>

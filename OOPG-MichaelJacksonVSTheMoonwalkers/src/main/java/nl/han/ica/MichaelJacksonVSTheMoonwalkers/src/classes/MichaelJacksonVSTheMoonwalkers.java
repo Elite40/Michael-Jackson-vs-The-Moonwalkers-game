@@ -30,10 +30,10 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
     private Sound backgroundMusic;
     private Boolean backButtonIsViewed = false;
 
-    PImage speakersIcon;
+    private PImage speakersIcon;
 
-    List<TextObject> howToPlayTexts = new ArrayList<TextObject>();
-    List<TextObject> highScoreTexts = new ArrayList<TextObject>();
+    private List<TextObject> howToPlayTexts = new ArrayList<TextObject>();
+    private List<TextObject> highScoreTexts = new ArrayList<TextObject>();
 
     public static void main(String[] args) {
         PApplet.main(new String[]{"nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.MichaelJacksonVSTheMoonwalkers"});}
