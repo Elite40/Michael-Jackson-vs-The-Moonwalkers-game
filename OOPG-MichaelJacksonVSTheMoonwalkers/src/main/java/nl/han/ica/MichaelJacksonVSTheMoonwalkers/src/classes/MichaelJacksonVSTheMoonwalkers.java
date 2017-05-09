@@ -110,7 +110,7 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
 
     private void startGameMusic(){
         this.backgroundMusic = new Sound(this, "src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/music/game.mp3");
-        this.backgroundMusic.loop(-1);
+        this.backgroundMusic.loop(100);
         this.backgroundMusic.play();
     }
 

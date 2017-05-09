@@ -1,5 +1,6 @@
 package nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.player;
 
+import com.sun.istack.internal.Nullable;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.GameSession;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.MichaelJacksonVSTheMoonwalkers;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy.Zombie;
@@ -56,6 +57,9 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
     private Sprite sprite;
     private boolean inTheAir;
     private final MichaelJacksonVSTheMoonwalkers game;
+    private Timer animationTimer;
+    private boolean isJumping = false;
+    private boolean isAttacking = false;
 
     private GameSession session = GameSession.sharedInstance();
 
@@ -109,45 +113,17 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
     }
 
     public void jump(Direction direction) {
-        setSprite(getMJJumpSprite(), 6);
-        if (direction == Direction.Left) {
-            setCurrentFrameIndex(SpriteFrameIndex.JumpLeft.getValue());
-        } else if (direction == Direction.Right) {
-            setCurrentFrameIndex(SpriteFrameIndex.JumpRight.getValue());
-        }
-        setDirection(direction.getValue());
-    }
-
-
-    private void startAnimationTimer(int repeats) {
-        Timer timer = new Timer();
-        final int[] timesRepeated = {0};
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                timesRepeated[0]++;
-                if (direction == Direction.Left) {
-                    if (getCurrentFrameIndex() < 5) {
-                        setCurrentFrameIndex(getCurrentFrameIndex() + 1);
-                        setX(getX() + 5);
-                    } else {
-                        setCurrentFrameIndex(0);
-                    }
-                } else {
-                    if (getCurrentFrameIndex() < 11 && getCurrentFrameIndex() > 6) {
-
-                        setCurrentFrameIndex(getCurrentFrameIndex() + 1);
-                        setX(getX()-5);
-                    } else {
-                        setCurrentFrameIndex(6);
-                    }
-                }
-                setCurrentFrameIndex(getCurrentFrameIndex() + 1);
-                if (repeats == timesRepeated[0]) {
-                    timer.cancel();
-                }
+        if (!isJumping) {
+            this.direction = direction;
+            setSprite(getMJJumpSprite(), 8);
+            if (animationTimer != null) {
+                animationTimer.cancel();
+                animationTimer = null;
             }
-        }, 0, 100);
+            isJumping = true;
+            startAnimationTimer(4, 8, 30);
+            setDirection(direction.getValue());
+        }
     }
 
 
@@ -157,16 +133,52 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
      */
 
     public void move(Direction direction) {
-        this.direction = direction;
-        setSprite(getMJSprite(), 12);
-        startAnimationTimer(6);
-        /*if (direction == Direction.Left) {
-            startAnimationTimer(6);
-            setCurrentFrameIndex(SpriteFrameIndex.MovementLeft.getValue());
-        } else if (direction == Direction.Right) {
-            setCurrentFrameIndex(SpriteFrameIndex.MovementRight.getValue());
-        }*/
-        setDirection(direction.getValue());
+        if (!isJumping) {
+            this.direction = direction;
+            setSprite(getMJSprite(), 12);
+            if (animationTimer != null) {
+                animationTimer.cancel();
+                animationTimer = null;
+            }
+            startAnimationTimer(6, 12, 10);
+            setDirection(direction.getValue());
+        }
+    }
+
+
+    private void startAnimationTimer(int repeats, int totalFrames, @Nullable int distanceTravelled) {
+        animationTimer = new Timer();
+        int[] timesRepeated = {0};
+        animationTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                timesRepeated[0]++;
+                if (direction == Direction.Right) {
+                    if (getCurrentFrameIndex() > (totalFrames / 2) - 1 && getCurrentFrameIndex() < totalFrames - 1) {
+                        setCurrentFrameIndex(getCurrentFrameIndex() + 1);
+                        if (getX() < game.getScreenSize()[0] - 40) {
+                            setX(getX() + distanceTravelled);
+                        }
+                    } else {
+                        setCurrentFrameIndex(totalFrames / 2);
+                    }
+                } else {
+                    if (getCurrentFrameIndex() < (totalFrames / 2) - 1) {
+
+                        setCurrentFrameIndex(getCurrentFrameIndex() + 1);
+                        if (getX() > 0) {
+                            setX(getX() - distanceTravelled);
+                        }
+                    } else {
+                        setCurrentFrameIndex(0);
+                    }
+                }
+                if (repeats <= timesRepeated[0]) {
+                    animationTimer.cancel();
+                    isJumping = false;
+                }
+            }
+        }, 0, 100);
     }
 
     private void setSprite(String sprite, int frames) {

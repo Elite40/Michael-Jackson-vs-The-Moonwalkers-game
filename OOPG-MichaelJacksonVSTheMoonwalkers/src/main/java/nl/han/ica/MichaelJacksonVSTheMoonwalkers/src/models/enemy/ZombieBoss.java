@@ -12,8 +12,8 @@ public class ZombieBoss extends Zombie {
 
     private int health;
 
-    public ZombieBoss(ScalingSize size, int xPosition, float velocity, int damage, @Nullable List<Sprite> spriteList, int health) {
-        super(size, xPosition, velocity, damage, spriteList);
+    public ZombieBoss(ScalingSize size, int xPosition, float velocity, int damage, Sprite sprite, int health) {
+        super(size, xPosition, velocity, damage, sprite);
         this.health = health;
     }
 }

@@ -5,7 +5,6 @@ package nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy;
  */
 public enum ZombieType {
     ZombieLanky,
-    ZombieSuperior,
     ZombieBird,
     ZombieBoss
 }

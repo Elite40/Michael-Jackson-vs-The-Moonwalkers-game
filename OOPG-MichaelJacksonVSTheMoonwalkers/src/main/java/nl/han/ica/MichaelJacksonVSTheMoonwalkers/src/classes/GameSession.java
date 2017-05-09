@@ -46,6 +46,7 @@ public final class GameSession {
     private MJ mj;
     private List<Zombie> zombies;
     private MichaelJacksonVSTheMoonwalkers game;
+    private EnemyFactory enemyFactory;
     private File highscoreFile;
 
     public static GameSession sharedInstance() {
@@ -117,6 +118,9 @@ public final class GameSession {
         Sprite mjSprite = new Sprite(MJ.getMJSprite());
         mj = new MJ(50, 10, 5, mjSprite, game);
         game.addGameObject(mj, game.getScreenSize()[0] / 2, game.getScreenSize()[1] - mjSprite.getHeight() - 60);
+        Zombie z = enemyFactory.spawnZombie();
+        game.addGameObject(z, 50, 50);
+
     }
 
     public void setGameState(GameState gameState) {

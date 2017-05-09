@@ -13,8 +13,8 @@ public class ZombieBird extends Zombie {
 
     private float altitude;
 
-    public ZombieBird(ScalingSize size, int xPosition, float velocity, int damage, @Nullable List<Sprite> spriteList, float altitude) {
-        super(size, xPosition, velocity, damage, spriteList);
+    public ZombieBird(ScalingSize size, int xPosition, float velocity, int damage, Sprite sprite, float altitude) {
+        super(size, xPosition, velocity, damage, sprite);
         this.altitude = altitude;
     }
 }
