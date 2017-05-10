@@ -2,6 +2,7 @@ package nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy;
 
 import com.sun.istack.internal.Nullable;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.MichaelJacksonVSTheMoonwalkers;
+import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
@@ -15,34 +16,32 @@ import java.util.List;
 
 
 
-public class Zombie extends AnimatedSpriteObject {
+public class Zombie extends AnimatedSpriteObject  implements ICollidableWithGameObjects {
 
     private ScalingSize size;
     private int xPosition;
     private float velocity;
     private int damage;
-    private Sprite sprite;
 
     public Zombie(ScalingSize size, int xPosition, float velocity, int damage, Sprite sprite) {
-        super(sprite, 12);
+        super(sprite, 8);
         this.size = size;
         this.xPosition = xPosition;
         this.velocity = velocity;
         this.damage = damage;
-        this.sprite = sprite;
         setCurrentFrameIndex(0);
     }
 
-    public static Sprite zombieSprites(ZombieType type) {
+    public static String zombieSprites(ZombieType type) {
         switch(type) {
             case ZombieLanky:
-                return new Sprite(getLankySprite());
+                return getLankySprite();
             case ZombieBird:
-                return new Sprite(getBirdSprite());
+                return getBirdSprite();
             case ZombieBoss:
-                return new Sprite(getBossSprite());
+                return getBossSprite();
         }
-        return new Sprite(getLankySprite());
+        return getLankySprite();
     }
 
     private static String getLankySprite() {
@@ -72,6 +71,11 @@ public class Zombie extends AnimatedSpriteObject {
 
     @Override
     public void draw(PGraphics g) {
+
+    }
+
+    @Override
+    public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 
     }
 }

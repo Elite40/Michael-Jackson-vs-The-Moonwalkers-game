@@ -13,16 +13,16 @@ import java.util.Random;
 
 public class EnemyFactory {
 
-    public List<Zombie> zombies;
-
     private final int BossLower = 0;
     private final int BossUpper = 10;
     private final int LankyLower = 11;
     private final int LankyUpper = 40;
     private final int BirdLower = 41;
     private final int BirdUpper = 70;
+    private MichaelJacksonVSTheMoonwalkers game;
 
-    public EnemyFactory(@Nullable List<Zombie> zombies) {
+    public EnemyFactory(MichaelJacksonVSTheMoonwalkers game) {
+        this.game = game;
     }
 
     private ZombieType randomZombieType() {
@@ -57,14 +57,17 @@ public class EnemyFactory {
     }
 
     private Zombie spawnLankyZombie() {
-        return new Zombie(ScalingSize.Small, 0, 0.2f, 5, Zombie.zombieSprites(ZombieType.ZombieLanky));
+        Sprite zombieSprite = new Sprite(Zombie.zombieSprites(ZombieType.ZombieLanky));
+        return new Zombie(ScalingSize.Small, 0, 0.2f, 5, zombieSprite);
     }
 
     private Zombie spawnBirdZombie() {
-        return new ZombieBird(ScalingSize.Small, 20, 0.5f, 5, Zombie.zombieSprites(ZombieType.ZombieBird), 0.7f);
+        Sprite zombieSprite = new Sprite(Zombie.zombieSprites(ZombieType.ZombieBird));
+        return new ZombieBird(ScalingSize.Small, 20, 0.5f, 5, zombieSprite, 0.7f);
     }
 
     private Zombie spawnBossZombie() {
-        return new ZombieBoss(ScalingSize.Large, 40, 0.4f, 10, Zombie.zombieSprites(ZombieType.ZombieBoss), 200);
+        Sprite zombieSprite = new Sprite(Zombie.zombieSprites(ZombieType.ZombieBoss));
+        return new ZombieBoss(ScalingSize.Large, 40, 0.4f, 10, zombieSprite, 200);
     }
 }

@@ -2,6 +2,7 @@ package nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes;
 
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy.Zombie;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.player.MJ;
+import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Persistence.FilePersistence;
 import nl.han.ica.OOPDProcessingEngineHAN.Persistence.IPersistence;
@@ -114,12 +115,27 @@ public final class GameSession {
 
     public void startGame() throws ParserConfigurationException, SAXException, IOException {
         setupGameSession(game);
-
+        enemyFactory = new EnemyFactory(game);
         Sprite mjSprite = new Sprite(MJ.getMJSprite());
         mj = new MJ(10, 5, mjSprite, game);
         game.addGameObject(mj, game.getScreenSize()[0] / 2, game.getScreenSize()[1] - mjSprite.getHeight() - 60);
-        Zombie z = enemyFactory.spawnZombie();
-        game.addGameObject(z, 50, 50);
+        game.addGameObject(enemyFactory.spawnZombie(), 50, game.getScreenSize()[1] / 2);
+        game.addGameObject(enemyFactory.spawnZombie(), 10, game.getScreenSize()[1] / 2);
+        game.addGameObject(enemyFactory.spawnZombie(), 20, game.getScreenSize()[1] / 2);
+        game.addGameObject(enemyFactory.spawnZombie(), 30, game.getScreenSize()[1] / 2);
+        game.addGameObject(enemyFactory.spawnZombie(), 80, game.getScreenSize()[1] / 2);
+        game.addGameObject(enemyFactory.spawnZombie(), 60, game.getScreenSize()[1] / 2);
+        for (GameObject g : game.getGameObjectItems()) {
+            System.out.println("====================");
+            System.out.println("HEIGHT: " + g.getHeight());
+            System.out.println("WIDTH: " + g.getWidth());
+            System.out.println("X: " + g.getX());
+            System.out.println("Y: " + g.getY());
+            if (g instanceof Zombie) {
+                System.out.println("CURRENT FRAME INDEX: " + ((Zombie) g).getCurrentFrameIndex());
+            }
+            System.out.println("====================");
+        }
 
     }
 

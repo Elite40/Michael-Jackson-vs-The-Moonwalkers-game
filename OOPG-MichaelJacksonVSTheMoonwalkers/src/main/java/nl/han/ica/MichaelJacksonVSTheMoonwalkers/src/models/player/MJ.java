@@ -56,7 +56,6 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
     private int velocity;
     private float health;
     private int damage;
-    private Sprite sprite;
     private boolean inTheAir;
     private final MichaelJacksonVSTheMoonwalkers game;
     private Timer animationTimer;
@@ -76,7 +75,6 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
         this.health = 100;
         this.damage = damage;
         this.velocity = velocity;
-        this.sprite = sprite;
         this.game = game;
         this.inTheAir = false;
         this.direction = Direction.Left;
@@ -162,7 +160,7 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
     public void jump(Direction direction) {
         if (!isJumping) {
             this.direction = direction;
-            setSprite(getMJJumpSprite(), 8);
+            this.setSprite(getMJJumpSprite(), 8);
             if (animationTimer != null) {
                 animationTimer.cancel();
                 animationTimer = null;
@@ -228,8 +226,8 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
         }, 0, 100);
     }
 
-    private void setSprite(String sprite, int frames) {
-        this.sprite.setSprite(sprite);
+    private void setSprite(String newSprite, int frames) {
+        sprite.setSprite(newSprite);
         setTotalFrames(frames);
     }
 

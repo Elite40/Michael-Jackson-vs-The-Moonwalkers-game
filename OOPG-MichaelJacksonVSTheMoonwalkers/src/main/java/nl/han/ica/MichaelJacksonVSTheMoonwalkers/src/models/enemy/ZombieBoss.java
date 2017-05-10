@@ -1,6 +1,7 @@
 package nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy;
 
 import com.sun.istack.internal.Nullable;
+import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.MichaelJacksonVSTheMoonwalkers;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 import java.util.List;
