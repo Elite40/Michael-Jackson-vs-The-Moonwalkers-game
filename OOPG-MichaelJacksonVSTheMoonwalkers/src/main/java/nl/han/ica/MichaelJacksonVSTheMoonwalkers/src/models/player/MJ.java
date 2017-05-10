@@ -5,9 +5,11 @@ import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.GameSession;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.MichaelJacksonVSTheMoonwalkers;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy.Zombie;
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects;
+import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
+import nl.han.ica.waterworld.TextObject;
 import sun.rmi.runtime.Log;
 
 import java.util.List;
@@ -52,7 +54,7 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
 
     private Direction direction;
     private int velocity;
-    private int health;
+    private float health;
     private int damage;
     private Sprite sprite;
     private boolean inTheAir;
@@ -61,11 +63,17 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
     private boolean isJumping = false;
     private boolean isAttacking = false;
 
+    private Dashboard greenHealthBar;
+    private Dashboard healthBarContainer;
+    private final int healthBarWidth = 200;
+    private float yPositionHealthBar = 5;
+    private float xPositionHealthBar;
+
     private GameSession session = GameSession.sharedInstance();
 
-    public MJ(int health, int damage, int velocity, Sprite sprite, MichaelJacksonVSTheMoonwalkers game) {
+    public MJ(int damage, int velocity, Sprite sprite, MichaelJacksonVSTheMoonwalkers game) {
         super(sprite, 12);
-        this.health = health;
+        this.health = 100;
         this.damage = damage;
         this.velocity = velocity;
         this.sprite = sprite;
@@ -73,6 +81,45 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
         this.inTheAir = false;
         this.direction = Direction.Left;
         setCurrentFrameIndex(0);
+        this.drawHealthBar();
+    }
+
+    /**
+     * Draws the health bar objects. One is the real health bar. The other one
+     * is the container, which has a red background color.
+     * And the health text.
+     */
+    private void drawHealthBar() {
+        xPositionHealthBar = (this.game.getWorldWidth()/2) - this.healthBarWidth/2;
+
+        this.healthBarContainer = new Dashboard(xPositionHealthBar, yPositionHealthBar, 200, 20);
+        this.healthBarContainer.setBackground(	231, 76, 60);
+
+        this.greenHealthBar = new Dashboard(xPositionHealthBar, 5, 180, 20);
+        this.greenHealthBar.setBackground(42, 189, 104);
+
+        TextObject healthText = new TextObject("Health:");
+        healthText.setFontSize(14);
+        healthText.setX(xPositionHealthBar - 60);
+        healthText.setY(6);
+
+        //Temporary call to test the updateHealthBar() function.
+        this.updateHealthBar();
+
+        this.game.addDashboard(this.healthBarContainer);
+        this.game.addDashboard(this.greenHealthBar);
+        this.game.addGameObject(healthText);
+    }
+
+    /**
+     * This method has to be called every time when the player get hit.
+     */
+    private void updateHealthBar() {
+        //Calculating the width of the health bar.
+        float width = this.health/100 * this.healthBarWidth;
+
+        // Used math round because setWidth only wants an integer as parameter.
+        this.greenHealthBar.setWidth(Math.round(width));
     }
 
     public static String getMJSprite() {
@@ -91,7 +138,7 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
         return "src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/MJ/mj_jump.png";
     }
 
-    public int getHealth() {
+    public float getHealth() {
         return health;
     }
 
@@ -101,7 +148,7 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
 
     public void damageTaken(int damage) {
         setHealth(damage);
-    }
+    };
 
     public void attack(Direction direction) {
         setSprite(getMJAttackSprite(), 8);
@@ -185,7 +232,6 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
         this.sprite.setSprite(sprite);
         setTotalFrames(frames);
     }
-
 
 
     @Override

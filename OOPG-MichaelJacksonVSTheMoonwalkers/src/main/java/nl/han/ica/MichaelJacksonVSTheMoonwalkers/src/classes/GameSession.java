@@ -116,7 +116,7 @@ public final class GameSession {
         setupGameSession(game);
 
         Sprite mjSprite = new Sprite(MJ.getMJSprite());
-        mj = new MJ(50, 10, 5, mjSprite, game);
+        mj = new MJ(10, 5, mjSprite, game);
         game.addGameObject(mj, game.getScreenSize()[0] / 2, game.getScreenSize()[1] - mjSprite.getHeight() - 60);
         Zombie z = enemyFactory.spawnZombie();
         game.addGameObject(z, 50, 50);

@@ -365,4 +365,8 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
 
         }, 0, 1000);
     }
+
+    public int getWorldWidth() {
+        return worldWidth;
+    }
 }
