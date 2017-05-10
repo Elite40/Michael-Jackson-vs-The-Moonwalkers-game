@@ -151,9 +151,9 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
     public void attack(Direction direction) {
         setSprite(getMJAttackSprite(), 8);
         if (direction == Direction.Left) {
-            setCurrentFrameIndex(SpriteFrameIndex.AttackLeft.getValue());
+            session.mj.setCurrentFrameIndex(SpriteFrameIndex.AttackLeft.getValue());
         } else if (direction == Direction.Right) {
-            setCurrentFrameIndex(SpriteFrameIndex.AttackRight.getValue());
+            session.mj.setCurrentFrameIndex(SpriteFrameIndex.AttackRight.getValue());
         }
     }
 
@@ -167,7 +167,7 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
             }
             isJumping = true;
             startAnimationTimer(4, 8, 30);
-            setDirection(direction.getValue());
+            session.mj.setDirection(direction.getValue());
         }
     }
 
@@ -186,7 +186,7 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
                 animationTimer = null;
             }
             startAnimationTimer(6, 12, 10);
-            setDirection(direction.getValue());
+            session.mj.setDirection(direction.getValue());
         }
     }
 
@@ -199,23 +199,23 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
             public void run() {
                 timesRepeated[0]++;
                 if (direction == Direction.Right) {
-                    if (getCurrentFrameIndex() > (totalFrames / 2) - 1 && getCurrentFrameIndex() < totalFrames - 1) {
-                        setCurrentFrameIndex(getCurrentFrameIndex() + 1);
-                        if (getX() < game.getScreenSize()[0] - 40) {
-                            setX(getX() + distanceTravelled);
+                    if (session.mj.getCurrentFrameIndex() > (totalFrames / 2) - 1 && session.mj.getCurrentFrameIndex() < totalFrames - 1) {
+                        session.mj.setCurrentFrameIndex(session.mj.getCurrentFrameIndex() + 1);
+                        if (session.mj.getX() < game.getScreenSize()[0] - 40) {
+                            session.mj.setX(session.mj.getX() + distanceTravelled);
                         }
                     } else {
-                        setCurrentFrameIndex(totalFrames / 2);
+                        session.mj.setCurrentFrameIndex(totalFrames / 2);
                     }
                 } else {
-                    if (getCurrentFrameIndex() < (totalFrames / 2) - 1) {
+                    if (session.mj.getCurrentFrameIndex() < (totalFrames / 2) - 1) {
 
-                        setCurrentFrameIndex(getCurrentFrameIndex() + 1);
-                        if (getX() > 0) {
-                            setX(getX() - distanceTravelled);
+                        session.mj.setCurrentFrameIndex(session.mj.getCurrentFrameIndex() + 1);
+                        if (session.mj.getX() > 0) {
+                            session.mj.setX(session.mj.getX() - distanceTravelled);
                         }
                     } else {
-                        setCurrentFrameIndex(0);
+                        session.mj.setCurrentFrameIndex(0);
                     }
                 }
                 if (repeats <= timesRepeated[0]) {
@@ -227,8 +227,8 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
     }
 
     private void setSprite(String newSprite, int frames) {
-        sprite.setSprite(newSprite);
-        setTotalFrames(frames);
+        session.mj.sprite.setSprite(newSprite);
+        session.mj.setTotalFrames(frames);
     }
 
 

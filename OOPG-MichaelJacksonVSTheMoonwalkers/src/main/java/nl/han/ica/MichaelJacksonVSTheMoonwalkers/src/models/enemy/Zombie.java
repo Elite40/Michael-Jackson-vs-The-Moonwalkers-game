@@ -29,6 +29,7 @@ public class Zombie extends AnimatedSpriteObject  implements ICollidableWithGame
         this.xPosition = xPosition;
         this.velocity = velocity;
         this.damage = damage;
+        setSprite(getLankySprite(), 8);
         setCurrentFrameIndex(0);
     }
 
@@ -62,6 +63,11 @@ public class Zombie extends AnimatedSpriteObject  implements ICollidableWithGame
 
     public Sprite getSprite() {
         return sprite;
+    }
+
+    private void setSprite(String newSprite, int frames) {
+        this.sprite.setSprite(newSprite);
+        this.setTotalFrames(frames);
     }
 
     @Override

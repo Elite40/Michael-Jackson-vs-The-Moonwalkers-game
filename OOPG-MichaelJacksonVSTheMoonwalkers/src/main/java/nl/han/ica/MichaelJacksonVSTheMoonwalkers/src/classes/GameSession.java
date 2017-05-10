@@ -44,7 +44,7 @@ public final class GameSession {
     public String countDownText = "Test";
     private GameState gameState;
     private Difficulty difficulty;
-    private MJ mj;
+    public MJ mj;
     private List<Zombie> zombies;
     private MichaelJacksonVSTheMoonwalkers game;
     private EnemyFactory enemyFactory;
@@ -125,6 +125,10 @@ public final class GameSession {
         game.addGameObject(enemyFactory.spawnZombie(), 30, game.getScreenSize()[1] / 2);
         game.addGameObject(enemyFactory.spawnZombie(), 80, game.getScreenSize()[1] / 2);
         game.addGameObject(enemyFactory.spawnZombie(), 60, game.getScreenSize()[1] / 2);
+
+
+        MJ mj2 = new MJ(10, 5, mjSprite, game);
+        game.addGameObject(mj2, 50, 50);
         for (GameObject g : game.getGameObjectItems()) {
             System.out.println("====================");
             System.out.println("HEIGHT: " + g.getHeight());
