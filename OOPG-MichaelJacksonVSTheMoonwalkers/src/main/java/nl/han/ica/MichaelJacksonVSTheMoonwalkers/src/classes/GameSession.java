@@ -20,10 +20,16 @@ import java.util.TimerTask;
  */
 
 enum Difficulty {
-    Easy,
-    Normal,
-    Intermediate,
-    Hard
+    Easy(2500),
+    Normal(2000),
+    Intermediate(1500),
+    Hard(500);
+
+    private final float value;
+
+    Difficulty(final float newValue) { value = newValue; }
+
+    public float getValue() { return value; }
 }
 
 enum GameState {
@@ -117,8 +123,8 @@ public final class GameSession {
         setupGameSession(game);
         enemyFactory = new EnemyFactory(game);
         Sprite mjSprite = new Sprite(MJ.getMJSprite());
-        mj = new MJ(10, 5, mjSprite, game);
-        game.addGameObject(enemyFactory.spawnZombie(), 50, game.getScreenSize()[1] / 2);
+        mj = new MJ(mjSprite, game);
+        game.addGameObject(enemyFactory.spawnZombie(), 50, game.getScreenSize()[1] / 3);
         game.addGameObject(mj, game.getScreenSize()[0] / 2, game.getScreenSize()[1] - mjSprite.getHeight() - 60);
 //        game.addGameObject(enemyFactory.spawnZombie(), 10, game.getScreenSize()[1] / 2);
 //        game.addGameObject(enemyFactory.spawnZombie(), 20, game.getScreenSize()[1] / 2);
@@ -143,6 +149,8 @@ public final class GameSession {
 
     }
 
+
+
     public void setGameState(GameState gameState) {
         this.gameState = gameState;
     }
@@ -165,6 +173,10 @@ public final class GameSession {
         }
 
         return playerScores;
+    }
+
+    private void startRandomSpawner() {
+
     }
 
 }

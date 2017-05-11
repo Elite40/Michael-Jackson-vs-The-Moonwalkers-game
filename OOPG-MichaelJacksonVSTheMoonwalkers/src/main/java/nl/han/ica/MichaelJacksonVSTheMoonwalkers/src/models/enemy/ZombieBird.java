@@ -14,8 +14,8 @@ public class ZombieBird extends Zombie {
 
     private float altitude;
 
-    public ZombieBird(ScalingSize size, int xPosition, float velocity, int damage, Sprite sprite, float altitude, MichaelJacksonVSTheMoonwalkers game) {
-        super(size, xPosition, velocity, damage, sprite, game);
+    public ZombieBird(ScalingSize size, int xPosition, float velocity, int damage, int points, Sprite sprite, float altitude, MichaelJacksonVSTheMoonwalkers game) {
+        super(size, xPosition, velocity, damage, points, sprite, game);
         this.altitude = altitude;
     }
 }

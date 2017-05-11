@@ -3,7 +3,9 @@ package nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.player;
 import com.sun.istack.internal.Nullable;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.GameSession;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.MichaelJacksonVSTheMoonwalkers;
+import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers.HUDCreator;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy.Zombie;
+import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy.ZombieBoss;
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects;
 import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
@@ -12,6 +14,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.waterworld.TextObject;
 import sun.rmi.runtime.Log;
 
+import java.awt.*;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -21,25 +24,9 @@ import java.util.logging.Logger;
  * Created by tiesbaltissen on 20-04-17.
  */
 
-enum SpriteFrameIndex {
-    MovementLeft(5),
-    MovementRight(11),
-    AttackLeft(3),
-    AttackRight(7),
-    JumpLeft(2),
-    JumpRight(5);
-
-    private final int value;
-
-    SpriteFrameIndex(final int newValue) { value = newValue; }
-    public int getValue() { return value; }
-
-}
-
 enum Direction {
     Left(270),
-    Right(90),
-    Up(0);
+    Right(90);
 
     private final float value;
 
@@ -53,30 +40,27 @@ enum Direction {
 public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjects {
 
     private Direction direction;
-    private int velocity;
     private float health;
-    private int damage;
-    private boolean inTheAir;
     private final MichaelJacksonVSTheMoonwalkers game;
     private Timer animationTimer;
     private boolean isJumping = false;
     private boolean isAttacking = false;
 
     private Dashboard greenHealthBar;
+    private Color healthBarColor = new Color(42, 189, 104);
     private Dashboard healthBarContainer;
+    private Color healthBarContainerColor = new Color(231, 76, 60);
     private final int healthBarWidth = 200;
-    private float yPositionHealthBar = 5;
-    private float xPositionHealthBar;
+    private final int healthBarHeight = 20;
+    private int yPositionHealthBar = 5;
+    private int xPositionHealthBar;
 
     private GameSession session = GameSession.sharedInstance();
 
-    public MJ(int damage, int velocity, Sprite sprite, MichaelJacksonVSTheMoonwalkers game) {
+    public MJ(Sprite sprite, MichaelJacksonVSTheMoonwalkers game) {
         super(sprite, 12);
         this.health = 100;
-        this.damage = damage;
-        this.velocity = velocity;
         this.game = game;
-        this.inTheAir = false;
         this.direction = Direction.Left;
         setCurrentFrameIndex(0);
         this.drawHealthBar();
@@ -90,11 +74,8 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
     private void drawHealthBar() {
         xPositionHealthBar = (this.game.getWorldWidth()/2) - this.healthBarWidth/2;
 
-        this.healthBarContainer = new Dashboard(xPositionHealthBar, yPositionHealthBar, 200, 20);
-        this.healthBarContainer.setBackground(	231, 76, 60);
-
-        this.greenHealthBar = new Dashboard(xPositionHealthBar, 5, 180, 20);
-        this.greenHealthBar.setBackground(42, 189, 104);
+        this.healthBarContainer = HUDCreator.drawHealthBarContainer(xPositionHealthBar, yPositionHealthBar, healthBarWidth, healthBarHeight, healthBarContainerColor);
+        this.greenHealthBar = HUDCreator.drawHealthBar(xPositionHealthBar, yPositionHealthBar, healthBarWidth, healthBarHeight, healthBarColor);
 
         TextObject healthText = new TextObject("Health:");
         healthText.setFontSize(14);
@@ -114,7 +95,7 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
      */
     private void updateHealthBar() {
         //Calculating the width of the health bar.
-        float width = this.health/100 * this.healthBarWidth;
+        float width = getHealth()/100 * this.healthBarWidth;
 
         // Used math round because setWidth only wants an integer as parameter.
         this.greenHealthBar.setWidth(Math.round(width));
@@ -142,6 +123,7 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
 
     public void setHealth(int damageTaken) {
         health -= damageTaken;
+        updateHealthBar();
     }
 
     public void damageTaken(int damage) {
@@ -149,12 +131,15 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
     };
 
     public void attack(Direction direction) {
-        setSprite(getMJAttackSprite(), 8);
-        if (direction == Direction.Left) {
-            session.mj.setCurrentFrameIndex(SpriteFrameIndex.AttackLeft.getValue());
-        } else if (direction == Direction.Right) {
-            session.mj.setCurrentFrameIndex(SpriteFrameIndex.AttackRight.getValue());
+        this.direction = direction;
+        this.setSprite(getMJAttackSprite(), 8);
+        if (animationTimer != null) {
+            animationTimer.cancel();
+            animationTimer = null;
         }
+        isAttacking = true;
+        startAnimationTimer(4, 8, 0);
+        session.mj.setDirection(direction.getValue());
     }
 
     public void jump(Direction direction) {
@@ -221,6 +206,7 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
                 if (repeats <= timesRepeated[0]) {
                     animationTimer.cancel();
                     isJumping = false;
+                    isAttacking = false;
                 }
             }
         }, 0, 100);
@@ -270,7 +256,16 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
         for (GameObject g : collidedGameObjects) {
             if (g instanceof Zombie) {
-
+                if (isAttacking) {
+                    game.deleteGameObject(g);
+                } else {
+                    if (g instanceof ZombieBoss) {
+                        damageTaken(((ZombieBoss) g).getDamage());
+                    } else {
+                        damageTaken(10);
+                    }
+                    game.deleteGameObject(g);
+                }
             }
         }
     }

@@ -22,9 +22,10 @@ public class Zombie extends AnimatedSpriteObject  implements ICollidableWithGame
     private int xPosition;
     private float velocity;
     private int damage;
+    private int points;
     private MichaelJacksonVSTheMoonwalkers game;
 
-    public Zombie(ScalingSize size, int xPosition, float velocity, int damage, Sprite sprite, MichaelJacksonVSTheMoonwalkers game) {
+    public Zombie(ScalingSize size, int xPosition, float velocity, int damage, int points, Sprite sprite, MichaelJacksonVSTheMoonwalkers game) {
         super(sprite, 1);
         this.size = size;
 //        this.sprite = new Sprite();
@@ -32,8 +33,21 @@ public class Zombie extends AnimatedSpriteObject  implements ICollidableWithGame
         this.velocity = velocity;
         this.damage = damage;
         this.game = game;
+        this.points = points;
 //        setSprite(getLankySprite(), 1);
 //        setCurrentFrameIndex(0);
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public float getVelocity() {
+        return velocity;
+    }
+
+    public int getPoints() {
+        return points;
     }
 
     public static String zombieSprites(ZombieType type) {
@@ -60,23 +74,10 @@ public class Zombie extends AnimatedSpriteObject  implements ICollidableWithGame
         return "src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/ZombieSuperior/zombiesuperior_movement_left/zombiesuperior_movement1_left.png";
     }
 
-    public int getxPosition() {
-        return xPosition;
-    }
-
-//    public Sprite getSprite() {
-//        return sprite;
-//    }
-
-//    private void setSprite(String newSprite, int frames) {
-//        this.sprite.setSprite(newSprite);
-//        this.setTotalFrames(frames);
-//    }
-
     @Override
     public void update() {
-//        setX(getX()+1);
-        System.out.println(getX());
+        setX(getX()+1);
+        //System.out.println(getX());
     }
 
 
