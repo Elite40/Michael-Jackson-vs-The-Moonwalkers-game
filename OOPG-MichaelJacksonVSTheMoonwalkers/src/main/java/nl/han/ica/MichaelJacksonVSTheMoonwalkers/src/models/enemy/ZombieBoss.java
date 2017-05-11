@@ -13,8 +13,8 @@ public class ZombieBoss extends Zombie {
 
     private int health;
 
-    public ZombieBoss(ScalingSize size, int xPosition, float velocity, int damage, Sprite sprite, int health) {
-        super(size, xPosition, velocity, damage, sprite);
+    public ZombieBoss(ScalingSize size, int xPosition, float velocity, int damage, Sprite sprite, int health, MichaelJacksonVSTheMoonwalkers game) {
+        super(size, xPosition, velocity, damage, sprite, game);
         this.health = health;
     }
 }

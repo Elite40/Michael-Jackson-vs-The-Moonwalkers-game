@@ -41,7 +41,7 @@ public class EnemyFactory {
     }
 
     public Zombie spawnZombie() {
-        switch (randomZombieType()) {
+        switch (ZombieType.ZombieLanky) {
             case ZombieBoss:
                 return spawnBossZombie();
             case ZombieLanky:
@@ -58,16 +58,16 @@ public class EnemyFactory {
 
     private Zombie spawnLankyZombie() {
         Sprite zombieSprite = new Sprite(Zombie.zombieSprites(ZombieType.ZombieLanky));
-        return new Zombie(ScalingSize.Small, 0, 0.2f, 5, zombieSprite);
+        return new Zombie(ScalingSize.Small, 0, 0.2f, 5, zombieSprite, this.game);
     }
 
     private Zombie spawnBirdZombie() {
         Sprite zombieSprite = new Sprite(Zombie.zombieSprites(ZombieType.ZombieBird));
-        return new ZombieBird(ScalingSize.Small, 20, 0.5f, 5, zombieSprite, 0.7f);
+        return new ZombieBird(ScalingSize.Small, 20, 0.5f, 5, zombieSprite, 0.7f, this.game);
     }
 
     private Zombie spawnBossZombie() {
         Sprite zombieSprite = new Sprite(Zombie.zombieSprites(ZombieType.ZombieBoss));
-        return new ZombieBoss(ScalingSize.Large, 40, 0.4f, 10, zombieSprite, 200);
+        return new ZombieBoss(ScalingSize.Large, 40, 0.4f, 10, zombieSprite, 200, this.game);
     }
 }

@@ -22,15 +22,18 @@ public class Zombie extends AnimatedSpriteObject  implements ICollidableWithGame
     private int xPosition;
     private float velocity;
     private int damage;
+    private MichaelJacksonVSTheMoonwalkers game;
 
-    public Zombie(ScalingSize size, int xPosition, float velocity, int damage, Sprite sprite) {
-        super(sprite, 8);
+    public Zombie(ScalingSize size, int xPosition, float velocity, int damage, Sprite sprite, MichaelJacksonVSTheMoonwalkers game) {
+        super(sprite, 1);
         this.size = size;
+//        this.sprite = new Sprite();
         this.xPosition = xPosition;
         this.velocity = velocity;
         this.damage = damage;
-        setSprite(getLankySprite(), 8);
-        setCurrentFrameIndex(0);
+        this.game = game;
+//        setSprite(getLankySprite(), 1);
+//        setCurrentFrameIndex(0);
     }
 
     public static String zombieSprites(ZombieType type) {
@@ -46,39 +49,36 @@ public class Zombie extends AnimatedSpriteObject  implements ICollidableWithGame
     }
 
     private static String getLankySprite() {
-        return "src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/MJ/mj_movement.png";
+        return "src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/ZombieLanky/zombielanky_movement_left.png";
     }
 
     private static String getBirdSprite() {
-        return "src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/MJ/mj_movement.png";
+        return "src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/ZombieBird/zombiebird_movement_left.png";
     }
 
     private static String getBossSprite() {
-        return "src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/MJ/mj_movement.png";
+        return "src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/ZombieSuperior/zombiesuperior_movement_left/zombiesuperior_movement1_left.png";
     }
 
     public int getxPosition() {
         return xPosition;
     }
 
-    public Sprite getSprite() {
-        return sprite;
-    }
+//    public Sprite getSprite() {
+//        return sprite;
+//    }
 
-    private void setSprite(String newSprite, int frames) {
-        this.sprite.setSprite(newSprite);
-        this.setTotalFrames(frames);
-    }
+//    private void setSprite(String newSprite, int frames) {
+//        this.sprite.setSprite(newSprite);
+//        this.setTotalFrames(frames);
+//    }
 
     @Override
     public void update() {
-
+//        setX(getX()+1);
+        System.out.println(getX());
     }
 
-    @Override
-    public void draw(PGraphics g) {
-
-    }
 
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {

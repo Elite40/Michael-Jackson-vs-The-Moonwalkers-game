@@ -45,7 +45,7 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
         this.dashboard = new Dashboard(0,0, this.worldWidth, this.worldHeight);
 
         loadCustomFont();
-        startGameMusic();
+//        startGameMusic();
 
         //Loading the speaker image
         musicPlayingIcon = loadImage("src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/others/volume-on.png");
