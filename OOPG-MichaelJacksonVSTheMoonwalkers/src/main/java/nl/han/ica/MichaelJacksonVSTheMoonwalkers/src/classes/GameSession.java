@@ -43,8 +43,6 @@ enum GameState {
 public final class GameSession {
 
     private static GameSession instance = new GameSession();
-
-
     private int score;
     private Timer readyUpTimer = new Timer();
     public String countDownText = "Test";
