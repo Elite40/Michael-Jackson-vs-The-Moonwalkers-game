@@ -132,13 +132,14 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
 
     public void attack(Direction direction) {
         this.direction = direction;
-        this.setSprite(getMJAttackSprite(), 8);
+        this.setSprite(getMJAttackSprite(), 12);
+        this.sprite.resize(73*12, this.sprite.getHeight());
         if (animationTimer != null) {
             animationTimer.cancel();
             animationTimer = null;
         }
         isAttacking = true;
-        startAnimationTimer(4, 8, 0);
+        startAnimationTimer(6, 12, 0);
         session.mj.setDirection(direction.getValue());
     }
 
