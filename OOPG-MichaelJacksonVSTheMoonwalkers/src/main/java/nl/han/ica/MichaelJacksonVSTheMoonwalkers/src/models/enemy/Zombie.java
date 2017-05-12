@@ -15,23 +15,22 @@ public class Zombie extends AnimatedSpriteObject  implements ICollidableWithGame
 
     private ScalingSize size;
     private int xPosition;
-    public float velocity;
+    private float velocity;
     private int damage;
     private int points;
     private Direction direction;
     private MichaelJacksonVSTheMoonwalkers game;
 
-    public Zombie(ScalingSize size, Direction direciton, int xPosition, float velocity, int damage, int points, Sprite sprite, MichaelJacksonVSTheMoonwalkers game) {
-        super(sprite, 1);
+    public Zombie(ScalingSize size, Direction direction, int xPosition, float velocity, int damage, int points, Sprite sprite, MichaelJacksonVSTheMoonwalkers game) {
+        super(sprite, 2);
         this.size = size;
-        this.direction = direciton;
+        this.direction = direction;
         this.xPosition = xPosition;
         this.velocity = velocity;
         this.damage = damage;
         this.game = game;
         this.points = points;
-//        setSprite(getLankySprite(), 1);
-//        setCurrentFrameIndex(0);
+        setCurrentFrameIndex((direction == Direction.Left) ? 0 : 1);
     }
 
     public int getDamage() {
@@ -46,6 +45,8 @@ public class Zombie extends AnimatedSpriteObject  implements ICollidableWithGame
         return points;
     }
 
+    public Direction getIncomingDirection() { return direction; }
+
     public static String zombieSprites(ZombieType type) {
         switch(type) {
             case ZombieLanky:
@@ -59,15 +60,15 @@ public class Zombie extends AnimatedSpriteObject  implements ICollidableWithGame
     }
 
     private static String getLankySprite() {
-        return "src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/ZombieLanky/zombielanky_movement_left.png";
+        return "src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/ZombieLanky/zombielanky_movement.png";
     }
 
     private static String getBirdSprite() {
-        return "src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/ZombieBird/zombiebird_movement_left.png";
+        return "src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/ZombieBird/zombiebird_movement.png";
     }
 
     private static String getBossSprite() {
-        return "src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/ZombieSuperior/zombiesuperior_movement_left/zombiesuperior_movement1_left.png";
+        return "src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/ZombieSuperior/zombiesuperior_movement.png";
     }
 
     @Override

@@ -42,7 +42,6 @@ public class EnemyFactory {
     public void spawnZombie() {
         int next = random.nextInt(2);
         Direction direction = (next == 0) ? Direction.Left : Direction.Right;
-        System.out.println(next);
         int scaling = random.nextInt(3);
         ScalingSize scalingSize;
         switch (scaling) {
