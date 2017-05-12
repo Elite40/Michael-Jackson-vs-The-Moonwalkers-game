@@ -190,8 +190,10 @@ public final class GameSession {
         List<Integer> playerScores = new ArrayList<Integer>();
         //Read score
         persistence = new FilePersistence("main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/mj_score.txt");
-        for (String score : persistence.loadDataStringArray(",")) {
-            playerScores.add(Integer.parseInt(score));
+        if (!persistence.loadDataString().isEmpty()) {
+            for (String score : persistence.loadDataStringArray(",")) {
+                playerScores.add(Integer.parseInt(score));
+            }
         }
 
         playerScores.sort(Comparator.reverseOrder());
