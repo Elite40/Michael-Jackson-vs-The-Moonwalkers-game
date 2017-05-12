@@ -1,0 +1,10 @@
+Move Left
+Move Right
+Jump
+Hit Enemy
+Pause
+Key Left
+Key Right
+Key Up
+Key Space
+Key P

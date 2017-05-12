@@ -161,7 +161,7 @@ public final class GameSession {
         this.gameState = gameState;
     }
 
-    public List getPlayerHighscore() {
+    public List<Integer> getPlayerHighscore() {
         List<Integer> playerScores = new ArrayList<Integer>();
         //Read score
         try {

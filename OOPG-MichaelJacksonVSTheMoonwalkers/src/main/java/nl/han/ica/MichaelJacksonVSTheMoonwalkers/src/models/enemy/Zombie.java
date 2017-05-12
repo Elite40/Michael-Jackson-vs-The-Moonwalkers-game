@@ -14,7 +14,7 @@ public class Zombie extends AnimatedSpriteObject  implements ICollidableWithGame
 
     private ScalingSize size;
     private int xPosition;
-    private float velocity;
+    public float velocity;
     private int damage;
     private int points;
     private Direction direction;
