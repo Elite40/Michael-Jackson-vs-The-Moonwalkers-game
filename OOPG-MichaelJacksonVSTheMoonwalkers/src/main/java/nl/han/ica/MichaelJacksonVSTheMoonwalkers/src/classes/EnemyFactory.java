@@ -26,6 +26,9 @@ public class EnemyFactory {
         startSpawnTimer();
     }
 
+    /**
+     * @return A random ZombieType that will be used to spawn a zombie.
+     */
     private ZombieType randomZombieType() {
         switch (random.nextInt(3)) {
             case 0:
@@ -39,6 +42,11 @@ public class EnemyFactory {
         }
     }
 
+    /**
+     * A random zombie will be determined based on a few randoms.
+     * The type will be gerenrated from the method aboven, the size is also a randomized factor.
+     * The direction the zombie will come from is also random.
+     */
     public void randomZombie() {
         int next = random.nextInt(2);
         Direction direction = (next == 0) ? Direction.Left : Direction.Right;
@@ -61,6 +69,12 @@ public class EnemyFactory {
         spawnZombie(direction, randomZombieType(), scalingSize);
     }
 
+    /**
+     * After the randomZombie method is called, the zombie will be spawned based on the parameters below.
+     * @param direction
+     * @param type
+     * @param scalingSize
+     */
     private void spawnZombie(Direction direction, ZombieType type, ScalingSize scalingSize) {
         Sprite zombieSprite = new Sprite(Zombie.zombieSprites(type));
         zombieSprite.resize(Math.round(zombieSprite.getWidth() * scalingSize.getValue()), Math.round(zombieSprite.getHeight() * scalingSize.getValue()));
@@ -82,10 +96,16 @@ public class EnemyFactory {
         game.addGameObject(zombie, (direction == Direction.Right) ? -40 : game.getWorldWidth(), yPos);
     }
 
+    /**
+     * The spawnTimer is canceled here.
+     */
     public void stopSpawnTimer() {
         spawnTimer.cancel();
     }
 
+    /**
+     * The spawner will start spawning zombies, the frequency is based on the difficulty.
+     */
     public void startSpawnTimer() {
         spawnTimer = new Timer();
         spawnTimer.schedule(new TimerTask() {

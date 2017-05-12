@@ -50,7 +50,7 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
         this.dashboard = new Dashboard(0,0, worldWidth, worldHeight);
 
         loadCustomFont();
-        //startGameMusic();
+        startGameMusic();
 
         //Loading the speaker image
         musicPlayingIcon = loadImage("src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/others/volume-on.png");
@@ -72,6 +72,9 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
         }
     }
 
+    /**
+     * We use a custom font for a lot of texts, this font needs to be loaded in.
+     */
     private void loadCustomFont() {
         try {
             GraphicsEnvironment ge =
@@ -158,6 +161,9 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
     }
 
 
+    /**
+     * After pressing play, 4 difficulty levels are presented which determines the spawnrate of the zombies.
+     */
     private void showDifficultyPicker() {
         GameSession.sharedInstance().setGameState(GameState.ChoosingDifficulty);
         ButtonCreator easyButton = new ButtonCreator("Easy", this.xPositionOfButton, 100, 150, 50, 75 - textWidth("Easy"), 130, 25, Color.pink, Color.white);
@@ -188,6 +194,11 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
         this.dashboard.addGameObject(playButton);
         this.dashboard.addGameObject(highScoreButton);
     }
+
+
+    /**
+     * All mouseclick events are handled here.
+     */
 
     @Override
     public void mouseClicked() {
@@ -366,6 +377,12 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
         this.dashboard.addGameObject(backButton);
     }
 
+    /**
+     * The countdown will be handled down here, based on the gamestate the outcome, or start of the timer
+     * will differ because different behaviour could be expected.
+     * @param seconds
+     * @param gameState
+     */
     public void countDownFrom(int seconds, GameState gameState){
         if (session.isCountingDown) {
             return;

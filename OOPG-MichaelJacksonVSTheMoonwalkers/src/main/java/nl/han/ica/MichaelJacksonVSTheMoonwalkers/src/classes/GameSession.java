@@ -58,6 +58,13 @@ public final class GameSession {
         return instance;
     }
 
+    /**
+     * Setup for the gameSession, accepts the game parameter so it can access attributes inside the game class.
+     * @param game
+     * @throws IOException
+     * @throws SAXException
+     * @throws ParserConfigurationException
+     */
     public void setupGameSession(MichaelJacksonVSTheMoonwalkers game) throws IOException, SAXException, ParserConfigurationException {
         this.game = game;
         this.gameState = GameState.Started;
@@ -70,6 +77,10 @@ public final class GameSession {
 
         this.alterGameState();
     }
+
+    /**
+     * Draws the HUD for the game, like a healthbar and scoretextfield.
+     */
 
     public void setupHUD() {
         xPositionHealthBar = (game.getWorldWidth()/2) - healthBarWidth/2;
@@ -85,6 +96,9 @@ public final class GameSession {
         game.addGameObject(scoreText);
     }
 
+    /**
+     * Timer for counting down untill the game starts or continues after pausing.
+     */
     private void startReadyUpTimer() {
         readyUpTimer.schedule(new TimerTask() {
             @Override
@@ -95,6 +109,9 @@ public final class GameSession {
         }, 3000, 0);
     }
 
+    /**
+     * Method to alter the gamestate based on the previous gamestates or altered gamestates before that.
+     */
     public void alterGameState() {
         switch (gameState) {
             case None:
@@ -130,6 +147,9 @@ public final class GameSession {
         }
     }
 
+    /**
+     * Here the final score will be written to the highscore txt file which will be displayed when you want to see the top 5 scores.
+     */
     private void setPlayerScore() {
         playerScores = getPlayerHighscore();
         playerScores.add(getScore());
@@ -170,13 +190,20 @@ public final class GameSession {
         return score;
     }
 
+    /**
+     * The game will be started from here, the HUD will be drawn and MJ will be dropped in the game
+     * The enemyfactory will start spawning enemies and the massacre will start.
+     * @throws ParserConfigurationException
+     * @throws SAXException
+     * @throws IOException
+     */
     public void startGame() throws ParserConfigurationException, SAXException, IOException {
         game.deleteAllGameOBjects();
         setupGameSession(game);
         setupHUD();
         enemyFactory = new EnemyFactory(game);
         Sprite mjSprite = new Sprite(MJ.getMJSprite());
-        mj = new MJ(mjSprite, game);
+        mj = new MJ(new Sprite(MJ.getMJSprite()), game);
         game.addGameObject(mj, game.getScreenSize()[0] / 2, game.getScreenSize()[1] - mjSprite.getHeight() - 60);
     }
 
@@ -186,6 +213,10 @@ public final class GameSession {
 
     public GameState getGameState() { return gameState; }
 
+    /**
+     *
+     * @return the list of playerHighscores read from the highscore file.
+     */
     public List<Integer> getPlayerHighscore() {
         List<Integer> playerScores = new ArrayList<Integer>();
         //Read score
