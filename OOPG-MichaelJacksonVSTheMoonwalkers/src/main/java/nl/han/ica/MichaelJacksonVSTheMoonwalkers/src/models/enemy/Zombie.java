@@ -11,7 +11,7 @@ import processing.core.PGraphics;
 
 import java.util.List;
 
-public class Zombie extends AnimatedSpriteObject  implements ICollidableWithGameObjects {
+public class Zombie extends AnimatedSpriteObject implements IMovableZombie {
 
     private ScalingSize size;
     private int xPosition;
@@ -21,7 +21,7 @@ public class Zombie extends AnimatedSpriteObject  implements ICollidableWithGame
     private Direction direction;
     private MichaelJacksonVSTheMoonwalkers game;
 
-    public Zombie(ScalingSize size, Direction direction, int xPosition, float velocity, int damage, int points, Sprite sprite, MichaelJacksonVSTheMoonwalkers game) {
+    public Zombie(Direction direction, int xPosition, float velocity, int damage, int points, Sprite sprite, MichaelJacksonVSTheMoonwalkers game) {
         super(sprite, 2);
         this.size = size;
         this.direction = direction;
@@ -31,6 +31,11 @@ public class Zombie extends AnimatedSpriteObject  implements ICollidableWithGame
         this.game = game;
         this.points = points;
         setCurrentFrameIndex((direction == Direction.Left) ? 0 : 1);
+    }
+
+    @Override
+    public void move(Direction direction) {
+        setX((direction == Direction.Left) ? getX() - (2 * getVelocity()) : getX() + (2 * getVelocity()));
     }
 
     public int getDamage() {
@@ -75,17 +80,11 @@ public class Zombie extends AnimatedSpriteObject  implements ICollidableWithGame
     public void update() {
         switch (direction) {
             case Left:
-                setX(getX()-(2 * getVelocity()));
+                move(Direction.Left);
                 break;
             case Right:
-                setX(getX()+(2 * getVelocity()));
+                move(Direction.Right);
                 break;
         }
-    }
-
-
-    @Override
-    public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-
     }
 }

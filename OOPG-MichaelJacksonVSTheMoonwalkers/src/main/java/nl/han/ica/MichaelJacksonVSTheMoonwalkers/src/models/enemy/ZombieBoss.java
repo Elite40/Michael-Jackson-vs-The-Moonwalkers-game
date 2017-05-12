@@ -5,16 +5,23 @@ import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.MichaelJacksonVSThe
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by tiesbaltissen on 20-04-17.
  */
 public class ZombieBoss extends Zombie {
+    private float originalVelocity;
 
-    private int health;
+    public ZombieBoss(Direction direction, int xPosition, float velocity, int damage, int points, Sprite sprite, MichaelJacksonVSTheMoonwalkers game) {
+        super(direction, xPosition, velocity, damage, points, sprite, game);
+        this.originalVelocity = velocity;
+    }
 
-    public ZombieBoss(ScalingSize size, Direction direction, int xPosition, float velocity, int damage, int points, Sprite sprite, int health, MichaelJacksonVSTheMoonwalkers game) {
-        super(size, direction, xPosition, velocity, damage, points, sprite, game);
-        this.health = health;
+    @Override
+    public void move(Direction direction) {
+        Random random = new Random();
+        boolean stopped = (random.nextInt(5) < 1);
+        setX((direction == Direction.Left) ? getX() - (2 * ((stopped) ? 0 : getVelocity())) : getX() + (2 * getVelocity()));
     }
 }

@@ -39,7 +39,7 @@ public class EnemyFactory {
         }
     }
 
-    public void spawnZombie() {
+    public void randomZombie() {
         int next = random.nextInt(2);
         Direction direction = (next == 0) ? Direction.Left : Direction.Right;
         int scaling = random.nextInt(3);
@@ -58,50 +58,28 @@ public class EnemyFactory {
                 scalingSize = ScalingSize.Default;
                 break;
         }
-        switch (randomZombieType()) {
+        spawnZombie(direction, randomZombieType(), scalingSize);
+    }
+
+    private void spawnZombie(Direction direction, ZombieType type, ScalingSize scalingSize) {
+        Sprite zombieSprite = new Sprite(Zombie.zombieSprites(type));
+        zombieSprite.resize(Math.round(zombieSprite.getWidth() * scalingSize.getValue()), Math.round(zombieSprite.getHeight() * scalingSize.getValue()));
+        float yPos = game.getWorldHeight() - zombieSprite.getHeight() - 60;
+        int xPos = (direction == Direction.Left) ? -40 : game.getWorldWidth();
+        Zombie zombie = null;
+        switch (type) {
             case ZombieBoss:
-                spawnBossZombie(direction, scalingSize);
+                zombie = new ZombieBoss(direction, xPos, random.nextFloat() + 0.5f, 10, 20, zombieSprite, this.game);
                 break;
             case ZombieLanky:
-                spawnLankyZombie(direction, scalingSize);
+                zombie = new Zombie(direction, xPos, random.nextFloat() + 0.5f, 5, 10, zombieSprite, this.game);
                 break;
             case ZombieBird:
-                spawnBirdZombie(direction, scalingSize);
+                yPos = game.getWorldHeight() - game.getWorldHeight() * 0.7f;
+                zombie = new ZombieBird(direction, xPos, random.nextFloat() + 0.5f, 5, 10, zombieSprite, 0.7f, this.game);
                 break;
         }
-    }
-
-    private void spawnLankyZombie(Direction direction, ScalingSize scalingSize) {
-        Sprite zombieSprite = new Sprite(Zombie.zombieSprites(ZombieType.ZombieLanky));
-        zombieSprite.resize(Math.round(zombieSprite.getWidth() * scalingSize.getValue()), Math.round(zombieSprite.getHeight() * scalingSize.getValue()));
-        Zombie lanky = new Zombie(ScalingSize.Small, direction, 0, random.nextFloat() + 0.5f, 5, 10,  zombieSprite, this.game);
-        if (direction == Direction.Right) {
-            game.addGameObject(lanky, -40, game.getScreenSize()[1] - zombieSprite.getHeight() - 60);
-        } else {
-            game.addGameObject(lanky, game.getScreenSize()[0], game.getScreenSize()[1] - zombieSprite.getHeight() - 60);
-        }
-    }
-
-    private void spawnBirdZombie(Direction direction, ScalingSize scalingSize) {
-        Sprite zombieSprite = new Sprite(Zombie.zombieSprites(ZombieType.ZombieBird));
-        zombieSprite.resize(Math.round(zombieSprite.getWidth() * scalingSize.getValue()), Math.round(zombieSprite.getHeight() * scalingSize.getValue()));
-        ZombieBird bird = new ZombieBird(ScalingSize.Small, direction, 20, random.nextFloat() + 0.5f, 5, 5, zombieSprite, 0.7f, this.game);
-        if (direction == Direction.Right) {
-            game.addGameObject(bird, -40, game.getScreenSize()[1] - game.getScreenSize()[1] * bird.altitude);
-        } else {
-            game.addGameObject(bird, game.getScreenSize()[0], game.getScreenSize()[1] - game.getScreenSize()[1] * bird.altitude);
-        }
-    }
-
-    private void spawnBossZombie(Direction direction, ScalingSize scalingSize) {
-        Sprite zombieSprite = new Sprite(Zombie.zombieSprites(ZombieType.ZombieBoss));
-        zombieSprite.resize(Math.round(zombieSprite.getWidth() * scalingSize.getValue()), Math.round(zombieSprite.getHeight() * scalingSize.getValue()));
-        ZombieBoss boss = new ZombieBoss(ScalingSize.Large, direction,40, random.nextFloat() + 0.5f, 10, 20, zombieSprite, 200, this.game);
-        if (direction == Direction.Right) {
-            game.addGameObject(boss, -40, game.getScreenSize()[1] - zombieSprite.getHeight() - 60);
-        } else {
-            game.addGameObject(boss, game.getScreenSize()[0], game.getScreenSize()[1] - zombieSprite.getHeight() - 60);
-        }
+        game.addGameObject(zombie, (direction == Direction.Right) ? -40 : game.getWorldWidth(), yPos);
     }
 
     public void stopSpawnTimer() {
@@ -113,7 +91,7 @@ public class EnemyFactory {
         spawnTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-                spawnZombie();
+                randomZombie();
             }
         }, 0, GameSession.sharedInstance().getDifficulty().getValue());
     }

@@ -132,9 +132,10 @@ public final class GameSession {
     private void setPlayerScore() {
         this.playerScores.add(this.getScore());
 
-        persistence = new FilePersistence("main/java/nl/han/ica/waterworld/media/bubblesPopped.txt");
+        int newScore;
+        persistence = new FilePersistence("main/java/nl/han/ica/MichaelJackonVSTheMoonwalkers/res/mj_score.txt");
         if (persistence.fileExists()) {
-            score = Integer.parseInt(persistence.loadDataString());
+            newScore = Integer.parseInt(persistence.loadDataString());
         }
 
 //        Boolean isDone = true;
@@ -176,7 +177,7 @@ public final class GameSession {
 
         String score = "Score: " + getScore();
 
-        ButtonCreator menuButton = new ButtonCreator("Go to menu", game.getWorldWidth()/2 - 80, 400);
+        ButtonCreator menuButton = new ButtonCreator("Go to menu", game.getWorldWidth()/2 - 75, 400, 150, 50, 5, 430, 25, Color.pink, Color.white);
 
         game.addGameObject(menuButton);
         game.addGameObject(HUDCreator.drawTextObject(game.getWorldWidth()/2 - 100, 100, "Game Over", 50));

@@ -242,17 +242,13 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
         if (session.getGameState() != GameState.GameOver) {
             for (GameObject g : collidedGameObjects) {
                 if (g instanceof Zombie) {
-
-                    if (isAttacking && ((Zombie)g).getIncomingDirection() != this.direction) {
-                        game.deleteGameObject(g);
-                        updateScoreText(((Zombie) g).getPoints());
+                    Zombie z = ((Zombie) g);
+                    game.deleteGameObject(g);
+                    if (isAttacking && z.getIncomingDirection() != this.direction) {
+                        updateScoreText(z.getPoints());
+                        session.setScore(session.getScore() + z.getPoints());
                     } else {
-                        if (g instanceof ZombieBoss) {
-                            damageTaken(((ZombieBoss) g).getDamage());
-                        } else {
-                            damageTaken(10);
-                        }
-                        game.deleteGameObject(g);
+                        damageTaken(z.getDamage());
                     }
                 }
             }
