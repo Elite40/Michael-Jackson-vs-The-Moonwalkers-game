@@ -1,5 +1,6 @@
 package nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes;
 
+import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers.ButtonCreator;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers.HUDCreator;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy.Zombie;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.player.MJ;
@@ -14,10 +15,8 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import java.awt.*;
 import java.io.*;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * Created by tiesbaltissen on 20-04-17.
@@ -36,18 +35,14 @@ enum Difficulty {
     public float getValue() { return value; }
 }
 
-enum GameState {
-    None,
-    ReadyUp,
-    Paused,
-    Playing,
-    GameOver
-}
 
 public final class GameSession {
 
     private static GameSession instance = new GameSession();
-    public int score;
+    private List<Integer> playerScores = new ArrayList<Integer>();
+    private final String pathToScoreFile = "src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/mj_score.txt";
+
+    private int score;
     private Timer readyUpTimer = new Timer();
     public String countDownText = "Test";
     private GameState gameState;
@@ -57,6 +52,8 @@ public final class GameSession {
     private MichaelJacksonVSTheMoonwalkers game;
     private EnemyFactory enemyFactory;
     private File highscoreFile;
+
+    private IPersistence persistence;
 
     public Dashboard greenHealthBar;
     private Color healthBarColor = new Color(42, 189, 104);
@@ -81,7 +78,7 @@ public final class GameSession {
         this.gameState = GameState.None;
 
         try {
-            highscoreFile = new File("src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/mj_score.txt");
+            highscoreFile = new File(pathToScoreFile);
         }catch (NullPointerException e) {
             System.out.println(e.getMessage());
         }
@@ -134,8 +131,56 @@ public final class GameSession {
                 break;
             case GameOver:
                 gameState = GameState.None;
+                setPlayerScore();
+                showGameOverView();
                 break;
         }
+    }
+
+    private void setPlayerScore() {
+        this.playerScores.add(this.getScore());
+
+        persistence = new FilePersistence("main/java/nl/han/ica/waterworld/media/bubblesPopped.txt");
+        if (persistence.fileExists()) {
+            score = Integer.parseInt(persistence.loadDataString());
+        }
+
+//        Boolean isDone = true;
+//        Scanner scan = new Scanner(System.in);
+//        File f = new File(pathToScoreFile);
+//
+//        try {
+//            FileWriter fr = new FileWriter(f);
+//            BufferedWriter br  = new BufferedWriter(fr);
+//
+//            br.write(score);
+//
+//        }catch(IOException e) {
+//            System.out.println("Couldnt save the score to the file: " + e.getMessage());
+//        }
+
+    }
+
+    private void showGameOverView() {
+        this.game.deleteAllGameOBjects();
+        this.game.deleteDashboard(this.healthBarContainer);
+        this.game.deleteDashboard(this.greenHealthBar);
+
+        String score = "Score: " + this.getScore();
+
+        TextObject gameOverText = new TextObject("Game over");
+        gameOverText.setX(game.getWorldWidth()/2 - 120);
+        gameOverText.setY(100);
+
+        TextObject scoreText = new TextObject(score);
+        scoreText.setX(game.getWorldWidth()/2 - 100);
+        scoreText.setY(250);
+
+        ButtonCreator menuButton = new ButtonCreator("Go to menu", game.getWorldWidth()/2 - 80, 400);
+
+        this.game.addGameObject(menuButton);
+        this.game.addGameObject(gameOverText);
+        this.game.addGameObject(scoreText);
     }
 
     public void setScore(int score) {
@@ -155,14 +200,13 @@ public final class GameSession {
         game.addGameObject(mj, game.getScreenSize()[0] / 2, game.getScreenSize()[1] - mjSprite.getHeight() - 60);
     }
 
-
-
     public void setGameState(GameState gameState) {
         this.gameState = gameState;
     }
+    public GameState getGameState() {return this.gameState;}
+
 
     public List getPlayerHighscore() {
-        List<Integer> playerScores = new ArrayList<Integer>();
         //Read score
         try {
             BufferedReader reader = new BufferedReader(new FileReader(highscoreFile));

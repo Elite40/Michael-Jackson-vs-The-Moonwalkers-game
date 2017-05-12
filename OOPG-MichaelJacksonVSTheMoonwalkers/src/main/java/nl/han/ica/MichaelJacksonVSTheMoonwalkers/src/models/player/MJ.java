@@ -2,6 +2,7 @@ package nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.player;
 
 import com.sun.istack.internal.Nullable;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.GameSession;
+import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.GameState;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.MichaelJacksonVSTheMoonwalkers;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers.HUDCreator;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy.Direction;
@@ -63,13 +64,15 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
         //Calculating the width of the health bar.
         float width = getHealth()/100 * this.healthBarWidth;
 
-        // Used math round because setWidth only wants an integer as parameter.
-        session.greenHealthBar.setWidth(Math.round(width));
+        if (width >= 0) {
+            // Used math round because setWidth only wants an integer as parameter.
+            session.greenHealthBar.setWidth(Math.round(width));
+        }
     }
 
     private void updateScoreText(int score) {
-        session.score += score;
-        session.scoreText.setText("Score: " + session.score);
+        session.setScore(session.getScore()+score);
+        session.scoreText.setText("Score: " + session.getScore());
     }
 
     public static String getMJSprite() {
@@ -93,18 +96,25 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
     }
 
     public void setHealth(int damageTaken) {
-        health -= damageTaken;
+        health = (health - damageTaken >= 1) ? health - damageTaken : 1;
+
+        if (health == 1) {
+            //Show game over view
+            session.setGameState(GameState.GameOver);
+            session.alterGameState();
+        }
         updateHealthBar();
     }
 
     public void damageTaken(int damage) {
         setHealth(damage);
-    };
+    }
+
 
     public void attack(Direction direction) {
         this.direction = direction;
         this.setSprite(getMJAttackSprite(), 12);
-        this.sprite.resize(73*12, this.sprite.getHeight());
+        this.sprite.resize(75*12, this.sprite.getHeight());
         if (animationTimer != null) {
             animationTimer.cancel();
             animationTimer = null;
@@ -226,18 +236,24 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
 
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-        for (GameObject g : collidedGameObjects) {
-            if (g instanceof Zombie) {
-                if (isAttacking && g.getDirection() != session.mj.direction.getValue()) {
-                    game.deleteGameObject(g);
-                    updateScoreText(((Zombie) g).getPoints());
-                } else {
-                    if (g instanceof ZombieBoss) {
-                        damageTaken(((ZombieBoss) g).getDamage());
+        if (session.getGameState() != GameState.GameOver) {
+            for (GameObject g : collidedGameObjects) {
+                if (g instanceof Zombie) {
+
+                    System.out.println(g.getDirection());
+                    System.out.println(session.mj.direction);
+
+                    if (isAttacking && g.getDirection() != session.mj.direction.getValue()) {
+                        game.deleteGameObject(g);
+                        updateScoreText(((Zombie) g).getPoints());
                     } else {
-                        damageTaken(10);
+                        if (g instanceof ZombieBoss) {
+                            damageTaken(((ZombieBoss) g).getDamage());
+                        } else {
+                            damageTaken(10);
+                        }
+                        game.deleteGameObject(g);
                     }
-                    game.deleteGameObject(g);
                 }
             }
         }
