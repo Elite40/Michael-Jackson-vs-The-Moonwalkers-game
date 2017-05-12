@@ -6,68 +6,110 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 import java.util.List;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by tiesbaltissen on 20-04-17.
  */
 
+
 public class EnemyFactory {
 
-    private final int BossLower = 0;
-    private final int BossUpper = 10;
-    private final int LankyLower = 11;
-    private final int LankyUpper = 40;
-    private final int BirdLower = 41;
-    private final int BirdUpper = 70;
     private MichaelJacksonVSTheMoonwalkers game;
+    private Random random = new Random();
 
     public EnemyFactory(MichaelJacksonVSTheMoonwalkers game) {
         this.game = game;
+        startSpawnTimer();
     }
 
     private ZombieType randomZombieType() {
-        Random random = new Random(70);
-        int seed = random.nextInt();
-        if (isBetween(seed, BossLower, BossUpper)) {
-            return ZombieType.ZombieBoss;
+        switch (random.nextInt(3)) {
+            case 0:
+                return ZombieType.ZombieBoss;
+            case 1:
+                return ZombieType.ZombieLanky;
+            case 2:
+                return ZombieType.ZombieBird;
+            default:
+                return ZombieType.ZombieLanky;
         }
-        if (isBetween(seed, LankyLower, LankyUpper)) {
-            return ZombieType.ZombieLanky;
-        }
-        if (isBetween(seed, BirdLower, BirdUpper)) {
-            return ZombieType.ZombieBird;
-        }
-        return ZombieType.ZombieLanky;
     }
 
-    public Zombie spawnZombie() {
-        switch (ZombieType.ZombieLanky) {
+    public void spawnZombie() {
+        int next = random.nextInt(2);
+        Direction direction = (next == 0) ? Direction.Left : Direction.Right;
+        System.out.println(next);
+        int scaling = random.nextInt(3);
+        ScalingSize scalingSize;
+        switch (scaling) {
+            case 0:
+                scalingSize = ScalingSize.Small;
+                break;
+            case 1:
+                scalingSize = ScalingSize.Default;
+                break;
+            case 2:
+                scalingSize = ScalingSize.Large;
+                break;
+            default:
+                scalingSize = ScalingSize.Default;
+                break;
+        }
+        switch (randomZombieType()) {
             case ZombieBoss:
-                return spawnBossZombie();
+                spawnBossZombie(direction, scalingSize);
+                break;
             case ZombieLanky:
-                return spawnLankyZombie();
+                spawnLankyZombie(direction, scalingSize);
+                break;
             case ZombieBird:
-                return spawnBirdZombie();
+                spawnBirdZombie(direction, scalingSize);
+                break;
         }
-        return null;
     }
 
-    private boolean isBetween(int x, int lower, int upper) {
-        return (lower <= x && x <= upper);
-    }
-
-    private Zombie spawnLankyZombie() {
+    private void spawnLankyZombie(Direction direction, ScalingSize scalingSize) {
         Sprite zombieSprite = new Sprite(Zombie.zombieSprites(ZombieType.ZombieLanky));
-        return new Zombie(ScalingSize.Small, 0, 0.2f, 5, 10,  zombieSprite, this.game);
+        zombieSprite.resize(Math.round(zombieSprite.getWidth() * scalingSize.getValue()), Math.round(zombieSprite.getHeight() * scalingSize.getValue()));
+        Zombie lanky = new Zombie(ScalingSize.Small, direction, 0, 0.2f, 5, 10,  zombieSprite, this.game);
+        if (direction == Direction.Right) {
+            game.addGameObject(lanky, 0, game.getScreenSize()[1] - zombieSprite.getHeight() - 60);
+        } else {
+            game.addGameObject(lanky, game.getScreenSize()[0], game.getScreenSize()[1] - zombieSprite.getHeight() - 60);
+        }
     }
 
-    private Zombie spawnBirdZombie() {
+    private void spawnBirdZombie(Direction direction, ScalingSize scalingSize) {
         Sprite zombieSprite = new Sprite(Zombie.zombieSprites(ZombieType.ZombieBird));
-        return new ZombieBird(ScalingSize.Small, 20, 0.5f, 5, 5, zombieSprite, 0.7f, this.game);
+        zombieSprite.resize(Math.round(zombieSprite.getWidth() * scalingSize.getValue()), Math.round(zombieSprite.getHeight() * scalingSize.getValue()));
+        ZombieBird bird = new ZombieBird(ScalingSize.Small, direction, 20, 0.5f, 5, 5, zombieSprite, 0.7f, this.game);
+        if (direction == Direction.Right) {
+            game.addGameObject(bird, 0, game.getScreenSize()[1] * bird.altitude);
+        } else {
+            game.addGameObject(bird, game.getScreenSize()[0], game.getScreenSize()[1] * bird.altitude);
+        }
     }
 
-    private Zombie spawnBossZombie() {
+    private void spawnBossZombie(Direction direction, ScalingSize scalingSize) {
         Sprite zombieSprite = new Sprite(Zombie.zombieSprites(ZombieType.ZombieBoss));
-        return new ZombieBoss(ScalingSize.Large, 40, 0.4f, 10, 20, zombieSprite, 200, this.game);
+        zombieSprite.resize(Math.round(zombieSprite.getWidth() * scalingSize.getValue()), Math.round(zombieSprite.getHeight() * scalingSize.getValue()));
+        ZombieBoss boss = new ZombieBoss(ScalingSize.Large, direction,40, 0.4f, 10, 20, zombieSprite, 200, this.game);
+        if (direction == Direction.Right) {
+            game.addGameObject(boss, 0, game.getScreenSize()[1] - zombieSprite.getHeight() - 60);
+        } else {
+            game.addGameObject(boss, game.getScreenSize()[0], game.getScreenSize()[1] - zombieSprite.getHeight() - 60);
+        }
+    }
+
+    private void startSpawnTimer() {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                spawnZombie();
+            }
+        }, 0, 1000);
     }
 }

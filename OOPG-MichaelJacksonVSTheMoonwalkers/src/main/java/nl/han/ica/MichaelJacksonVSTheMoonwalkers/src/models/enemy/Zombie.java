@@ -10,12 +10,6 @@ import processing.core.PGraphics;
 
 import java.util.List;
 
-/**
- * Created by tiesbaltissen on 20-04-17.
- */
-
-
-
 public class Zombie extends AnimatedSpriteObject  implements ICollidableWithGameObjects {
 
     private ScalingSize size;
@@ -23,12 +17,13 @@ public class Zombie extends AnimatedSpriteObject  implements ICollidableWithGame
     private float velocity;
     private int damage;
     private int points;
+    private Direction direction;
     private MichaelJacksonVSTheMoonwalkers game;
 
-    public Zombie(ScalingSize size, int xPosition, float velocity, int damage, int points, Sprite sprite, MichaelJacksonVSTheMoonwalkers game) {
+    public Zombie(ScalingSize size, Direction direciton, int xPosition, float velocity, int damage, int points, Sprite sprite, MichaelJacksonVSTheMoonwalkers game) {
         super(sprite, 1);
         this.size = size;
-//        this.sprite = new Sprite();
+        this.direction = direciton;
         this.xPosition = xPosition;
         this.velocity = velocity;
         this.damage = damage;
@@ -76,7 +71,14 @@ public class Zombie extends AnimatedSpriteObject  implements ICollidableWithGame
 
     @Override
     public void update() {
-        setX(getX()+1);
+        switch (direction) {
+            case Left:
+                setX(getX()-2);
+                break;
+            case Right:
+                setX(getX()+2);
+                break;
+        }
         //System.out.println(getX());
     }
 

@@ -2,7 +2,9 @@ package nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers;
 
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.MichaelJacksonVSTheMoonwalkers;
 import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
+import nl.han.ica.waterworld.TextObject;
 
+import javax.xml.soap.Text;
 import java.awt.*;
 
 /**
@@ -31,7 +33,11 @@ public class HUDCreator {
     }
 
 
-    public static Dashboard drawHealthText(int x, int y) {
-        return null;
+    public static TextObject drawTextObject(int x, int y, String t, int fs) {
+        TextObject textObject = new TextObject(t);
+        textObject.setX(x);
+        textObject.setY(y);
+        textObject.setFontSize(fs);
+        return textObject;
     }
 }

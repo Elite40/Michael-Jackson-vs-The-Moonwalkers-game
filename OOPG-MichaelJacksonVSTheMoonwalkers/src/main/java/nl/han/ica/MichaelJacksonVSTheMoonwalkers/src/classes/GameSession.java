@@ -1,14 +1,18 @@
 package nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes;
 
+import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers.HUDCreator;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy.Zombie;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.player.MJ;
+import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Persistence.FilePersistence;
 import nl.han.ica.OOPDProcessingEngineHAN.Persistence.IPersistence;
+import nl.han.ica.waterworld.TextObject;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
+import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +47,7 @@ enum GameState {
 public final class GameSession {
 
     private static GameSession instance = new GameSession();
-    private int score;
+    public int score;
     private Timer readyUpTimer = new Timer();
     public String countDownText = "Test";
     private GameState gameState;
@@ -53,6 +57,17 @@ public final class GameSession {
     private MichaelJacksonVSTheMoonwalkers game;
     private EnemyFactory enemyFactory;
     private File highscoreFile;
+
+    public Dashboard greenHealthBar;
+    private Color healthBarColor = new Color(42, 189, 104);
+    private Dashboard healthBarContainer;
+    private Color healthBarContainerColor = new Color(231, 76, 60);
+    private TextObject healthText;
+    public TextObject scoreText;
+    private final int healthBarWidth = 200;
+    private final int healthBarHeight = 20;
+    private int yPositionHealthBar = 5;
+    private int xPositionHealthBar;
 
     public static GameSession sharedInstance() {
         if (instance == null) {
@@ -72,6 +87,20 @@ public final class GameSession {
         }
 
         this.alterGameState();
+    }
+
+    public void setupHUD() {
+        xPositionHealthBar = (game.getWorldWidth()/2) - healthBarWidth/2;
+
+        healthBarContainer = HUDCreator.drawHealthBarContainer(xPositionHealthBar, yPositionHealthBar, healthBarWidth, healthBarHeight, healthBarContainerColor);
+        greenHealthBar = HUDCreator.drawHealthBar(xPositionHealthBar, yPositionHealthBar, healthBarWidth, healthBarHeight, healthBarColor);
+        healthText = HUDCreator.drawTextObject(xPositionHealthBar - 60, 6, "Health:", 14);
+        scoreText = HUDCreator.drawTextObject(game.getWorldWidth() - 100, 6, "Score: " + score, 14);
+
+        game.addDashboard(healthBarContainer);
+        game.addDashboard(greenHealthBar);
+        game.addGameObject(healthText);
+        game.addGameObject(scoreText);
     }
 
     private void startReadyUpTimer() {
@@ -119,32 +148,11 @@ public final class GameSession {
 
     public void startGame() throws ParserConfigurationException, SAXException, IOException {
         setupGameSession(game);
+        setupHUD();
         enemyFactory = new EnemyFactory(game);
         Sprite mjSprite = new Sprite(MJ.getMJSprite());
         mj = new MJ(mjSprite, game);
-        game.addGameObject(enemyFactory.spawnZombie(), 50, game.getScreenSize()[1] / 3);
         game.addGameObject(mj, game.getScreenSize()[0] / 2, game.getScreenSize()[1] - mjSprite.getHeight() - 60);
-//        game.addGameObject(enemyFactory.spawnZombie(), 10, game.getScreenSize()[1] / 2);
-//        game.addGameObject(enemyFactory.spawnZombie(), 20, game.getScreenSize()[1] / 2);
-//        game.addGameObject(enemyFactory.spawnZombie(), 30, game.getScreenSize()[1] / 2);
-//        game.addGameObject(enemyFactory.spawnZombie(), 80, game.getScreenSize()[1] / 2);
-//        game.addGameObject(enemyFactory.spawnZombie(), 60, game.getScreenSize()[1] / 2);
-
-
-//        MJ mj2 = new MJ(10, 5, mjSprite, game);
-//        game.addGameObject(mj2, 50, 50);
-        for (GameObject g : game.getGameObjectItems()) {
-            System.out.println("====================");
-            System.out.println("HEIGHT: " + g.getHeight());
-            System.out.println("WIDTH: " + g.getWidth());
-            System.out.println("X: " + g.getX());
-            System.out.println("Y: " + g.getY());
-            if (g instanceof Zombie) {
-//                System.out.println("CURRENT FRAME INDEX: " + ((Zombie) g).getCurrentFrameIndex());
-            }
-            System.out.println("====================");
-        }
-
     }
 
 
@@ -172,9 +180,4 @@ public final class GameSession {
 
         return playerScores;
     }
-
-    private void startRandomSpawner() {
-
-    }
-
 }

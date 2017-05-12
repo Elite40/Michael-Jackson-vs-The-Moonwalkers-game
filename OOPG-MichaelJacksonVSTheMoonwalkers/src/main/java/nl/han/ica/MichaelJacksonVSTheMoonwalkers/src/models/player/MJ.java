@@ -4,6 +4,7 @@ import com.sun.istack.internal.Nullable;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.GameSession;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.MichaelJacksonVSTheMoonwalkers;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers.HUDCreator;
+import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy.Direction;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy.Zombie;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy.ZombieBoss;
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects;
@@ -24,18 +25,6 @@ import java.util.logging.Logger;
  * Created by tiesbaltissen on 20-04-17.
  */
 
-enum Direction {
-    Left(270),
-    Right(90);
-
-    private final float value;
-
-    Direction(final float newValue) {
-        value = newValue;
-    }
-
-    public float getValue() { return value; }
-}
 
 public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjects {
 
@@ -50,6 +39,8 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
     private Color healthBarColor = new Color(42, 189, 104);
     private Dashboard healthBarContainer;
     private Color healthBarContainerColor = new Color(231, 76, 60);
+    private TextObject healthText;
+    private TextObject scoreText;
     private final int healthBarWidth = 200;
     private final int healthBarHeight = 20;
     private int yPositionHealthBar = 5;
@@ -63,31 +54,6 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
         this.game = game;
         this.direction = Direction.Left;
         setCurrentFrameIndex(0);
-        this.drawHealthBar();
-    }
-
-    /**
-     * Draws the health bar objects. One is the real health bar. The other one
-     * is the container, which has a red background color.
-     * And the health text.
-     */
-    private void drawHealthBar() {
-        xPositionHealthBar = (this.game.getWorldWidth()/2) - this.healthBarWidth/2;
-
-        this.healthBarContainer = HUDCreator.drawHealthBarContainer(xPositionHealthBar, yPositionHealthBar, healthBarWidth, healthBarHeight, healthBarContainerColor);
-        this.greenHealthBar = HUDCreator.drawHealthBar(xPositionHealthBar, yPositionHealthBar, healthBarWidth, healthBarHeight, healthBarColor);
-
-        TextObject healthText = new TextObject("Health:");
-        healthText.setFontSize(14);
-        healthText.setX(xPositionHealthBar - 60);
-        healthText.setY(6);
-
-        //Temporary call to test the updateHealthBar() function.
-        this.updateHealthBar();
-
-        this.game.addDashboard(this.healthBarContainer);
-        this.game.addDashboard(this.greenHealthBar);
-        this.game.addGameObject(healthText);
     }
 
     /**
@@ -98,7 +64,12 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
         float width = getHealth()/100 * this.healthBarWidth;
 
         // Used math round because setWidth only wants an integer as parameter.
-        this.greenHealthBar.setWidth(Math.round(width));
+        session.greenHealthBar.setWidth(Math.round(width));
+    }
+
+    private void updateScoreText(int score) {
+        session.score += score;
+        session.scoreText.setText("Score: " + session.score);
     }
 
     public static String getMJSprite() {
@@ -240,10 +211,10 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
                 move(Direction.Right);
                 break;
             case UP:
-                jump(this.direction);
+                jump(session.mj.direction);
                 break;
             case BEVEL:
-                attack(this.direction);
+                attack(session.mj.direction);
                 break;
         }
     }
@@ -257,9 +228,9 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
         for (GameObject g : collidedGameObjects) {
             if (g instanceof Zombie) {
-                if (isAttacking) {
+                if (isAttacking && g.getDirection() != session.mj.direction.getValue()) {
                     game.deleteGameObject(g);
-                    this.session.setScore(((Zombie) g).getPoints());
+                    updateScoreText(((Zombie) g).getPoints());
                 } else {
                     if (g instanceof ZombieBoss) {
                         damageTaken(((ZombieBoss) g).getDamage());

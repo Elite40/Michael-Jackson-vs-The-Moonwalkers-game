@@ -12,10 +12,10 @@ import java.util.List;
  */
 public class ZombieBird extends Zombie {
 
-    private float altitude;
+    public float altitude;
 
-    public ZombieBird(ScalingSize size, int xPosition, float velocity, int damage, int points, Sprite sprite, float altitude, MichaelJacksonVSTheMoonwalkers game) {
-        super(size, xPosition, velocity, damage, points, sprite, game);
+    public ZombieBird(ScalingSize size, Direction direction, int xPosition, float velocity, int damage, int points, Sprite sprite, float altitude, MichaelJacksonVSTheMoonwalkers game) {
+        super(size, direction, xPosition, velocity, damage, points, sprite, game);
         this.altitude = altitude;
     }
 }
