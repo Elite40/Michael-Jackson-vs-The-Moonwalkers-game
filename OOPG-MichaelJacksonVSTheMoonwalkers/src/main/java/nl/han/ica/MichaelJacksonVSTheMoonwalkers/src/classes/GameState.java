@@ -9,5 +9,6 @@ public enum GameState {
     Paused,
     Started,
     Playing,
+    ChoosingDifficulty,
     GameOver
 }

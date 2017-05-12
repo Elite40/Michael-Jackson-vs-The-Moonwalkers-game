@@ -48,6 +48,9 @@ public class ButtonCreator extends GameObject {
      */
     private Color borderColor = Color.white;
 
+    private float textY;
+    private float textX;
+
     /**
      * Font size of the text inside the button
      */
@@ -63,12 +66,17 @@ public class ButtonCreator extends GameObject {
         this.buttonFontSize = 40;
     }
 
-    public ButtonCreator(String buttonText, int xPosition, int yPosition, int buttonWidth, int buttonHeight) {
+    public ButtonCreator(String buttonText, int xPosition, int yPosition, int buttonWidth, int buttonHeight, float textX, float textY, int fontSize, Color backgroundColor, Color borderColor) {
         this.buttonText = buttonText;
         this.xPosition = xPosition;
         this.yPosition = yPosition;
         this.buttonWidth = buttonWidth;
         this.buttonHeight = buttonHeight;
+        this.textX = textX;
+        this.textY = textY;
+        this.backgroundColor = backgroundColor;
+        this.borderColor = borderColor;
+        this.buttonFontSize = fontSize;
     }
 
     @Override
@@ -84,16 +92,8 @@ public class ButtonCreator extends GameObject {
 
         g.fill(this.buttonTextColor.getRGB());
         g.textSize(this.buttonFontSize);
+        g.text(this.buttonText, this.xPosition + textX, textY);
 
-        centerTextInsideButton(g);
-    }
-
-    private void centerTextInsideButton(PGraphics g){
-
-        float textXPosition = (this.xPosition + (this.buttonWidth/2)) - g.textWidth(this.buttonText) / 2;
-        float textYPosition = (this.yPosition + (this.buttonHeight/2)) - g.textAscent()/2;
-
-        g.text(this.buttonText, textXPosition, textYPosition);
     }
 
     public int getButtonWidth() {

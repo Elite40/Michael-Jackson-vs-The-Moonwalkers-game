@@ -7,4 +7,4 @@ Key Left
 Key Right
 Key Up
 Key Space
-Key P
+Key Enter

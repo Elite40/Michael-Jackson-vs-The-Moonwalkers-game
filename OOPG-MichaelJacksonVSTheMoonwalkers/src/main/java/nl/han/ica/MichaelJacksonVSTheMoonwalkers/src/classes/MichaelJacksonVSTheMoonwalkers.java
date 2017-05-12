@@ -156,22 +156,32 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
         this.dashboard.addGameObject(theMW);
     }
 
+
+    private void showDifficultyPicker() {
+        GameSession.sharedInstance().setGameState(GameState.ChoosingDifficulty);
+        ButtonCreator easyButton = new ButtonCreator("Easy", this.xPositionOfButton, 100, 150, 50, 75 - textWidth("Easy"), 130, 25, Color.pink, Color.white);
+
+        this.dashboard.addGameObject(easyButton);
+
+        ButtonCreator intermediateButton = new ButtonCreator("Intermediate", this.xPositionOfButton, 190, 150, 50, 75 - textWidth("Intermediate"), 220,  25, Color.pink, Color.white);
+
+        this.dashboard.addGameObject(intermediateButton);
+
+        ButtonCreator normalButton = new ButtonCreator("Normal", this.xPositionOfButton, 280, 150, 50, 75 - textWidth("Normal"), 310, 25, Color.pink, Color.white);
+
+        this.dashboard.addGameObject(normalButton);
+
+        ButtonCreator hardButton = new ButtonCreator("Hard", this.xPositionOfButton, 370, 150, 50, 75 - textWidth("Hard"), 400, 25, Color.pink, Color.white);
+
+        this.dashboard.addGameObject(hardButton);
+    }
+
     private void placeMenuButtons() {
 
-        ButtonCreator playButton = new ButtonCreator("Play", this.xPositionOfButton, 190);
-        playButton.setButtonFontSize(25);
-        playButton.setBackgroundColor(Color.pink);
-        playButton.setButtonTextColor(Color.white);
+        ButtonCreator playButton = new ButtonCreator("Play", this.xPositionOfButton, 190, 150, 50, 75 - textWidth("Play"), 210, 25, Color.pink, Color.white);
+        ButtonCreator highScoreButton = new ButtonCreator("Highscore", this.xPositionOfButton, 280, 150, 50, 75 - textWidth("Highscore"), 300, 25, Color.pink, Color.white);
 
-        ButtonCreator highScoreButton = new ButtonCreator("Highscore", this.xPositionOfButton, 280);
-        highScoreButton.setButtonFontSize(25);
-        highScoreButton.setBackgroundColor(Color.pink);
-        highScoreButton.setButtonTextColor(Color.white);
-
-        ButtonCreator howToPlayButton = new ButtonCreator("How to play", xPositionOfButton, 370);
-        howToPlayButton.setButtonFontSize(25);
-        howToPlayButton.setBackgroundColor(Color.pink);
-        howToPlayButton.setButtonTextColor(Color.WHITE);
+        ButtonCreator howToPlayButton = new ButtonCreator("How to play", xPositionOfButton, 370, 150, 50, 75 - textWidth("How to play"), 390, 25, Color.pink, Color.white);
 
         this.dashboard.addGameObject(howToPlayButton);
         this.dashboard.addGameObject(playButton);
@@ -186,40 +196,68 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
         int yPositionOfHigscoreButton = 280;
         int yPositionOfHowToPlayButton = 370;
         int yPositionOfBackButton = 418;
+        int yPositionOfEasyButton = 100;
+        int yPositionOfIntermediateButton = 190;
+        int yPositionOfNormalButton = 280;
+        int yPositionOfHardButton = 370;
         int buttonWidth = 150;
         int buttonHeight = 50;
 
         if (super.mouseX > this.xPositionOfButton && super.mouseX < this.xPositionOfButton + buttonWidth) {
 
-            //Clicked on the play button
-            if (super.mouseY > yPositionOfPlayButton && super.mouseY < yPositionOfPlayButton + buttonHeight) {
-                //Start the game
-                //1. Count down first
-                if (startPressed) return;
-                startPressed = true;
-                cleanView();
-
-                countDownFrom(3, GameState.ReadyUp);
-
-            }else if (super.mouseY > yPositionOfHigscoreButton && super.mouseY < yPositionOfHigscoreButton + buttonHeight) {
-                //Clicked on the highscore button
-                System.out.println("Highscore button is clicked");
-                showHighscoreView();
-            }else if (super.mouseY > yPositionOfHowToPlayButton && super.mouseY < yPositionOfHowToPlayButton + buttonHeight) {
-                //How to play button is clicked
-                cleanView();
-
-                showGameTitle();
-
-                showHowToPlayView();
-            }
-
-            if (backButtonIsViewed){
-                if (super.mouseY > yPositionOfBackButton && super.mouseY < yPositionOfBackButton + buttonHeight) {
-                    //Pressed on go back button
-                    //Viewing the main menu
+            if (GameSession.sharedInstance().getGameState() == GameState.ChoosingDifficulty) {
+                if (super.mouseY > yPositionOfEasyButton && super.mouseY < yPositionOfEasyButton + buttonHeight) {
+                    startPressed = true;
                     cleanView();
-                    showMainMenu();
+                    GameSession.sharedInstance().setDifficulty(Difficulty.Easy);
+                    countDownFrom(3, GameState.ReadyUp);
+                } else if (super.mouseY > yPositionOfIntermediateButton && super.mouseY < yPositionOfIntermediateButton + buttonHeight) {
+                    startPressed = true;
+                    cleanView();
+                    GameSession.sharedInstance().setDifficulty(Difficulty.Intermediate);
+                    countDownFrom(3, GameState.ReadyUp);
+                } else if (super.mouseY > yPositionOfNormalButton && super.mouseY < yPositionOfNormalButton + buttonHeight) {
+                    startPressed = true;
+                    cleanView();
+                    GameSession.sharedInstance().setDifficulty(Difficulty.Normal);
+                    countDownFrom(3, GameState.ReadyUp);
+                } else if (super.mouseY > yPositionOfHardButton && super.mouseY < yPositionOfHardButton + buttonHeight) {
+                    startPressed = true;
+                    cleanView();
+                    GameSession.sharedInstance().setDifficulty(Difficulty.Hard);
+                    countDownFrom(3, GameState.ReadyUp);
+                }
+            }
+            else {
+                //Clicked on the play button
+             if (super.mouseY > yPositionOfPlayButton && super.mouseY < yPositionOfPlayButton + buttonHeight) {
+                    //Start the game
+                    //1. Count down first
+                    if (startPressed) return;
+
+
+                    showDifficultyPicker();
+
+                } else if (super.mouseY > yPositionOfHigscoreButton && super.mouseY < yPositionOfHigscoreButton + buttonHeight) {
+                    //Clicked on the highscore button
+                    System.out.println("Highscore button is clicked");
+                    showHighscoreView();
+                } else if (super.mouseY > yPositionOfHowToPlayButton && super.mouseY < yPositionOfHowToPlayButton + buttonHeight) {
+                    //How to play button is clicked
+                    cleanView();
+
+                    showGameTitle();
+
+                    showHowToPlayView();
+                }
+
+                if (backButtonIsViewed) {
+                    if (super.mouseY > yPositionOfBackButton && super.mouseY < yPositionOfBackButton + buttonHeight) {
+                        //Pressed on go back button
+                        //Viewing the main menu
+                        cleanView();
+                        showMainMenu();
+                    }
                 }
             }
         }

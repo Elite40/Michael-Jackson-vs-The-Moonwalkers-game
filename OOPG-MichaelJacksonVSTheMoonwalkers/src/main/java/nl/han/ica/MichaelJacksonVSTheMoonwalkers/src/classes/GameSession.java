@@ -18,23 +18,6 @@ import java.io.*;
 import java.util.*;
 import java.util.List;
 
-/**
- * Created by tiesbaltissen on 20-04-17.
- */
-
-enum Difficulty {
-    Easy(2500),
-    Normal(2000),
-    Intermediate(1500),
-    Hard(500);
-
-    private final float value;
-
-    Difficulty(final float newValue) { value = newValue; }
-
-    public float getValue() { return value; }
-}
-
 public final class GameSession {
 
     private static GameSession instance = new GameSession();
@@ -167,6 +150,14 @@ public final class GameSession {
 //        }catch(IOException e) {
 //            System.out.println("Couldnt save the score to the file: " + e.getMessage());
 //        }
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
     }
 
     private void showPauseText() {
