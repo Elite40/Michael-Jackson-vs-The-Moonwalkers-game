@@ -81,7 +81,6 @@ public class Zombie extends AnimatedSpriteObject  implements ICollidableWithGame
                 setX(getX()+(2 * getVelocity()));
                 break;
         }
-        //System.out.println(getX());
     }
 
 
