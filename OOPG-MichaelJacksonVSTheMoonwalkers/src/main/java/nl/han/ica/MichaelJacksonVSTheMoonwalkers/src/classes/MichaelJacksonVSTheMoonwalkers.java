@@ -222,7 +222,6 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
             }
         }
 
-
         if ( (super.mouseX > 4 && super.mouseX < 4 + musicPlayingIcon.width) && super.mouseY > 4 && super.mouseY < 4 + musicPlayingIcon.height) {
             toggleMusic();
         }
@@ -316,7 +315,7 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
 
     }
 
-    private void cleanView(){
+    public void cleanView(){
         this.dashboard.deleteAllDashboardObjects();
         this.resetVariables();
     }
@@ -365,6 +364,10 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
     }
 
     public int getWorldWidth() {
-        return worldWidth;
+        return this.worldWidth;
+    }
+
+    public int getWorldHeight() {
+        return this.worldHeight;
     }
 }

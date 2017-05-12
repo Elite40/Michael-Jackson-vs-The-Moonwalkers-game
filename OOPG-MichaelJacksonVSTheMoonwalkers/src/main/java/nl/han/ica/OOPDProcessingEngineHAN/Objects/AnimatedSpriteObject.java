@@ -28,7 +28,6 @@ public abstract class AnimatedSpriteObject extends SpriteObject {
 
 		setTotalFrames(totalFrames);
 		frameWidth = getImage().width / totalFrames;
-		System.out.println("framewidth: " + frameWidth);
 		setCurrentFrameIndex(0);
         width = frameWidth;
 	}
