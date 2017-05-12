@@ -31,17 +31,7 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
     private Timer animationTimer;
     private boolean isJumping = false;
     private boolean isAttacking = false;
-
-    private Dashboard greenHealthBar;
-    private Color healthBarColor = new Color(42, 189, 104);
-    private Dashboard healthBarContainer;
-    private Color healthBarContainerColor = new Color(231, 76, 60);
-    private TextObject healthText;
-    private TextObject scoreText;
     private final int healthBarWidth = 200;
-    private final int healthBarHeight = 20;
-    private int yPositionHealthBar = 5;
-    private int xPositionHealthBar;
 
     private GameSession session = GameSession.sharedInstance();
 

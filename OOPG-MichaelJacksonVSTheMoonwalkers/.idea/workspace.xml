@@ -23,25 +23,37 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="GameSession.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="GameSession.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/classes/GameSession.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="419">
-                  <caret line="194" column="80" lean-forward="false" selection-start-line="194" selection-start-column="80" selection-end-line="194" selection-end-column="80" />
+                <state relative-caret-position="1649">
+                  <caret line="176" column="80" lean-forward="false" selection-start-line="176" selection-start-column="80" selection-end-line="176" selection-end-column="80" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#1072#1081#0" expanded="true" />
-                    <element signature="e#7758#7767#0" expanded="true" />
+                    <element signature="e#7207#7216#0" expanded="true" />
+                    <marker date="1494621944000" expanded="false" signature="5555:5566" ph=" { " />
+                    <marker date="1494621944000" expanded="false" signature="5595:5601" ph=" }" />
+                    <marker date="1494621944000" expanded="false" signature="5640:5651" ph=" { " />
+                    <marker date="1494621944000" expanded="false" signature="5669:5675" ph=" }" />
+                    <marker date="1494621944000" expanded="false" signature="5917:5928" ph=" { " />
+                    <marker date="1494621944000" expanded="false" signature="5961:5967" ph=" }" />
+                    <marker date="1494621944000" expanded="false" signature="6004:6015" ph=" { " />
+                    <marker date="1494621944000" expanded="false" signature="6034:6040" ph=" }" />
+                    <marker date="1494621944000" expanded="false" signature="6067:6078" ph=" { " />
+                    <marker date="1494621944000" expanded="false" signature="6091:6097" ph=" }" />
+                    <marker date="1494621944000" expanded="false" signature="6907:6918" ph=" { " />
+                    <marker date="1494621944000" expanded="false" signature="6945:6951" ph=" }" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ButtonCreator.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="ButtonCreator.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/ButtonCreator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="194">
-                  <caret line="97" column="0" lean-forward="true" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+                <state relative-caret-position="329">
+                  <caret line="114" column="32" lean-forward="true" selection-start-line="114" selection-start-column="32" selection-end-line="114" selection-end-column="32" />
                   <folding />
                 </state>
               </provider>
@@ -100,10 +112,14 @@
           <file leaf-file-name="MichaelJacksonVSTheMoonwalkers.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/classes/MichaelJacksonVSTheMoonwalkers.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="74">
-                  <caret line="387" column="19" lean-forward="true" selection-start-line="387" selection-start-column="19" selection-end-line="387" selection-end-column="19" />
+                <state relative-caret-position="2933">
+                  <caret line="380" column="19" lean-forward="true" selection-start-line="380" selection-start-column="19" selection-end-line="380" selection-end-column="19" />
                   <folding>
                     <element signature="imports" expanded="true" />
+                    <marker date="1494621861000" expanded="false" signature="15696:15707" ph=" { " />
+                    <marker date="1494621861000" expanded="false" signature="15730:15736" ph=" }" />
+                    <marker date="1494621861000" expanded="false" signature="15769:15780" ph=" { " />
+                    <marker date="1494621861000" expanded="false" signature="15804:15810" ph=" }" />
                   </folding>
                 </state>
               </provider>
@@ -148,8 +164,8 @@
           <file leaf-file-name="SpriteObject.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/OOPDProcessingEngineHAN/Objects/SpriteObject.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="18" column="4" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+                <state relative-caret-position="375">
+                  <caret line="26" column="7" lean-forward="false" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
                   <folding />
                 </state>
               </provider>
@@ -912,12 +928,12 @@
       <workItem from="1494535572622" duration="12427000" />
       <workItem from="1494575681111" duration="2944000" />
       <workItem from="1494580097945" duration="9845000" />
-      <workItem from="1494597421796" duration="20635000" />
+      <workItem from="1494597421796" duration="20734000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="126551000" />
+    <option name="totallyTimeSpent" value="126650000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1887" height="1043" extended-state="0" />
@@ -1233,7 +1249,7 @@
         <state relative-caret-position="166">
           <caret line="70" column="21" lean-forward="true" selection-start-line="70" selection-start-column="21" selection-end-line="70" selection-end-column="21" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1272,14 +1288,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/OOPDProcessingEngineHAN/Objects/SpriteObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="4" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/OOPDProcessingEngineHAN/Persistence/FilePersistence.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-975">
@@ -1307,15 +1315,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/classes/GameSession.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/ButtonCreator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="194" column="80" lean-forward="false" selection-start-line="194" selection-start-column="80" selection-end-line="194" selection-end-column="80" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1072#1081#0" expanded="true" />
-            <element signature="e#7758#7767#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="329">
+          <caret line="114" column="32" lean-forward="true" selection-start-line="114" selection-start-column="32" selection-end-line="114" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1329,18 +1333,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/classes/MichaelJacksonVSTheMoonwalkers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="387" column="19" lean-forward="true" selection-start-line="387" selection-start-column="19" selection-end-line="387" selection-end-column="19" />
+        <state relative-caret-position="2933">
+          <caret line="380" column="19" lean-forward="true" selection-start-line="380" selection-start-column="19" selection-end-line="380" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1494621861000" expanded="false" signature="15696:15707" ph=" { " />
+            <marker date="1494621861000" expanded="false" signature="15730:15736" ph=" }" />
+            <marker date="1494621861000" expanded="false" signature="15769:15780" ph=" { " />
+            <marker date="1494621861000" expanded="false" signature="15804:15810" ph=" }" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/ButtonCreator.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/classes/GameSession.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="97" column="0" lean-forward="true" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+        <state relative-caret-position="1649">
+          <caret line="176" column="80" lean-forward="false" selection-start-line="176" selection-start-column="80" selection-end-line="176" selection-end-column="80" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1072#1081#0" expanded="true" />
+            <element signature="e#7207#7216#0" expanded="true" />
+            <marker date="1494621944000" expanded="false" signature="5555:5566" ph=" { " />
+            <marker date="1494621944000" expanded="false" signature="5595:5601" ph=" }" />
+            <marker date="1494621944000" expanded="false" signature="5640:5651" ph=" { " />
+            <marker date="1494621944000" expanded="false" signature="5669:5675" ph=" }" />
+            <marker date="1494621944000" expanded="false" signature="5917:5928" ph=" { " />
+            <marker date="1494621944000" expanded="false" signature="5961:5967" ph=" }" />
+            <marker date="1494621944000" expanded="false" signature="6004:6015" ph=" { " />
+            <marker date="1494621944000" expanded="false" signature="6034:6040" ph=" }" />
+            <marker date="1494621944000" expanded="false" signature="6067:6078" ph=" { " />
+            <marker date="1494621944000" expanded="false" signature="6091:6097" ph=" }" />
+            <marker date="1494621944000" expanded="false" signature="6907:6918" ph=" { " />
+            <marker date="1494621944000" expanded="false" signature="6945:6951" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/OOPDProcessingEngineHAN/Objects/SpriteObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="26" column="7" lean-forward="false" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
           <folding />
         </state>
       </provider>

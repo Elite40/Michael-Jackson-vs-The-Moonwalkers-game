@@ -107,13 +107,6 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
         size(screenWidth, screenHeight);
     }
 
-    private void createDashboard(int dashboardWidth,int dashboardHeight) {
-//        Dashboard dashboard = new Dashboard(0,0, dashboardWidth, dashboardHeight);
-//        TextObject dashboardText=new TextObject("");
-//        dashboard.addGameObject(dashboardText);
-//        addDashboard(dashboard);
-    }
-
     private void showMainMenu(){
         backButtonIsViewed = false;
         if (session.enemyFactory != null) session.enemyFactory.stopSpawnTimer();

@@ -26,11 +26,9 @@ public final class GameSession {
 
     private int score;
     private Timer readyUpTimer = new Timer();
-    public String countDownText = "Test";
     private GameState gameState;
     private Difficulty difficulty;
     public MJ mj;
-    private List<Zombie> zombies;
     private MichaelJacksonVSTheMoonwalkers game;
     public EnemyFactory enemyFactory;
     private File highscoreFile;
@@ -96,22 +94,6 @@ public final class GameSession {
         game.addGameObject(scoreText);
     }
 
-    /**
-     * Timer for counting down untill the game starts or continues after pausing.
-     */
-    private void startReadyUpTimer() {
-        readyUpTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                alterGameState();
-                readyUpTimer.cancel();
-            }
-        }, 3000, 0);
-    }
-
-    /**
-     * Method to alter the gamestate based on the previous gamestates or altered gamestates before that.
-     */
     public void alterGameState() {
         switch (gameState) {
             case None:
