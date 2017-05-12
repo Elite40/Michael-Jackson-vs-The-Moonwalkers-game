@@ -41,6 +41,8 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
     private boolean startPressed = false;
     private File howToPlayFile;
 
+    private GameSession session = GameSession.sharedInstance();
+
     public static void main(String[] args) {
         PApplet.main(new String[]{"nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.MichaelJacksonVSTheMoonwalkers"});}
     @Override
@@ -63,7 +65,7 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
             showMainMenu();
 
             createViewWithoutViewport(worldWidth, worldHeight);
-            GameSession.sharedInstance().setupGameSession(this);
+            session.setupGameSession(this);
 
         } catch (Exception e) {
             println(e);
@@ -330,6 +332,9 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
     }
 
     public void countDownFrom(int seconds, GameState gameState){
+        if (session.isCountingDown) {
+            return;
+        }
         TextObject countDownTitleText = HUDCreator.drawTextObject(worldWidth / 2 - 110, worldHeight / 3, "Starting in", 46);
         TextObject countDownText = HUDCreator.drawTextObject(worldWidth / 2, worldHeight / 2, "3", 23);
         dashboard.addGameObject(countDownTitleText);
@@ -337,10 +342,12 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
         if (gameState == GameState.Playing) {
             dashboard.deleteGameObject(countDownTitleText);
             dashboard.deleteGameObject(countDownText);
-            GameSession.sharedInstance().setGameState(gameState);
-            GameSession.sharedInstance().alterGameState();
+            session.setGameState(gameState);
+            session.alterGameState();
             return;
         }
+
+        session.isCountingDown = true;
 
         Timer timer = new Timer();
 
@@ -352,14 +359,14 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
                 countDownText.setText(String.valueOf(i--));
 
                 if (i < 0){
+                    session.isCountingDown = false;
                     timer.cancel();
                     dashboard.deleteGameObject(countDownTitleText);
                     dashboard.deleteGameObject(countDownText);
-                    GameSession.sharedInstance().setGameState(gameState);
-                    GameSession.sharedInstance().alterGameState();
+                    session.setGameState(gameState);
+                    session.alterGameState();
                 }
             }
-
         }, 0, 1000);
     }
 

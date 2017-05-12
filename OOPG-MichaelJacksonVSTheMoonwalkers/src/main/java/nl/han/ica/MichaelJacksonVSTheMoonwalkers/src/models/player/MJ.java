@@ -227,6 +227,9 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
                 attack(session.mj.direction);
                 break;
             case ENTER:
+                if (game.getThreadState()) {
+                    session.removePauseText();
+                }
                 game.countDownFrom(3, (game.getThreadState()) ? GameState.Paused : GameState.Playing);
                 break;
         }

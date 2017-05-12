@@ -52,6 +52,8 @@ public final class GameSession {
     private EnemyFactory enemyFactory;
     private File highscoreFile;
 
+    public boolean isCountingDown = false;
+
     private IPersistence persistence;
 
     public Dashboard greenHealthBar;
@@ -60,6 +62,7 @@ public final class GameSession {
     private Color healthBarContainerColor = new Color(231, 76, 60);
     private TextObject healthText;
     public TextObject scoreText;
+    public TextObject pauseText;
     private final int healthBarWidth = 200;
     private final int healthBarHeight = 20;
     private int yPositionHealthBar = 5;
@@ -124,11 +127,13 @@ public final class GameSession {
             case Paused:
                 gameState = GameState.Playing;
                 enemyFactory.startSpawnTimer();
+                removePauseText();
                 game.resumeGame();
                 break;
             case Playing:
                 gameState = GameState.Paused;
                 enemyFactory.stopSpawnTimer();
+                showPauseText();
                 game.pauseGame();
                 break;
             case Started:
@@ -162,29 +167,29 @@ public final class GameSession {
 //        }catch(IOException e) {
 //            System.out.println("Couldnt save the score to the file: " + e.getMessage());
 //        }
+    }
 
+    private void showPauseText() {
+        pauseText = HUDCreator.drawTextObject(game.getWorldWidth()/2 - 150, game.getWorldHeight()/2 - 10, "Game Paused", 50);
+        game.addGameObject(pauseText);
+    }
+
+    public void removePauseText() {
+        game.deleteGameObject(pauseText);
     }
 
     private void showGameOverView() {
-        this.game.deleteAllGameOBjects();
-        this.game.deleteDashboard(this.healthBarContainer);
-        this.game.deleteDashboard(this.greenHealthBar);
+        game.deleteAllGameOBjects();
+        game.deleteDashboard(healthBarContainer);
+        game.deleteDashboard(greenHealthBar);
 
-        String score = "Score: " + this.getScore();
-
-        TextObject gameOverText = new TextObject("Game over");
-        gameOverText.setX(game.getWorldWidth()/2 - 120);
-        gameOverText.setY(100);
-
-        TextObject scoreText = new TextObject(score);
-        scoreText.setX(game.getWorldWidth()/2 - 100);
-        scoreText.setY(250);
+        String score = "Score: " + getScore();
 
         ButtonCreator menuButton = new ButtonCreator("Go to menu", game.getWorldWidth()/2 - 80, 400);
 
-        this.game.addGameObject(menuButton);
-        this.game.addGameObject(gameOverText);
-        this.game.addGameObject(scoreText);
+        game.addGameObject(menuButton);
+        game.addGameObject(HUDCreator.drawTextObject(game.getWorldWidth()/2 - 100, 100, "Game Over", 50));
+        game.addGameObject(HUDCreator.drawTextObject(game.getWorldWidth()/2 - 100, 250, score, 50));
     }
 
     public void setScore(int score) {
