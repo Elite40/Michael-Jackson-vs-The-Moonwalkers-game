@@ -8,7 +8,6 @@ import processing.core.PImage;
  */
 public abstract class SpriteObject extends GameObject {
 
-	//TODO make private again, extend spriteobject to change the sprite
 	public Sprite sprite;
 	
 	/**

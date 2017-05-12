@@ -2,7 +2,7 @@ package nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers;
 
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.MichaelJacksonVSTheMoonwalkers;
 import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
-import nl.han.ica.waterworld.TextObject;
+import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers.TextObject;
 
 import javax.xml.soap.Text;
 import java.awt.*;

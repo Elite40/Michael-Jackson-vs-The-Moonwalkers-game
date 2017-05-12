@@ -46,17 +46,17 @@ public class FilePersistence implements IPersistence {
      *             one entire String.
      */
     public void saveData(String data) {
-    	
-        FileOutputStream fos;
-        File file;
-        try {
-            file = new File("src/", filename);
-            fos = new FileOutputStream(file);
-            if(!file.exists()){
-                file.createNewFile();
-            }
-            OutputStreamWriter osw = new OutputStreamWriter(fos);
-            osw.write(data);
+
+                FileOutputStream fos;
+                File file;
+                try {
+                    file = new File("src/", filename);
+                    fos = new FileOutputStream(file);
+                    if(!file.exists()){
+                        file.createNewFile();
+                    }
+                    OutputStreamWriter osw = new OutputStreamWriter(fos);
+                    osw.write(data);
             osw.flush();
             osw.close();
         } catch (IOException e) {
@@ -78,11 +78,11 @@ public class FilePersistence implements IPersistence {
             checkSeparatorUsage(data[0], separator);
             sb.append(data[0]);
             for (int i = 1; i < data.length; i++){
-                checkSeparatorUsage(data[1], separator);
-                sb.append(separator + data[i]);
-            }
-            saveData(sb.toString());
+            checkSeparatorUsage(data[1], separator);
+            sb.append(separator + data[i]);
         }
+        saveData(sb.toString());
+    }
     }
 
     private void checkSeparatorUsage(String data, String separator) {

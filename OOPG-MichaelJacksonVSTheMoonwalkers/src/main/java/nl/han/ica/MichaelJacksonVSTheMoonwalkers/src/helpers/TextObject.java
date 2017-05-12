@@ -1,5 +1,4 @@
-package nl.han.ica.waterworld;
-
+package nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import processing.core.PFont;
 import processing.core.PGraphics;
@@ -7,7 +6,6 @@ import processing.core.PGraphics;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
-
 import static java.awt.Font.createFont;
 
 /**

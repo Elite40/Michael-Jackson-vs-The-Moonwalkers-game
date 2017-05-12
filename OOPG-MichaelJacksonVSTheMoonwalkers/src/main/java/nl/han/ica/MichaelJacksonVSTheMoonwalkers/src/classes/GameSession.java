@@ -9,7 +9,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Persistence.FilePersistence;
 import nl.han.ica.OOPDProcessingEngineHAN.Persistence.IPersistence;
-import nl.han.ica.waterworld.TextObject;
+import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers.TextObject;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -30,7 +30,7 @@ public final class GameSession {
     private Difficulty difficulty;
     public MJ mj;
     private MichaelJacksonVSTheMoonwalkers game;
-    private EnemyFactory enemyFactory;
+    public EnemyFactory enemyFactory;
     private File highscoreFile;
 
     public boolean isCountingDown = false;
@@ -39,7 +39,7 @@ public final class GameSession {
 
     public Dashboard greenHealthBar;
     private Color healthBarColor = new Color(42, 189, 104);
-    private Dashboard healthBarContainer;
+    public Dashboard healthBarContainer;
     private Color healthBarContainerColor = new Color(231, 76, 60);
     private TextObject healthText;
     public TextObject scoreText;
@@ -86,6 +86,7 @@ public final class GameSession {
     public void alterGameState() {
         switch (gameState) {
             case None:
+                enemyFactory.stopSpawnTimer();
                 break;
             case ReadyUp:
                 gameState = GameState.Started;
@@ -112,18 +113,23 @@ public final class GameSession {
             case GameOver:
                 gameState = GameState.None;
                 setPlayerScore();
-                showGameOverView();
+                game.showGameOverView();
                 break;
         }
     }
 
     private void setPlayerScore() {
-        this.playerScores.add(this.getScore());
-
-        int newScore;
-        persistence = new FilePersistence("main/java/nl/han/ica/MichaelJackonVSTheMoonwalkers/res/mj_score.txt");
+        playerScores = getPlayerHighscore();
+        playerScores.add(getScore());
+        String[] scoreArray = new String[playerScores.size()];
+        int index = 0;
+        for (Integer playerScore : playerScores) {
+            scoreArray[index] = String.valueOf(playerScore);
+            index++;
+        }
+        persistence = new FilePersistence("main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/mj_score.txt");
         if (persistence.fileExists()) {
-            newScore = Integer.parseInt(persistence.loadDataString());
+            persistence.saveData(scoreArray, ",");
         }
     }
 
@@ -142,20 +148,6 @@ public final class GameSession {
 
     public void removePauseText() {
         game.deleteGameObject(pauseText);
-    }
-
-    private void showGameOverView() {
-        game.deleteAllGameOBjects();
-        game.deleteDashboard(healthBarContainer);
-        game.deleteDashboard(greenHealthBar);
-
-        String score = "Score: " + getScore();
-
-        ButtonCreator menuButton = new ButtonCreator("Go to menu", game.getWorldWidth()/2 - 75, 400, 150, 50, 5, 430, 25, Color.pink, Color.white);
-
-        game.addGameObject(menuButton);
-        game.addGameObject(HUDCreator.drawTextObject(game.getWorldWidth()/2 - 100, 100, "Game Over", 50));
-        game.addGameObject(HUDCreator.drawTextObject(game.getWorldWidth()/2 - 100, 250, score, 50));
     }
 
     public void setScore(int score) {
@@ -185,20 +177,14 @@ public final class GameSession {
     public List<Integer> getPlayerHighscore() {
         List<Integer> playerScores = new ArrayList<Integer>();
         //Read score
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(highscoreFile));
-            String line;
-
-            while( (line = reader.readLine() ) != null) {
-                playerScores.add(Integer.parseInt(line.trim()));
+        persistence = new FilePersistence("main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/mj_score.txt");
+        if (!persistence.loadDataString().isEmpty()) {
+            for (String score : persistence.loadDataStringArray(",")) {
+                playerScores.add(Integer.parseInt(score));
             }
-
-        }catch(FileNotFoundException e) {
-            System.out.println("File not found!" + e.getMessage());
-        }catch(IOException e ) {
-            System.out.println("Failed to read the file" + e.getMessage());
         }
 
+        playerScores.sort(Comparator.reverseOrder());
         return playerScores;
     }
 }
