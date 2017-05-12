@@ -9,10 +9,10 @@ import nl.han.ica.waterworld.TextObject;
 import processing.core.PApplet;
 import processing.core.PImage;
 
+import javax.xml.soap.Text;
 import java.awt.*;
+import java.io.*;
 import java.util.List;
-import java.io.File;
-import java.io.IOException;
 import java.util.*;
 import java.util.Timer;
 
@@ -35,8 +35,11 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
 
     private Boolean muted = false;
 
-    private List<TextObject> howToPlayTexts = new ArrayList<TextObject>();
+    private List<String> howToPlayTexts = new ArrayList<String>();
     private List<TextObject> highScoreTexts = new ArrayList<TextObject>();
+
+    private boolean startPressed = false;
+    private File howToPlayFile;
 
     public static void main(String[] args) {
         PApplet.main(new String[]{"nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.MichaelJacksonVSTheMoonwalkers"});}
@@ -51,6 +54,11 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
         musicPlayingIcon = loadImage("src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/others/volume-on.png");
         musicMutedIcon = loadImage("src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/others/mute.png");
 
+        try {
+            howToPlayFile = new File("src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/mj_how_to_play.txt");
+        }catch (NullPointerException e) {
+            System.out.println(e.getMessage());
+        }
         try {
             showMainMenu();
 
@@ -185,16 +193,11 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
             if (super.mouseY > yPositionOfPlayButton && super.mouseY < yPositionOfPlayButton + buttonHeight) {
                 //Start the game
                 //1. Count down first
+                if (startPressed) return;
+                startPressed = true;
                 cleanView();
-
-                TextObject startingText = new TextObject("Starting in");
-                startingText.setX(this.worldWidth/2 - 110);
-                startingText.setY(this.worldHeight/3);
-                this.dashboard.addGameObject(startingText);
-
-                TextObject countDownText = new TextObject("3");
-                countDownText.setX(this.worldWidth/2);
-                countDownText.setY(this.worldHeight/2);
+                dashboard.addGameObject(HUDCreator.drawTextObject(worldWidth / 2 - 110, worldHeight / 3, "Starting in", 46));
+                TextObject countDownText = HUDCreator.drawTextObject(worldWidth / 2, worldHeight / 2, "3", 23);
 
                 this.dashboard.addGameObject(countDownText);
 
@@ -235,42 +238,27 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
         List<Integer> playerScores = GameSession.sharedInstance().getPlayerHighscore();
         int xPositionText = 350;
 
-        highScoreTexts.add(new TextObject("Rank"));
-        highScoreTexts.add(new TextObject("Score"));
+        highScoreTexts.add(HUDCreator.drawTextObject(0, 0, "Rank", 23));
+        highScoreTexts.add(HUDCreator.drawTextObject(0, 0, "Score", 23));
 
         for (int x = 0; x < highScoreTexts.size(); x++) {
             int yPositionOfText = 100 + this.spaceBetweenTexts;
-
             highScoreTexts.get(x).setX(xPositionText);
             highScoreTexts.get(x).setY(yPositionOfText);
-            highScoreTexts.get(x).setFontSize(23);
 
             xPositionText += 250;
             this.dashboard.addGameObject(highScoreTexts.get(x));
         }
 
         if (playerScores.size() == 0) {
-            TextObject noScoresFoundText = new TextObject("Geen score gevonden");
-            noScoresFoundText.setY(this.worldHeight/2);
-            noScoresFoundText.setX(this.worldWidth/2 - 150);
-            noScoresFoundText.setFontSize(30);
-            noScoresFoundText.setTextColor(Color.yellow);
-
+            TextObject noScoresFoundText = HUDCreator.drawTextObject(worldHeight / 2, worldWidth / 2 - 150, "Geen score gevonden", 30);
             this.dashboard.addGameObject(noScoresFoundText);
         }else {
             int yPositionOfText = 125 + this.spaceBetweenTexts;
             for (int y = 0; y < playerScores.size(); y++) {
 
-                TextObject rankText = new TextObject(String.valueOf(y+1));
-                rankText.setX(360);
-                rankText.setY(yPositionOfText);
-                rankText.setFontSize(30);
-
-                TextObject playerScore = new TextObject(String.valueOf(playerScores.get(y)));
-                playerScore.setX(610);
-                playerScore.setY(yPositionOfText);
-                playerScore.setFontSize(30);
-
+                TextObject rankText = HUDCreator.drawTextObject(360, yPositionOfText, String.valueOf(y+1), 30);
+                TextObject playerScore = HUDCreator.drawTextObject(610, yPositionOfText, String.valueOf(playerScores.get(y)), 30);
                 yPositionOfText += 50;
                 this.dashboard.addGameObject(playerScore);
                 this.dashboard.addGameObject(rankText);
@@ -278,6 +266,26 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
         }
 
         this.addBackButton();
+    }
+
+    public List<String> getHowToPlayTexts() {
+        List<String> howToPlay = new ArrayList<>();
+        //Read score
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(howToPlayFile));
+            String line;
+
+            while( (line = reader.readLine() ) != null) {
+                howToPlay.add(line.trim());
+            }
+
+        }catch(FileNotFoundException e) {
+            System.out.println("File not found!" + e.getMessage());
+        }catch(IOException e ) {
+            System.out.println("Failed to read the file" + e.getMessage());
+        }
+
+        return howToPlay;
     }
 
     private void resetVariables() {
@@ -290,36 +298,18 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
 
         Boolean reset = false;
 
-        howToPlayTexts.add(new TextObject("Move Left"));
-        howToPlayTexts.add(new TextObject("Move Right"));
-        howToPlayTexts.add(new TextObject("Jump"));
-        howToPlayTexts.add(new TextObject("Hit enemy"));
-        howToPlayTexts.add(new TextObject("Pause"));
-
-        howToPlayTexts.add(new TextObject("Key   Left "));
-        howToPlayTexts.add(new TextObject("Key   Right"));
-        howToPlayTexts.add(new TextObject("Key   Up "));
-        howToPlayTexts.add(new TextObject("Key   Space"));
-        howToPlayTexts.add(new TextObject("Key   P "));
+        howToPlayTexts = getHowToPlayTexts();
 
         for (int i = 0; i < howToPlayTexts.size(); i ++) {
 
             int yPositionOfText = 100 + this.spaceBetweenTexts;
-
-            howToPlayTexts.get(i).setX(330);
-            howToPlayTexts.get(i).setY(yPositionOfText);
-            howToPlayTexts.get(i).setFontSize(23);
-            this.dashboard.addGameObject(howToPlayTexts.get(i));
-
-            if (i > 4) {
+            if (i < 5) {
+                this.dashboard.addGameObject(HUDCreator.drawTextObject(330, yPositionOfText, howToPlayTexts.get(i), 23));
+            } else {
                 if (!reset) {reset = true; this.spaceBetweenTexts = 80;}
                 yPositionOfText = 100 + this.spaceBetweenTexts;
 
-                howToPlayTexts.get(i).setX(600);
-                howToPlayTexts.get(i).setY(yPositionOfText);
-                howToPlayTexts.get(i).setFontSize(23);
-                howToPlayTexts.get(i).setTextColor(Color.green);
-                this.dashboard.addGameObject(howToPlayTexts.get(i));
+                this.dashboard.addGameObject(HUDCreator.drawTextObject(600, yPositionOfText, howToPlayTexts.get(i), 23, Color.green));
             }
 
             this.spaceBetweenTexts += 30;

@@ -35,7 +35,10 @@ enum Difficulty {
     public float getValue() { return value; }
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 67990690976389af359634c4b64bd506e8ee9ee9
 public final class GameSession {
 
     private static GameSession instance = new GameSession();
@@ -128,6 +131,7 @@ public final class GameSession {
                 break;
             case Playing:
                 gameState = GameState.Paused;
+                game.pauseGame();
                 break;
             case GameOver:
                 gameState = GameState.None;
@@ -192,6 +196,7 @@ public final class GameSession {
     }
 
     public void startGame() throws ParserConfigurationException, SAXException, IOException {
+        game.deleteAllGameOBjects();
         setupGameSession(game);
         setupHUD();
         enemyFactory = new EnemyFactory(game);
@@ -203,10 +208,17 @@ public final class GameSession {
     public void setGameState(GameState gameState) {
         this.gameState = gameState;
     }
+<<<<<<< HEAD
     public GameState getGameState() {return this.gameState;}
 
 
     public List getPlayerHighscore() {
+=======
+    public GameState getGameState() { return gameState; }
+
+    public List<Integer> getPlayerHighscore() {
+        List<Integer> playerScores = new ArrayList<Integer>();
+>>>>>>> 67990690976389af359634c4b64bd506e8ee9ee9
         //Read score
         try {
             BufferedReader reader = new BufferedReader(new FileReader(highscoreFile));

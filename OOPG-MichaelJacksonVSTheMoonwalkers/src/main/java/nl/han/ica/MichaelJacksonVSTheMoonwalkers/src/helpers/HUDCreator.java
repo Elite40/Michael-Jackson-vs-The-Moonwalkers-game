@@ -40,4 +40,13 @@ public class HUDCreator {
         textObject.setFontSize(fs);
         return textObject;
     }
+
+    public static TextObject drawTextObject(int x, int y, String t, int fs, Color c) {
+        TextObject textObject = new TextObject(t);
+        textObject.setX(x);
+        textObject.setY(y);
+        textObject.setFontSize(fs);
+        textObject.setTextColor(c);
+        return textObject;
+    }
 }
