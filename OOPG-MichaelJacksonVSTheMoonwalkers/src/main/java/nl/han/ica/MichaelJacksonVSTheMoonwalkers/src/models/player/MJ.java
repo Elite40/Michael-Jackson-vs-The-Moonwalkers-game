@@ -4,23 +4,19 @@ import com.sun.istack.internal.Nullable;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.GameSession;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.GameState;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.MichaelJacksonVSTheMoonwalkers;
-import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers.HUDCreator;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy.Direction;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy.Zombie;
-import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy.ZombieBoss;
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects;
 import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.waterworld.TextObject;
-import sun.rmi.runtime.Log;
 
 import java.awt.*;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.logging.Logger;
 
 /**
  * Created by tiesbaltissen on 20-04-17.
@@ -113,8 +109,8 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
 
     public void attack(Direction direction) {
         this.direction = direction;
-        this.setSprite(getMJAttackSprite(), 12);
-        this.sprite.resize(75*12, this.sprite.getHeight());
+        setSprite(getMJAttackSprite(), 12);
+        sprite.resize(75*12, this.sprite.getHeight());
         if (animationTimer != null) {
             animationTimer.cancel();
             animationTimer = null;
@@ -126,7 +122,7 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
     public void jump(Direction direction) {
         if (!isJumping) {
             this.direction = direction;
-            this.setSprite(getMJJumpSprite(), 8);
+             setSprite(getMJJumpSprite(), 8);
             if (animationTimer != null) {
                 animationTimer.cancel();
                 animationTimer = null;
@@ -145,13 +141,18 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
     public void move(Direction direction) {
         if (!isJumping) {
             this.direction = direction;
-            setSprite(getMJSprite(), 12);
+            this.setSprite(getMJSprite(), 12);
             if (animationTimer != null) {
                 animationTimer.cancel();
                 animationTimer = null;
             }
             startAnimationTimer(6, 12, 10);
         }
+    }
+
+    private void setSprite(String newSprite, int frames) {
+        session.mj.sprite.setSprite(newSprite);
+        session.mj.setTotalFrames(frames);
     }
 
 
@@ -189,11 +190,6 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
                 }
             }
         }, 0, 100);
-    }
-
-    private void setSprite(String newSprite, int frames) {
-        session.mj.sprite.setSprite(newSprite);
-        session.mj.setTotalFrames(frames);
     }
 
 

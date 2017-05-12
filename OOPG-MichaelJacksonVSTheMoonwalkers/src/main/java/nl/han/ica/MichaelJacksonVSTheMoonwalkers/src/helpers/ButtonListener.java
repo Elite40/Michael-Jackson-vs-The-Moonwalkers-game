@@ -56,8 +56,12 @@ public class ButtonListener {
         return ((mouseX > 4 && mouseX < 4 + width) && mouseY > 4 && mouseY < 4 + height);
     }
 
+    public static boolean clickedMenuButton(int mouseY) {
+        int yPositionOfMenuButton = 418;
+        return (mouseY > yPositionOfMenuButton && mouseY < yPositionOfMenuButton + buttonHeight);
+    }
+
     public static boolean clickedInWidthBounds(int mouseX) {
         return (mouseX > xPositionOfButton && mouseX < xPositionOfButton + buttonWidth);
-
     }
 }
