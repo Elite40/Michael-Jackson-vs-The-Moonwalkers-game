@@ -23,27 +23,15 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="GameSession.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="GameSession.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/classes/GameSession.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1649">
-                  <caret line="176" column="80" lean-forward="false" selection-start-line="176" selection-start-column="80" selection-end-line="176" selection-end-column="80" />
+                <state relative-caret-position="480">
+                  <caret line="201" column="47" lean-forward="true" selection-start-line="201" selection-start-column="47" selection-end-line="201" selection-end-column="47" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#1072#1081#0" expanded="true" />
                     <element signature="e#7207#7216#0" expanded="true" />
-                    <marker date="1494621944000" expanded="false" signature="5555:5566" ph=" { " />
-                    <marker date="1494621944000" expanded="false" signature="5595:5601" ph=" }" />
-                    <marker date="1494621944000" expanded="false" signature="5640:5651" ph=" { " />
-                    <marker date="1494621944000" expanded="false" signature="5669:5675" ph=" }" />
-                    <marker date="1494621944000" expanded="false" signature="5917:5928" ph=" { " />
-                    <marker date="1494621944000" expanded="false" signature="5961:5967" ph=" }" />
-                    <marker date="1494621944000" expanded="false" signature="6004:6015" ph=" { " />
-                    <marker date="1494621944000" expanded="false" signature="6034:6040" ph=" }" />
-                    <marker date="1494621944000" expanded="false" signature="6067:6078" ph=" { " />
-                    <marker date="1494621944000" expanded="false" signature="6091:6097" ph=" }" />
-                    <marker date="1494621944000" expanded="false" signature="6907:6918" ph=" { " />
-                    <marker date="1494621944000" expanded="false" signature="6945:6951" ph=" }" />
                   </folding>
                 </state>
               </provider>
@@ -52,58 +40,60 @@
           <file leaf-file-name="ButtonCreator.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/ButtonCreator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="329">
+                <state relative-caret-position="782">
                   <caret line="114" column="32" lean-forward="true" selection-start-line="114" selection-start-column="32" selection-end-line="114" selection-end-column="32" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="IPersistence.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/OOPDProcessingEngineHAN/Persistence/IPersistence.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="165">
-                  <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="GameState.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/classes/GameState.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
-                  <caret line="12" column="12" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Difficulty.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/classes/Difficulty.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="225">
-                  <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="mj_score.txt" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/mj_score.txt">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="mj_how_to_play.txt" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/mj_how_to_play.txt">
+          <file leaf-file-name="IMovableZombie.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/models/enemy/IMovableZombie.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="135">
-                  <caret line="9" column="9" lean-forward="true" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+                  <caret line="9" column="94" lean-forward="false" selection-start-line="9" selection-start-column="94" selection-end-line="9" selection-end-column="94" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ZombieBird.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/models/enemy/ZombieBird.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="465">
+                  <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ButtonListener.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/ButtonListener.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="180">
+                  <caret line="12" column="71" lean-forward="false" selection-start-line="12" selection-start-column="71" selection-end-line="12" selection-end-column="71" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ZombieBoss.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/models/enemy/ZombieBoss.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="285">
+                  <caret line="24" column="124" lean-forward="true" selection-start-line="24" selection-start-column="124" selection-end-line="24" selection-end-column="124" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Direction.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/models/enemy/Direction.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="105">
+                  <caret line="7" column="12" lean-forward="false" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
                   <folding />
                 </state>
               </provider>
@@ -112,24 +102,20 @@
           <file leaf-file-name="MichaelJacksonVSTheMoonwalkers.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/classes/MichaelJacksonVSTheMoonwalkers.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2933">
-                  <caret line="380" column="19" lean-forward="true" selection-start-line="380" selection-start-column="19" selection-end-line="380" selection-end-column="19" />
+                <state relative-caret-position="413">
+                  <caret line="312" column="66" lean-forward="true" selection-start-line="312" selection-start-column="66" selection-end-line="312" selection-end-column="66" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <marker date="1494621861000" expanded="false" signature="15696:15707" ph=" { " />
-                    <marker date="1494621861000" expanded="false" signature="15730:15736" ph=" }" />
-                    <marker date="1494621861000" expanded="false" signature="15769:15780" ph=" { " />
-                    <marker date="1494621861000" expanded="false" signature="15804:15810" ph=" }" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="HUDCreator.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="HUDCreator.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/HUDCreator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="270">
-                  <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+                <state relative-caret-position="240">
+                  <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -137,12 +123,14 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="EnemyFactory.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/classes/EnemyFactory.java">
+          <file leaf-file-name="TextObject.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/TextObject.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="751">
-                  <caret line="106" column="89" lean-forward="false" selection-start-line="106" selection-start-column="89" selection-end-line="106" selection-end-column="89" />
-                  <folding />
+                <state relative-caret-position="-17">
+                  <caret line="12" column="50" lean-forward="false" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -164,8 +152,8 @@
           <file leaf-file-name="SpriteObject.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/OOPDProcessingEngineHAN/Objects/SpriteObject.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="375">
-                  <caret line="26" column="7" lean-forward="false" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
+                <state relative-caret-position="450">
+                  <caret line="34" column="7" lean-forward="true" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
                   <folding />
                 </state>
               </provider>
@@ -220,21 +208,21 @@
         <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/models/enemy/Zombie.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/models/enemy/ZombieBird.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/models/enemy/ZombieBoss.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/models/enemy/IMovableZombie.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/OOPDProcessingEngineHAN/Persistence/FilePersistence.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/ButtonListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/ZombieSpriteObject.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/ZombieAnimatedSpriteObject.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/MJSpriteObject.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/OOPDProcessingEngineHAN/Objects/AnimatedSpriteObject.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/MJAnimatedSpriteObject.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/OOPDProcessingEngineHAN/Objects/SpriteObject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/TextObject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/models/player/MJ.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/HUDCreator.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/mj_score.txt" />
         <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/classes/GameSession.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/classes/EnemyFactory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/ButtonListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/HUDCreator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/models/player/MJ.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/models/enemy/IMovableZombie.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/TextObject.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/classes/MichaelJacksonVSTheMoonwalkers.java" />
       </list>
     </option>
@@ -353,6 +341,56 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="player" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OOPG-ZetHierNaamVanJeSpel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OOPG-MichaelJacksonVSTheMoonwalkers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ica" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MichaelJacksonVSTheMoonwalkers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="enemy" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -928,12 +966,12 @@
       <workItem from="1494535572622" duration="12427000" />
       <workItem from="1494575681111" duration="2944000" />
       <workItem from="1494580097945" duration="9845000" />
-      <workItem from="1494597421796" duration="20734000" />
+      <workItem from="1494597421796" duration="21640000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="126650000" />
+    <option name="totallyTimeSpent" value="127556000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1887" height="1043" extended-state="0" />
@@ -948,7 +986,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13552362" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13552362" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1086,14 +1124,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/models/enemy/Direction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="12" lean-forward="false" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/OOPDProcessingEngineHAN/Collision/ICollidableWithGameObjects.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -1110,45 +1140,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/models/enemy/ZombieBoss.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="24" column="124" lean-forward="true" selection-start-line="24" selection-start-column="124" selection-end-line="24" selection-end-column="124" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/models/enemy/IMovableZombie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="35" lean-forward="true" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/models/enemy/ZombieBird.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/OOPDProcessingEngineHAN/Dashboard/FPSCounter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/ButtonListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="41" column="28" lean-forward="false" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1203,14 +1199,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/models/enemy/Zombie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-46">
-          <caret line="38" column="5" lean-forward="true" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/MJAnimatedSpriteObject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -1224,43 +1212,6 @@
         <state relative-caret-position="135">
           <caret line="18" column="27" lean-forward="true" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/TextObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="33" lean-forward="true" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-          <folding>
-            <element signature="e#687#688#0" expanded="true" />
-            <element signature="e#717#718#0" expanded="true" />
-            <element signature="e#757#758#0" expanded="true" />
-            <element signature="e#787#788#0" expanded="true" />
-            <element signature="e#1222#1223#0" expanded="true" />
-            <element signature="e#1262#1263#0" expanded="true" />
-            <element signature="e#1490#1491#0" expanded="true" />
-            <element signature="e#1532#1533#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/models/player/MJ.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="70" column="21" lean-forward="true" selection-start-line="70" selection-start-column="21" selection-end-line="70" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/HUDCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1315,14 +1266,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/ButtonCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="114" column="32" lean-forward="true" selection-start-line="114" selection-start-column="32" selection-end-line="114" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/classes/GameState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1331,48 +1274,118 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/classes/MichaelJacksonVSTheMoonwalkers.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/models/player/MJ.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2933">
-          <caret line="380" column="19" lean-forward="true" selection-start-line="380" selection-start-column="19" selection-end-line="380" selection-end-column="19" />
+        <state relative-caret-position="720">
+          <caret line="64" column="65" lean-forward="false" selection-start-line="64" selection-start-column="65" selection-end-line="64" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/models/enemy/Zombie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="53" column="0" lean-forward="true" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/models/enemy/Direction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="12" lean-forward="false" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/models/enemy/ZombieBoss.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="24" column="124" lean-forward="true" selection-start-line="24" selection-start-column="124" selection-end-line="24" selection-end-column="124" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/models/enemy/ZombieBird.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/models/enemy/IMovableZombie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="94" lean-forward="false" selection-start-line="9" selection-start-column="94" selection-end-line="9" selection-end-column="94" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/ButtonCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="114" column="32" lean-forward="true" selection-start-line="114" selection-start-column="32" selection-end-line="114" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/TextObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-17">
+          <caret line="12" column="50" lean-forward="false" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1494621861000" expanded="false" signature="15696:15707" ph=" { " />
-            <marker date="1494621861000" expanded="false" signature="15730:15736" ph=" }" />
-            <marker date="1494621861000" expanded="false" signature="15769:15780" ph=" { " />
-            <marker date="1494621861000" expanded="false" signature="15804:15810" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/classes/MichaelJacksonVSTheMoonwalkers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="312" column="66" lean-forward="true" selection-start-line="312" selection-start-column="66" selection-end-line="312" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/ButtonListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="71" lean-forward="false" selection-start-line="12" selection-start-column="71" selection-end-line="12" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/classes/GameSession.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1649">
-          <caret line="176" column="80" lean-forward="false" selection-start-line="176" selection-start-column="80" selection-end-line="176" selection-end-column="80" />
+        <state relative-caret-position="480">
+          <caret line="201" column="47" lean-forward="true" selection-start-line="201" selection-start-column="47" selection-end-line="201" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1072#1081#0" expanded="true" />
             <element signature="e#7207#7216#0" expanded="true" />
-            <marker date="1494621944000" expanded="false" signature="5555:5566" ph=" { " />
-            <marker date="1494621944000" expanded="false" signature="5595:5601" ph=" }" />
-            <marker date="1494621944000" expanded="false" signature="5640:5651" ph=" { " />
-            <marker date="1494621944000" expanded="false" signature="5669:5675" ph=" }" />
-            <marker date="1494621944000" expanded="false" signature="5917:5928" ph=" { " />
-            <marker date="1494621944000" expanded="false" signature="5961:5967" ph=" }" />
-            <marker date="1494621944000" expanded="false" signature="6004:6015" ph=" { " />
-            <marker date="1494621944000" expanded="false" signature="6034:6040" ph=" }" />
-            <marker date="1494621944000" expanded="false" signature="6067:6078" ph=" { " />
-            <marker date="1494621944000" expanded="false" signature="6091:6097" ph=" }" />
-            <marker date="1494621944000" expanded="false" signature="6907:6918" ph=" { " />
-            <marker date="1494621944000" expanded="false" signature="6945:6951" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/src/helpers/HUDCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/han/ica/OOPDProcessingEngineHAN/Objects/SpriteObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="26" column="7" lean-forward="false" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
+        <state relative-caret-position="450">
+          <caret line="34" column="7" lean-forward="true" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
           <folding />
         </state>
       </provider>

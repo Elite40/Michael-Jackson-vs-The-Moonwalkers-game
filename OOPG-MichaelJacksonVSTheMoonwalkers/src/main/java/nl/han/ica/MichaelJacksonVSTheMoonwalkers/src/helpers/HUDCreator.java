@@ -12,6 +12,11 @@ import java.awt.*;
  */
 public class HUDCreator {
 
+    /**
+     * Below are a few methods to create dashboards and textobjects, this helper class made the
+     * code more readable and reusable.
+     */
+
     public static Dashboard drawHealthBarContainer(int x, int y, int w, int h, Color c) {
         Dashboard healthBarContainer = bar(x, y, w, h);
         colorDashboard(healthBarContainer, c);

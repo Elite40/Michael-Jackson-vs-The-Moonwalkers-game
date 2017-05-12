@@ -8,6 +8,13 @@ import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.MichaelJacksonVSThe
  */
 public class ButtonListener {
 
+    /**
+     * Below are all the static checks if a certain button is clicked based on the
+     * mouseClicked method in the MichaelJacksonVSTheMoonwalkers class.
+     *
+     */
+
+
     private static int buttonWidth = 150;
     private static int buttonHeight = 50;
     private static int xPositionOfButton = (MichaelJacksonVSTheMoonwalkers.worldWidth / 2) - (buttonWidth / 2);

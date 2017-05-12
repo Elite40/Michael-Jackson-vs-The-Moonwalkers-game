@@ -5,5 +5,10 @@ package nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy;
  */
 public interface IMovableZombie {
 
+    /**
+     * Interface that requires every zombietype to implement a move method. This varies from
+     * making a bird go up and down and stopping the zombieboss from moving from time to time.
+     * @param direction
+     */
     void move(Direction direction);
 }

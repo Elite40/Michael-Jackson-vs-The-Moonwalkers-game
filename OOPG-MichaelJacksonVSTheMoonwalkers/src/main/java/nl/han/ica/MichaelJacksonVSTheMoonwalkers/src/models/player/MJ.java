@@ -61,12 +61,13 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
         session.scoreText.setText("Score: " + session.getScore());
     }
 
+    /**
+     * methods that return the correct locations for the sprites.
+     * @return
+     */
+
     public static String getMJSprite() {
         return "src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/MJ/mj_movement.png";
-    }
-
-    public static String getMJDeathSprite() {
-        return "src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/drawable/MJ/mj_death.png";
     }
 
     public static String getMJAttackSprite() {
@@ -146,6 +147,12 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
     }
 
 
+    /**
+     * Timer that handles the movement, attack and jumpsprites.
+     * @param repeats
+     * @param totalFrames
+     * @param distanceTravelled
+     */
     private void startAnimationTimer(int repeats, int totalFrames, @Nullable int distanceTravelled) {
         animationTimer = new Timer();
         int[] timesRepeated = {0};
@@ -219,7 +226,7 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
     }
 
     /**
-     *
+     * Check if MJ gets hit or kills an enemy.
      * @param collidedGameObjects
      */
 

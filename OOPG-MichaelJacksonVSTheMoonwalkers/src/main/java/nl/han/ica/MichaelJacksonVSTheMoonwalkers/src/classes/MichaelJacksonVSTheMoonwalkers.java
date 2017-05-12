@@ -293,6 +293,11 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
         this.addBackButton();
     }
 
+    /**
+     * Method that gathers the texts for the how to play view, these texts
+     * are fetched from a file.
+     * @return
+     */
     public List<String> getHowToPlayTexts() {
         List<String> howToPlay = new ArrayList<>();
         //Read score
