@@ -5,7 +5,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
 import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
-import nl.han.ica.waterworld.TextObject;
+import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers.TextObject;
 import processing.core.PApplet;
 import processing.core.PImage;
 

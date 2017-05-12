@@ -11,7 +11,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
-import nl.han.ica.waterworld.TextObject;
+import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers.TextObject;
 
 import java.awt.*;
 import java.util.List;
