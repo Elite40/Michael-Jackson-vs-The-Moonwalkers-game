@@ -36,14 +36,6 @@ enum Difficulty {
     public float getValue() { return value; }
 }
 
-enum GameState {
-    None,
-    ReadyUp,
-    Paused,
-    Playing,
-    GameOver
-}
-
 public final class GameSession {
 
     private static GameSession instance = new GameSession();
@@ -131,6 +123,7 @@ public final class GameSession {
                 break;
             case Playing:
                 gameState = GameState.Paused;
+                game.pauseGame();
                 break;
             case GameOver:
                 gameState = GameState.None;
@@ -147,6 +140,7 @@ public final class GameSession {
     }
 
     public void startGame() throws ParserConfigurationException, SAXException, IOException {
+        game.deleteAllGameOBjects();
         setupGameSession(game);
         setupHUD();
         enemyFactory = new EnemyFactory(game);
@@ -160,6 +154,7 @@ public final class GameSession {
     public void setGameState(GameState gameState) {
         this.gameState = gameState;
     }
+    public GameState getGameState() { return gameState; }
 
     public List<Integer> getPlayerHighscore() {
         List<Integer> playerScores = new ArrayList<Integer>();

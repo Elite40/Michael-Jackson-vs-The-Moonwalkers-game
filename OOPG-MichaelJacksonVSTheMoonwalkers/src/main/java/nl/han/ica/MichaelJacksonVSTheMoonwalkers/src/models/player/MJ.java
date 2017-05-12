@@ -2,6 +2,7 @@ package nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.player;
 
 import com.sun.istack.internal.Nullable;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.GameSession;
+import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.GameState;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.MichaelJacksonVSTheMoonwalkers;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.helpers.HUDCreator;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy.Direction;
@@ -202,7 +203,7 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
      */
 
     @Override
-    public void keyPressed(int keyCode, char key) {
+    public void keyReleased(int keyCode, char key) {
         switch(keyCode) {
             case LEFT:
                 move(Direction.Left);
@@ -215,6 +216,16 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
                 break;
             case BEVEL:
                 attack(session.mj.direction);
+                break;
+            case ENTER:
+                session.alterGameState();
+                if (session.getGameState() == GameState.Paused) {
+                    game.pauseGame();
+                    game.noLoop();
+                } else {
+                    game.resumeGame();
+                    game.loop();
+                }
                 break;
         }
     }

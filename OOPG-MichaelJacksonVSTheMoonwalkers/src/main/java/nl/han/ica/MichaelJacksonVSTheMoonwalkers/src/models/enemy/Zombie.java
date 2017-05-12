@@ -1,6 +1,7 @@
 package nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.models.enemy;
 
 import com.sun.istack.internal.Nullable;
+import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.GameSession;
 import nl.han.ica.MichaelJacksonVSTheMoonwalkers.src.classes.MichaelJacksonVSTheMoonwalkers;
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
@@ -71,12 +72,13 @@ public class Zombie extends AnimatedSpriteObject  implements ICollidableWithGame
 
     @Override
     public void update() {
+        System.out.println();
         switch (direction) {
             case Left:
-                setX(getX()-2);
+                setX(getX()-(2 * getVelocity()));
                 break;
             case Right:
-                setX(getX()+2);
+                setX(getX()+(2 * getVelocity()));
                 break;
         }
         //System.out.println(getX());

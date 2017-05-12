@@ -38,6 +38,7 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
     private List<String> howToPlayTexts = new ArrayList<String>();
     private List<TextObject> highScoreTexts = new ArrayList<TextObject>();
 
+    private boolean startPressed = false;
     private File howToPlayFile;
 
     public static void main(String[] args) {
@@ -192,8 +193,10 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
             if (super.mouseY > yPositionOfPlayButton && super.mouseY < yPositionOfPlayButton + buttonHeight) {
                 //Start the game
                 //1. Count down first
+                if (startPressed) return;
+                startPressed = true;
                 cleanView();
-                dashboard.addGameObject(HUDCreator.drawTextObject(worldWidth / 2 - 110, worldHeight / 3, "Starting in", 23));
+                dashboard.addGameObject(HUDCreator.drawTextObject(worldWidth / 2 - 110, worldHeight / 3, "Starting in", 46));
                 TextObject countDownText = HUDCreator.drawTextObject(worldWidth / 2, worldHeight / 2, "3", 23);
 
                 this.dashboard.addGameObject(countDownText);
