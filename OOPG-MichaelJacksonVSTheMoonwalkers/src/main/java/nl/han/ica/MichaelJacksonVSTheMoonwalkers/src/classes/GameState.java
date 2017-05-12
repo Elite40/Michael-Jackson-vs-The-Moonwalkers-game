@@ -4,6 +4,7 @@ public enum GameState {
     None,
     ReadyUp,
     Paused,
+    Started,
     Playing,
     GameOver
 }

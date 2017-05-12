@@ -18,9 +18,11 @@ public class EnemyFactory {
 
     private MichaelJacksonVSTheMoonwalkers game;
     private Random random = new Random();
+    private Timer spawnTimer;
 
     public EnemyFactory(MichaelJacksonVSTheMoonwalkers game) {
         this.game = game;
+        spawnTimer = new Timer();
         startSpawnTimer();
     }
 
@@ -103,9 +105,13 @@ public class EnemyFactory {
         }
     }
 
-    private void startSpawnTimer() {
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
+    public void stopSpawnTimer() {
+        spawnTimer.cancel();
+    }
+
+    public void startSpawnTimer() {
+        spawnTimer = new Timer();
+        spawnTimer.schedule(new TimerTask() {
             @Override
             public void run() {
                 spawnZombie();

@@ -104,6 +104,7 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
 
     public void attack(Direction direction) {
         this.direction = direction;
+        session.mj.setDirection(direction.getValue());
         this.setSprite(getMJAttackSprite(), 12);
         this.sprite.resize(75*12, this.sprite.getHeight());
         if (animationTimer != null) {
@@ -112,7 +113,6 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
         }
         isAttacking = true;
         startAnimationTimer(6, 12, 0);
-        session.mj.setDirection(direction.getValue());
     }
 
     public void jump(Direction direction) {
@@ -218,14 +218,7 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
                 attack(session.mj.direction);
                 break;
             case ENTER:
-                session.alterGameState();
-                if (session.getGameState() == GameState.Paused) {
-                    game.pauseGame();
-                    game.noLoop();
-                } else {
-                    game.resumeGame();
-                    game.loop();
-                }
+                game.countDownFrom(3, (game.getThreadState()) ? GameState.Paused : GameState.Playing);
                 break;
         }
     }
@@ -239,6 +232,9 @@ public class MJ extends AnimatedSpriteObject implements ICollidableWithGameObjec
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
         for (GameObject g : collidedGameObjects) {
             if (g instanceof Zombie) {
+                System.out.println("======================");
+                System.out.println("Zombie direction: " + g.getDirection());
+                System.out.println("MJ Direction: " + session.mj.direction.getValue());
                 if (isAttacking && g.getDirection() != session.mj.direction.getValue()) {
                     game.deleteGameObject(g);
                     updateScoreText(((Zombie) g).getPoints());

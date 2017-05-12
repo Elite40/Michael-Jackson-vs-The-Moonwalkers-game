@@ -196,12 +196,8 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
                 if (startPressed) return;
                 startPressed = true;
                 cleanView();
-                dashboard.addGameObject(HUDCreator.drawTextObject(worldWidth / 2 - 110, worldHeight / 3, "Starting in", 46));
-                TextObject countDownText = HUDCreator.drawTextObject(worldWidth / 2, worldHeight / 2, "3", 23);
 
-                this.dashboard.addGameObject(countDownText);
-
-                countDownFrom(3, countDownText);
+                countDownFrom(3, GameState.ReadyUp);
 
             }else if (super.mouseY > yPositionOfHigscoreButton && super.mouseY < yPositionOfHigscoreButton + buttonHeight) {
                 //Clicked on the highscore button
@@ -334,7 +330,18 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
         this.dashboard.addGameObject(backButton);
     }
 
-    private void countDownFrom(int seconds, TextObject countDownText){
+    public void countDownFrom(int seconds, GameState gameState){
+        TextObject countDownTitleText = HUDCreator.drawTextObject(worldWidth / 2 - 110, worldHeight / 3, "Starting in", 46);
+        TextObject countDownText = HUDCreator.drawTextObject(worldWidth / 2, worldHeight / 2, "3", 23);
+        dashboard.addGameObject(countDownTitleText);
+        dashboard.addGameObject(countDownText);
+        if (gameState == GameState.Playing) {
+            dashboard.deleteGameObject(countDownTitleText);
+            dashboard.deleteGameObject(countDownText);
+            GameSession.sharedInstance().setGameState(gameState);
+            GameSession.sharedInstance().alterGameState();
+            return;
+        }
 
         Timer timer = new Timer();
 
@@ -347,8 +354,9 @@ public class MichaelJacksonVSTheMoonwalkers extends GameEngine {
 
                 if (i < 0){
                     timer.cancel();
-                    cleanView();
-                    GameSession.sharedInstance().setGameState(GameState.ReadyUp);
+                    dashboard.deleteGameObject(countDownTitleText);
+                    dashboard.deleteGameObject(countDownText);
+                    GameSession.sharedInstance().setGameState(gameState);
                     GameSession.sharedInstance().alterGameState();
                 }
             }

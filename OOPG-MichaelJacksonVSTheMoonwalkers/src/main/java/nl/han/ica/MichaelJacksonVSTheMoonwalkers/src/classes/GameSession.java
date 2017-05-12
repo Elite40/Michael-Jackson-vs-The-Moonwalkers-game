@@ -70,7 +70,7 @@ public final class GameSession {
 
     public void setupGameSession(MichaelJacksonVSTheMoonwalkers game) throws IOException, SAXException, ParserConfigurationException {
         this.game = game;
-        this.gameState = GameState.None;
+        this.gameState = GameState.Started;
 
         try {
             highscoreFile = new File("src/main/java/nl/han/ica/MichaelJacksonVSTheMoonwalkers/res/mj_score.txt");
@@ -110,7 +110,7 @@ public final class GameSession {
             case None:
                 break;
             case ReadyUp:
-                gameState = GameState.Playing;
+                gameState = GameState.Started;
                 try{
                     startGame();
                 }catch(Exception e) {
@@ -118,12 +118,16 @@ public final class GameSession {
                 }
                 break;
             case Paused:
-                gameState = GameState.ReadyUp;
-                startReadyUpTimer();
+                gameState = GameState.Playing;
+                enemyFactory.startSpawnTimer();
+                game.resumeGame();
                 break;
             case Playing:
                 gameState = GameState.Paused;
+                enemyFactory.stopSpawnTimer();
                 game.pauseGame();
+                break;
+            case Started:
                 break;
             case GameOver:
                 gameState = GameState.None;

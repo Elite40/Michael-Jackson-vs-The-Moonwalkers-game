@@ -72,7 +72,6 @@ public class Zombie extends AnimatedSpriteObject  implements ICollidableWithGame
 
     @Override
     public void update() {
-        System.out.println();
         switch (direction) {
             case Left:
                 setX(getX()-(2 * getVelocity()));
