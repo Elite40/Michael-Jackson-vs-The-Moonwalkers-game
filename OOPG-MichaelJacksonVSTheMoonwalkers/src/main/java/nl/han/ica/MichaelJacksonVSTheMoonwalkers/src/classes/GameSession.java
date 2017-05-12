@@ -26,11 +26,9 @@ public final class GameSession {
 
     private int score;
     private Timer readyUpTimer = new Timer();
-    public String countDownText = "Test";
     private GameState gameState;
     private Difficulty difficulty;
     public MJ mj;
-    private List<Zombie> zombies;
     private MichaelJacksonVSTheMoonwalkers game;
     private EnemyFactory enemyFactory;
     private File highscoreFile;
@@ -85,16 +83,6 @@ public final class GameSession {
         game.addGameObject(scoreText);
     }
 
-    private void startReadyUpTimer() {
-        readyUpTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                alterGameState();
-                readyUpTimer.cancel();
-            }
-        }, 3000, 0);
-    }
-
     public void alterGameState() {
         switch (gameState) {
             case None:
@@ -137,20 +125,6 @@ public final class GameSession {
         if (persistence.fileExists()) {
             newScore = Integer.parseInt(persistence.loadDataString());
         }
-
-//        Boolean isDone = true;
-//        Scanner scan = new Scanner(System.in);
-//        File f = new File(pathToScoreFile);
-//
-//        try {
-//            FileWriter fr = new FileWriter(f);
-//            BufferedWriter br  = new BufferedWriter(fr);
-//
-//            br.write(score);
-//
-//        }catch(IOException e) {
-//            System.out.println("Couldnt save the score to the file: " + e.getMessage());
-//        }
     }
 
     public void setDifficulty(Difficulty difficulty) {
